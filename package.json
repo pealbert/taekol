@@ -3,6 +3,10 @@
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
+	"allowScripts": {
+		"esbuild": true,
+		"workerd": true
+	},
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
