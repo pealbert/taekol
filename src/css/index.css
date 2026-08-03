@@ -35,7 +35,7 @@
 	--extra-huge-font-size: 2.4rem;
 	--enormous-font-size: 3.2rem;
 
-	--round-border-radius: 10rem;
+	--round-border-radius: calc(infinity * 1px);
 }
 
 ::selection {
