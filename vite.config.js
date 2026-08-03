@@ -20,7 +20,7 @@ export default defineConfig({
 			input: {
 				main: resolve(import.meta.dirname, 'index.html'),
 				registration: resolve(import.meta.dirname, 'pages/registration.html'),
-				policy: resolve(import.meta.dirname, 'pages/policy.html'),
+				privacy: resolve(import.meta.dirname, 'pages/privacy.html'),
 				credits: resolve(import.meta.dirname, 'pages/credits.html'),
 			},
 		},
