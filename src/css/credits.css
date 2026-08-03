@@ -34,6 +34,13 @@ main {
 	p {
 		color: var(--white-color);
 		text-align: center;
+		font-size: var(--tiny-font-size);
+		max-width: 230px;
+
+		@media (width >= 768px) {
+			font-size: var(--small-font-size);
+			max-width: 280px;
+		}
 	}
 
 	a:hover {
@@ -46,7 +53,6 @@ main {
 		flex-direction: column;
 		list-style: none;
 		gap: 4rem;
-		max-width: 230px;
 
 		li {
 			display: flex;
@@ -58,16 +64,9 @@ main {
 			}
 		}
 
-		a {
-			color: var(--white-color);
-		}
 		svg {
 			width: clamp(75px, 12cqw, 100px);
 			color: var(--white-color);
-		}
-
-		@media (width >= 768px) {
-			max-width: 250px;
 		}
 	}
 }
