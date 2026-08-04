@@ -42,6 +42,16 @@
 	<script type="module" src="../src/js/lenis.js"></script>
 	<script type="module" src="../src/js/burger.js"></script>
 	<script type="module" src="../src/js/footer.js"></script>
+	<script>
+		fetch('/schemas/schema-faq.json')
+			.then(res => res.text())
+			.then(json => {
+				const s = document.createElement('script');
+				s.type = 'application/ld+json';
+				s.textContent = json;
+				document.head.appendChild(s);
+			});
+	</script>
 </head>
 <body>
 	<div class="progress-bar"></div>

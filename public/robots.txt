@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
+Allow: /llms.txt
+Disallow: /admin/
 Disallow: /admin.html
-Disallow: /admin
 
-Sitemap: https://taekol.com/public/sitemap.xml
+Sitemap: https://taekol.com/sitemap.xml
