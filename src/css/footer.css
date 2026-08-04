@@ -57,7 +57,8 @@ footer .community > *:first-child {
 	overflow: visible;
 }
 
-footer > a {
+footer > span {
+	cursor: pointer;
 	position: relative;
 	text-transform: uppercase;
 	font-family: 'Cal Sans', sans-serif;
@@ -70,7 +71,7 @@ footer > a {
 	overflow: hidden;
 }
 
-footer > a::before {
+footer > span::before {
 	content: "Taekwon-do";
 	position: absolute;
 	top: 0;
@@ -81,7 +82,7 @@ footer > a::before {
 	transition: all 0.3s ease;
 }
 
-footer > a::after {
+footer > span::after {
 	content: "Zpět nahoru";
 	position: absolute;
 	bottom: calc(-100% - 1px);
@@ -94,7 +95,6 @@ footer > a::after {
 
 footer > p {
 	font-weight: 300;
-	max-width: calc(100% - 2rem);
 	text-align: center;
 	margin: 0 auto;
 	max-width: calc(100% - 4rem);
@@ -109,7 +109,7 @@ footer > p {
 }
 
 @media (width >= 1024px) {
-	footer > a {
+	footer > span {
 		font-size: 11cqw;
 	}
 }

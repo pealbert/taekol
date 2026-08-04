@@ -47,11 +47,11 @@
 		color: var(--white-color);
 	}
 
-	footer > a:hover:not(:active)::before {
+	footer > span:hover:not(:active)::before {
 		top: -100%;
 	}
 
-	footer > a:hover:not(:active)::after {
+	footer > span:hover:not(:active)::after {
 		bottom: 0;
 	}
 
