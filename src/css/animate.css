@@ -9,13 +9,13 @@
 	}
 
 	header > a:nth-last-of-type(1):hover:not(:active),
-	.hero__title > a:hover:not(:active) {
+	.hero__links a:hover:not(:active) {
 		box-shadow: none;
 		transform: scale(0.98) translateY(1px);
 	}
 
 	header > a:nth-last-of-type(1):hover:not(:active)::after,
-	.hero__title > a:hover:not(:active)::after {
+	.hero__links a:first-of-type:not(:active)::after {
 		bottom: -15px;
 	}
 
@@ -66,13 +66,13 @@
 }
 
 header > a:nth-last-of-type(1):active,
-.hero__title > a:active {
+.hero__links a:active {
 	box-shadow: none;
 	transform: scale(0.98) translateY(1px);
 }
 
 header > a:nth-last-of-type(1):active::after,
-.hero__title > a:active::after {
+.hero__links a:first-of-type::after {
 	bottom: -15px;
 }
 

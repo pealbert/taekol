@@ -4,6 +4,7 @@
 @import "./animate.css";
 
 #hero {
+	position: relative;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -31,23 +32,38 @@
 	color: var(--gray-color);
 }
 
-.hero__title > a {
-	opacity: 0;
-	animation: fade-in 0.5s ease forwards 0.3s;
-	position: relative;
-	color: var(--white-color);
-	font-family: "Cal Sans", sans-serif;
-	font-size: var(--small-font-size);
-	background-color: var(--red-color);
-	border-radius: var(--round-border-radius);
-	padding: 0.5rem 1.5rem;
-	margin-top: 0.5rem;
-	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.15);
-	overflow: hidden;
-	transition: all 0.2s ease;
+.hero__links {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 1rem;
 }
 
-.hero__title > a::after {
+.hero__links a {
+	opacity: 0;
+	color: var(--white-color);
+	font-family: "Funnel Display", sans-serif;
+	font-weight: 600;
+	font-size: var(--tiny-font-size);
+	border-radius: var(--round-border-radius);
+	padding: 0.75rem 1.5rem;
+	transition: all 0.2s ease;
+	animation: fade-in 0.5s ease forwards 0.3s;
+}
+
+.hero__links a:first-of-type {
+	position: relative;
+	background-color: var(--red-color);
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.15);
+	overflow: hidden;
+}
+
+.hero__links a:last-of-type {
+	background-color: var(--black-color);
+}
+
+
+.hero__links a:first-of-type:after {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -427,6 +443,9 @@
 }
 
 @media (width >= 480px) {
+	.hero__links {
+		flex-direction: row;
+	}
 	.about__info {
 		flex-direction: row;
 		gap: 3rem;
@@ -539,13 +558,12 @@
 }
 
 @media (width >= 1024px) {
-	.hero__title p {
-		font-size: var(--small-font-size);
+	.hero__title {
+		gap: 0.75rem;
 	}
 
-	.hero__title > a {
-		font-size: var(--medium-font-size);
-		padding: 0.75rem 2rem;
+	.hero__title p {
+		font-size: var(--small-font-size);
 	}
 
 	#hero svg:first-child {
