@@ -39,7 +39,7 @@ main a::after {
 	border-radius: 100%;
 	width: 100%;
 	height: 50%;
-	background-color: rgb(255, 128, 128);
+	background-color: var(--light-red-color);
 	filter: blur(7px);
 	transition: all 0.2s ease;
 }
