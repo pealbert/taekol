@@ -1,0 +1,115 @@
+footer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: var(--black-color);
+	padding: 2rem 0;
+	gap: 1rem
+}
+
+footer .info {
+	display: grid;
+	gap: 2rem;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	width: min(1200px, 100%);
+	margin: 0 auto;
+	padding: 0 2rem;
+	box-sizing: border-box;
+}
+
+footer .impressum,
+footer .contact {
+	grid-column: span 2;
+}
+
+footer .impressum, 
+footer .contact,
+footer .web,
+footer .documents,
+footer .community {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	font-weight: 300;
+	color: var(--bright-gray-color);
+}
+
+footer .impressum > *:first-child,
+footer .contact > *:first-child,
+footer .web > *:first-child,
+footer .documents > *:first-child,
+footer .community > *:first-child {
+	font-weight: 600;
+	color: var(--white-color);
+}
+
+.community__media {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.community__media svg {
+	color: var(--bright-gray-color);
+	width: 17px;
+	min-width: 17px;
+	overflow: visible;
+}
+
+footer > span {
+	cursor: pointer;
+	position: relative;
+	text-transform: uppercase;
+	font-family: 'Cal Sans', sans-serif;
+	color: var(--black-color);
+	text-align: center;
+	font-size: 13cqw;
+	-webkit-user-select: none;
+	user-select: none;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+footer > span::before {
+	content: "Taekwon-do";
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	color: var(--white-color);
+	transition: all 0.3s ease;
+}
+
+footer > span::after {
+	content: "Zpět nahoru";
+	position: absolute;
+	bottom: calc(-100% - 1px);
+	left: 50%;
+	transform: translateX(-50%);
+	white-space: nowrap;
+	color: var(--white-color);
+	transition: all 0.3s ease;
+}
+
+footer > p {
+	font-weight: 300;
+	text-align: center;
+	margin: 0 auto;
+	max-width: calc(100% - 4rem);
+	color: var(--bright-gray-color);
+}
+
+@media (width >= 428px) {
+	footer .contact {
+		grid-column: 1 2;
+		grid-row: 2;
+	}
+}
+
+@media (width >= 1024px) {
+	footer > span {
+		font-size: 11cqw;
+	}
+}

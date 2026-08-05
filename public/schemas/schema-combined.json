@@ -1,0 +1,132 @@
+{
+	"@context": "https://schema.org",
+	"@graph": [
+		{
+			"@type": "Organization",
+			"@id": "https://taekol.com/#organization",
+			"name": "Akademie Taekwon-do SKUP Olomouc",
+			"alternateName": ["Taekol", "Taekwon-do Olomouc"],
+			"url": "https://taekol.com",
+			"legalName": "Akademie Taekwon-do SKUP Olomouc",
+			"description": "Akademie Taekwon-do SKUP Olomouc nabízí tréninky Taekwon-do, semináře, soutěže a kurzy sebeobrany pro děti i dospělé v Olomouci.",
+			"email": "akademie.tkd.cz@gmail.com",
+			"telephone": "+420 730 800 708",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "U sportovní haly 38/2",
+				"addressLocality": "Olomouc",
+				"postalCode": "779 00",
+				"addressCountry": "CZ"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": 49.5938,
+				"longitude": 17.2509
+			},
+			"areaServed": [
+				{
+					"@type": "City",
+					"name": "Olomouc"
+				},
+				{
+					"@type": "AdministrativeArea",
+					"name": "Olomoucký kraj"
+				},
+				{
+					"@type": "Country",
+					"name": "Česko"
+				}
+			],
+			"sameAs": [
+				"https://www.instagram.com/akademietaekwondo",
+				"https://www.facebook.com/groups/akademie.taekwondo.olomouc",
+				"https://www.youtube.com/@Taekwon-doOlomouc",
+				"https://www.tiktok.com/@akademietkd"
+			]
+		},
+		{
+			"@type": "WebSite",
+			"@id": "https://taekol.com/#website",
+			"url": "https://taekol.com",
+			"name": "Akademie Taekwon-do SKUP Olomouc",
+			"publisher": {
+				"@id": "https://taekol.com/#organization"
+			},
+			"inLanguage": "cs-CZ"
+		},
+		{
+			"@type": "WebPage",
+			"@id": "https://taekol.com/#webpage",
+			"url": "https://taekol.com",
+			"name": "Akademie Taekwon-do SKUP Olomouc",
+			"isPartOf": {
+				"@id": "https://taekol.com/#website"
+			},
+			"about": {
+				"@id": "https://taekol.com/#organization"
+			},
+			"description": "Úvodní stránka s informacemi o trénincích Taekwon-do, seminářích, soutěžích, registraci a komunitě v Olomouci.",
+			"inLanguage": "cs-CZ"
+		},
+		{
+			"@type": "SportsClub",
+			"@id": "https://taekol.com/#sportsclub",
+			"name": "Akademie Taekwon-do SKUP Olomouc",
+			"url": "https://taekol.com",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "U sportovní haly 38/2",
+				"addressLocality": "Olomouc",
+				"postalCode": "779 00",
+				"addressCountry": "CZ"
+			},
+			"geo": {
+				"@type": "GeoCoordinates",
+				"latitude": 49.5938,
+				"longitude": 17.2509
+			},
+			"areaServed": [
+				{
+					"@type": "City",
+					"name": "Olomouc"
+				},
+				{
+					"@type": "AdministrativeArea",
+					"name": "Olomoucký kraj"
+				}
+			],
+			"telephone": "+420 730 800 708",
+			"email": "akademie.tkd.cz@gmail.com"
+		},
+		{
+			"@type": "FAQPage",
+			"@id": "https://taekol.com/#faq",
+			"mainEntity": [
+				{
+					"@type": "Question",
+					"name": "Jaké jsou nejlepší tréninky Taekwon-do v Olomouci?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Akademie Taekwon-do SKUP Olomouc nabízí tréninky pro děti i dospělé, včetně sebeobrany, kondice, disciplíny a rozvoje koordinace."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Hledám školu Taekwon-do pro děti v Olomouckém kraji.",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "V Olomouci a okolí můžete najít vhodnou školu Taekwon-do v Akademii Taekwon-do SKUP Olomouc, která nabízí tréninky pro mladší i starší žáky."
+					}
+				},
+				{
+					"@type": "Question",
+					"name": "Kde najdu tréninky sebeobrany pro dospělé v Olomouci?",
+					"acceptedAnswer": {
+						"@type": "Answer",
+						"text": "Akademie Taekwon-do SKUP Olomouc nabízí tréninky sebeobrany a kondiční výcvik pro dospělé v Olomouci."
+					}
+				}
+			]
+		}
+	]
+}

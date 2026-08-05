@@ -1,0 +1,116 @@
+@import "./normalize.css";
+
+@font-face {
+	font-family: "Cal Sans";
+	src:
+		url(../assets/fonts/CalSans.woff2) format("woff2"),
+		url(../assets/fonts/CalSans.woff) format("woff");
+	font-display: fallback;
+}
+
+@font-face {
+	font-family: "Funnel Display";
+	src:
+		url(../assets/fonts/FunnelDisplay.woff2) format("woff2"),
+		url(../assets/fonts/FunnelDisplay.woff) format("woff");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: fallback;
+}
+
+:root {
+	--poor-white-color: #fff;
+	--white-color: #f9f9f9;
+	--bright-gray-color: #e6e6e6;
+	--gray-color: #353839;
+	--black-color: #1f2937;
+	--red-color: #ef4444;
+	--light-red-color: #FF8080;
+	--yellow-color: #FFDA48;
+
+	--tiny-font-size: 1rem;
+	--small-font-size: 1.2rem;
+	--medium-font-size: 1.4rem;
+	--large-font-size: 1.6rem;
+	--huge-font-size: 1.8rem;
+	--extra-huge-font-size: 2.4rem;
+	--enormous-font-size: 3.2rem;
+
+	--round-border-radius: calc(infinity * 1px);
+}
+
+::selection {
+	background-color: var(--red-color);
+	color: var(--white-color);
+}
+
+:focus:not(:focus-visible) {
+	outline: none;
+}
+
+:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+html {
+	font-family: "Funnel Display", sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+section {
+	width: 100%;
+	padding: 6rem 0;
+}
+
+h1 {
+	font-family: "Cal Sans", sans-serif;
+	font-size: var(--medium-font-size);
+}
+
+#wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	max-width: 100%;
+
+	height: 100%;
+	background-color: var(--white-color);
+}
+
+.progress-bar {
+	z-index: 1000;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 5px;
+	background: var(--red-color);
+	width: 100%;
+	transform-origin: left;
+	animation: grow-progress linear;
+	animation-timeline: scroll(root block);
+}
+
+@media (width >= 480px) {
+	h1 {
+		font-size: var(--large-font-size);
+	}
+}
+
+@media (width >= 768px) {
+	h1 {
+		font-size: var(--huge-font-size);
+	}
+}
+
+@media (width >= 1024px) {
+	h1 {
+		font-size: var(--enormous-font-size);
+	}
+}
+
+@media (width >= 1280px) {
+	section {
+		padding: 10rem 0;
+	}
+}

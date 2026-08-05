@@ -1,0 +1,30 @@
+{
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"mainEntity": [
+		{
+			"@type": "Question",
+			"name": "Jaké jsou nejlepší tréninky Taekwon-do v Olomouci?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Akademie Taekwon-do SKUP Olomouc nabízí tréninky pro děti i dospělé, včetně sebeobrany, kondice, disciplíny a rozvoje koordinace."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Hledám školu Taekwon-do pro děti v Olomouckém kraji.",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "V Olomouci a okolí můžete najít vhodnou školu Taekwon-do v Akademii Taekwon-do SKUP Olomouc, která nabízí tréninky pro mladší i starší žáky."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "Kde najdu tréninky sebeobrany pro dospělé v Olomouci?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Akademie Taekwon-do SKUP Olomouc nabízí tréninky sebeobrany a kondiční výcvik pro dospělé v Olomouci."
+			}
+		}
+	]
+}

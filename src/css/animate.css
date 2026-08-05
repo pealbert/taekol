@@ -1,0 +1,126 @@
+@media (hover: hover) and (pointer: fine) {
+	header li a:hover:not(:active) {
+		color: var(--black-color);
+	}
+
+	header li a:hover:not(:active)::before {
+		background-color: var(--black-color);
+		left: 0;
+	}
+
+	header > a:nth-last-of-type(1):hover:not(:active),
+	.hero__links a:hover:not(:active) {
+		box-shadow: none;
+		transform: scale(0.98) translateY(1px);
+	}
+
+	header > a:nth-last-of-type(1):hover:not(:active)::after,
+	.hero__links a:first-of-type:not(:active)::after {
+		bottom: -15px;
+	}
+
+	#call-to-action a:hover:not(:active) {
+		border-color: var(--white-color);
+		box-shadow: none;
+		color: var(--white-color)
+	}
+
+	#call-to-action a:hover:not(:active)::after {
+		right: 0;
+		bottom: 0;
+		transform: scale(3.6);
+	}
+
+	#call-to-action a:hover:not(:active)::before {
+		left: 0;
+		bottom: 0;
+		transform: scale(3.6);
+	}
+
+	footer .web a:hover:not(:active),
+	footer .documents a:hover:not(:active),
+	footer .community a:hover:not(:active) {
+		color: var(--white-color);
+	}
+
+	footer .community a:hover:not(:active) svg {
+		color: var(--white-color);
+	}
+
+	footer > span:hover:not(:active)::before {
+		top: -100%;
+	}
+
+	footer > span:hover:not(:active)::after {
+		bottom: 0;
+	}
+
+	main > a:hover:not(:active) {
+		box-shadow: none;
+		transform: scale(0.98) translateY(1px);
+	}
+
+	main > a:hover:not(:active)::after {
+		bottom: -15px;
+	}
+}
+
+header > a:nth-last-of-type(1):active,
+.hero__links a:active {
+	box-shadow: none;
+	transform: scale(0.98) translateY(1px);
+}
+
+header > a:nth-last-of-type(1):active::after,
+.hero__links a:first-of-type::after {
+	bottom: -15px;
+}
+
+main > a:active {
+	box-shadow: none;
+	transform: scale(0.98) translateY(1px);
+}
+
+main > a:active::after {
+	bottom: -15px;
+}
+
+#call-to-action a:active {
+	transform: scale(0.95);
+	background-color: var(--black-color);
+	color: var(--white-color);
+}
+
+@keyframes grow-progress {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: translateY(10px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+h1,
+.about__info,
+.why-us__item,
+.benefits__item,
+.testimonial,
+.disclosure,
+.disclosure hr,
+#call-to-action h2,
+#call-to-action a {
+	animation: fade-in linear both;
+	animation-timeline: view();
+	animation-range: entry 0% cover 20%;
+}
