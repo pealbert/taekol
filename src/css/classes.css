@@ -7,7 +7,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 4rem;
+	gap: 6rem;
 
 	h1 {
 		color: var(--black-color);
@@ -79,7 +79,13 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 4rem;
+	gap: 6rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+
+	@media (width >= 1024px) {
+		gap: 8rem;
+	}
 
 	h1 {
 		color: var(--white-color);
@@ -87,11 +93,221 @@
 
 	.location {
 		background-color: var(--white-color);
-		width: 280px;
-		height: 400px;
+		width: clamp(280px, 90%, 380px);
 		border-radius: 25px;
 		display: flex;
 		flex-direction: column;
+		justify-content: space-between;
 		gap: 1rem;
+
+		@media (width >= 768px) {
+			flex-direction: row;
+			width: 560px;
+
+			&:has(#roznavska) .context {
+				padding: 1.5rem 1rem 1.5rem 0.5rem;
+				order: 1;
+
+				@media (width >= 1024px) {
+					padding: 2rem 4rem 2rem 0.5rem;
+				}
+			}
+		}
+
+		@media (width >= 1024px) {
+			width: 840px;
+		}
+
+		.context {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			gap: 1rem;
+			padding: 1.5rem;
+			color: var(--black-color);
+			height: 260px;
+
+			@media (width >= 768px) {
+				width: 300px;
+				height: 300px;
+			}
+
+			@media (width >= 1024px) {
+				width: 420px;
+				height: 420px;
+				gap: 1.5rem;
+				padding: 2rem;
+			}
+
+			h2 {
+				font-size: var(--small-font-size);
+				font-weight: 500;
+
+				@media (width >= 1024px) {
+					font-size: var(--large-font-size);
+				}
+			}
+
+			span {
+				font-size: var(--tiny-font-size);
+
+				@media (width >= 1024px) {
+					font-size: var(--small-font-size);
+				}
+			}
+
+			a {
+				position: absolute;
+				bottom: 1.5rem;
+				padding: 0.5rem 1rem;
+				font-size: var(--tiny-font-size);
+				font-weight: 600;
+				color: var(--black-color);
+				background-color: var(--white-color);
+				border: 3px solid var(--black-color);
+				border-radius: var(--round-border-radius);
+				transition: all 0.2s ease;
+				overflow: hidden;
+
+				@media (width >= 1024px) {
+					font-size: var(--small-font-size);
+					bottom: 2rem;
+					font-size: var(--small-font-size);
+				}
+
+				& span {
+					position: relative;
+					z-index: 1;
+				}
+
+				&::before {
+					position: absolute;
+					bottom: -40px;
+					left: -40px;
+					content: "";
+					background-color: var(--black-color);
+					width: 40px;
+					height: 40px;
+					border-radius: 20px;
+					transition: all 0.4s ease;
+				}
+
+				&::after {
+					position: absolute;
+					bottom: -40px;
+					right: -40px;
+					content: "";
+					background-color: var(--black-color);
+					width: 40px;
+					height: 40px;
+					border-radius: 20px;
+					transition: all 0.4s ease;
+				}
+
+				&:hover:not(:active) {
+					border-color: var(--white-color);
+					box-shadow: none;
+					color: var(--white-color)
+				}
+
+				&:hover:not(:active)::after {
+					right: 0;
+					bottom: 0;
+					transform: scale(3.6);
+				}
+
+				&:hover:not(:active)::before {
+					left: 0;
+					bottom: 0;
+					transform: scale(3.6);
+				}
+			}
+		}
+
+		#vorsily,
+		#roznavska,
+		#sokol {
+			z-index: 1;
+			position: relative;
+			height: 260px;
+			border-radius: 25px;
+
+			@media (width >= 768px) {
+				width: 300px;
+				height: 300px;
+			}
+
+			@media (width >= 1024px) {
+				width: 420px;
+				height: 420px;
+			}
+
+			.leaflet-control-attribution {
+				font-family: "Funnel Display", sans-serif;
+				font-size: var(--tiny-font-size);
+				background-color: var(--white-color);
+				color: var(--black-color);
+				padding: 0.1rem 0.75rem;
+				margin: 1.1rem;
+				border-radius: var(--round-border-radius);
+
+				@media (width >= 768px) {
+					margin: 0.75rem;
+				}
+
+				a {
+					color: var(--black-color);
+					text-decoration: none;
+					transition: all 0.3s ease;
+
+					&:hover:not(:active) {
+						color: var(--red-color);
+					}
+				}
+			}
+
+			.leaflet-control-zoom {
+				position: absolute;
+				top: 10rem;
+				left: 0.5rem;
+				border: none;
+				box-shadow: none;
+
+				@media (width >= 768px) {
+					top: 13rem;
+				}
+
+				@media (width >= 1024px) {
+					top: 19.5rem;
+				}
+			}
+
+			.leaflet-control-zoom a {
+				font-family: 'Funnel Display';
+				background-color: var(--white-color);
+				color: var(--black-color);
+				border-radius: 10px;
+				margin-bottom: 4px;
+				border: none;
+				width: 32px;
+				height: 32px;
+				line-height: 32px;
+				transition: all 0.3s ease;
+
+				@media (width >= 1024px) {
+					font-size: var(--medium-font-size);
+					width: 40px;
+					height: 40px;
+					line-height: 40px;
+					border-radius: 12px;
+				}
+
+				&:hover:not(:active) {
+					background-color: var(--black-color);
+					color: var(--white-color);
+				}
+			}
+		}
 	}
 }

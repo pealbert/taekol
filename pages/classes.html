@@ -42,6 +42,7 @@
 	<script type="module" src="../src/js/lenis.js"></script>
 	<script type="module" src="../src/js/burger.js"></script>
 	<script type="module" src="../src/js/footer.js"></script>
+	<script type="module" src="../src/ts/main.ts"></script>
 	<script>
 		fetch('/schemas/schema-org.json')
 			.then(res => res.text())
@@ -259,15 +260,33 @@
 		<section id="locations">
 			<h1>Místa konání</h1>
 			<div class="location">
-
+				<div class="context">
+					<h2>ZŠ sv. Voršily</h2>
+					<span>Adresa: Aksamitova 707/6, Olomouc, 779 00, Olomouc</span>
+					<span>Trénuje: Natália Petrovská</span>
+					<a href="https://mapy.com/cs/zakladni?vlastni-body&ut=Z%C5%A0%20sv.%20Vor%C5%A1ily&ut=FZ%C5%A0%20Ro%C5%BE%C5%88avsk%C3%A1&ut=T.J.%20Sokol%20Olomouc%20-%20Nov%C3%A9%20sady&uc=972CRxVFEw0eb1wgek5yH&ud=Aksamitova%20707%2F6%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Ro%C5%BE%C5%88avsk%C3%A1%20728%2F21%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Rooseveltova%20127%2F34%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&x=17.2543140&y=49.5898356&z=15" target="_blank" rel="noopener noreferrer"><span>Otevřít mapy</span></a>
+				</div>
+				<div id="vorsily"></div>
 			</div>
 
 			<div class="location">
-
+				<div class="context">
+					<h2>FZŠ Rožňavská</h2>
+					<span>Adresa: Rožňavská 728/21, Olomouc, 779 00, Olomouc</span>
+					<span>Trénuje: Oleg Petrovský a Andrii Khanas</span>
+					<a href="https://mapy.com/cs/zakladni?vlastni-body&ut=FZ%C5%A0%20Ro%C5%BE%C5%88avsk%C3%A1&ut=Z%C5%A0%20sv.%20Vor%C5%A1ily&ut=T.J.%20Sokol%20Olomouc%20-%20Nov%C3%A9%20sady&uc=97DpwxVAfs-Vk-2gTP3ZD&ud=Ro%C5%BE%C5%88avsk%C3%A1%20728%2F21%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Aksamitova%20707%2F6%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Rooseveltova%20127%2F34%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&x=17.2529916&y=49.5747690&z=15" target="_blank" rel="noopener noreferrer"><span>Otevřít mapy</span></a>
+				</div>
+				<div id="roznavska"></div>
 			</div>
 
 			<div class="location">
-
+				<div class="context">
+					<h2>T.J. Sokol</h2>
+					<span>Adresa: Rooseveltova 127/34, Olomouc, 779 00, Olomouc</span>
+					<span>Trénuje: Oleg Petrovský, Natália Petrovská a Andrii Khanas</span>
+					<a href="https://mapy.com/cs/zakladni?vlastni-body&ut=T.J.%20Sokol%20Olomouc%20-%20Nov%C3%A9%20sady&ut=FZ%C5%A0%20Ro%C5%BE%C5%88avsk%C3%A1&ut=Z%C5%A0%20sv.%20Vor%C5%A1ily&uc=972VgxVDd.fUP3Bt-Vk-2&ud=Rooseveltova%20127%2F34%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Ro%C5%BE%C5%88avsk%C3%A1%20728%2F21%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Aksamitova%20707%2F6%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&x=17.2563136&y=49.5828860&z=15" target="_blank" rel="noopener noreferrer"><span>Otevřít mapy</span></a>
+				</div>
+				<div id="sokol"></div>
 			</div>
 		</section>
 

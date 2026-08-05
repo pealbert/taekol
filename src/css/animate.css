@@ -119,8 +119,15 @@ h1,
 .disclosure,
 .disclosure hr,
 #call-to-action h2,
-#call-to-action a {
+#call-to-action a,
+#categories .category__title {
 	animation: fade-in linear both;
 	animation-timeline: view();
 	animation-range: entry 0% cover 20%;
+}
+
+#locations .location {
+	animation: fade-in linear both;
+	animation-timeline: view();
+	animation-range: entry 0% cover 15%;
 }
