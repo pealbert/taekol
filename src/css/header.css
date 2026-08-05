@@ -64,11 +64,12 @@ header li a::before {
 
 header > a:nth-last-of-type(1) {
 	position: relative;
-	font-family: "Cal Sans", sans-serif;
+	font-family: "Funnel Display", sans-serif;
 	font-size: var(--small-font-size);
 	color: var(--white-color);
 	border-radius: var(--round-border-radius);
-	padding: 0.5rem 1.5rem;
+	padding: 0.5rem 1.25rem;
+	font-weight: 600;
 	background-color: var(--red-color);
 	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.15);
 	overflow: hidden;
@@ -111,14 +112,14 @@ header .burger svg rect {
 }
 
 header .burger.is-active rect:nth-child(2) {
-	opacity: 0;
-}
-
-header .burger.is-active rect:nth-child(1) {
 	transform: rotate(45deg) translate(2px, -2px);
 }
 
 header .burger.is-active rect:nth-child(3) {
+	opacity: 0;
+}
+
+header .burger.is-active rect:nth-child(4) {
 	transform: rotate(-45deg) translate(-5px, -1px);
 }
 
@@ -193,7 +194,6 @@ header.header__expanded ul {
 	}
 
 	header > a:nth-last-of-type(1) {
-		font-size: var(--medium-font-size);
 		margin-right: var(--huge-font-size);
 		padding: 0.75rem 2rem;
 	}
