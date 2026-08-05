@@ -8,67 +8,90 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 4rem;
-}
-#categories h1 {
-	color: var(--black-color);
+
+	h1 {
+		color: var(--black-color);
+	}
+
+	.categories {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 4rem;
+
+		.category {
+			display: flex;
+			flex-direction: column;
+			width: 280px;
+			gap: 1rem;
+
+			.category__title {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				color: var(--black-color);
+
+				h2 {
+					text-align: center;
+					text-transform: uppercase;
+					font-weight: 600;
+					letter-spacing: 0.07rem;
+					font-size: var(--small-font-size);
+				}
+
+				p {
+					font-size: var(--tiny-font-size);
+					margin-top: 0.5rem;
+				}
+			}
+
+			.category__class {
+				display: flex;
+				flex-direction: column;
+				gap: 2rem;
+				width: 100%;
+				background-color: var(--black-color);
+				border-radius: 25px;
+				padding: 2rem;
+
+				.category_group {
+					display: flex;
+					flex-direction: column;
+					color: var(--white-color);
+					gap: 0.75rem;
+
+					b {
+						font-weight: 500;
+					}
+
+					p {
+						margin: 0;
+						font-weight: 100;
+					}
+				}
+			}
+		}
+	}
 }
 
-.categories {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	gap: 4rem;
-}
-
-.category {
-	display: flex;
-	flex-direction: column;
-	width: 280px;
-	gap: 1rem;
-}
-
-.category__title {
+#locations {
+	background-color: var(--black-color);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	color: var(--black-color);
-}
+	gap: 4rem;
 
-.category__title h2 {
-	text-align: center;
-	text-transform: uppercase;
-	font-weight: 600;
-	letter-spacing: 0.07rem;
-	font-size: var(--small-font-size);
-}
+	h1 {
+		color: var(--white-color);
+	}
 
-.category__title p {
-	font-size: var(--tiny-font-size);
-	margin-top: 0.5rem;
-}
-
-.category__class {
-	display: flex;
-	flex-direction: column;
-	gap: 2rem;
-	width: 100%;
-	background-color: var(--black-color);
-	border-radius: 25px;
-	padding: 2rem;
-}
-
-.category_group {
-	display: flex;
-	flex-direction: column;
-	color: var(--white-color);
-	gap: 0.75rem;
-}
-
-.category_group b {
-	font-weight: 500;
-}
-
-.category_group p {
-	margin: 0;
-	font-weight: 100;
+	.location {
+		background-color: var(--white-color);
+		width: 280px;
+		height: 400px;
+		border-radius: 25px;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
 }
