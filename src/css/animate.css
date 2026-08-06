@@ -126,7 +126,8 @@ h1,
 	animation-range: entry 0% cover 20%;
 }
 
-#locations .location {
+#locations .location,
+#categories .category__class {
 	animation: fade-in linear both;
 	animation-timeline: view();
 	animation-range: entry 0% cover 15%;
