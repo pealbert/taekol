@@ -8,6 +8,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 6rem;
+	max-width: 1024px;
 
 	h1 {
 		color: var(--black-color);
