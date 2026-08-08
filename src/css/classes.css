@@ -497,7 +497,7 @@ html {
 		display: flex;
 		flex-direction: column;
 		width: clamp(280px, 90%, 340px);
-		gap: 1.5rem;
+		gap: 2rem;
 
 		@media (width >= 1024px) {
 			width: 450px;
@@ -509,7 +509,7 @@ html {
 			align-self: center;
 
 			@media (width >= 1024px) {
-				font-size: var(--medium-font-size);
+				font-size: var(--large-font-size);
 			}
 		}
 
