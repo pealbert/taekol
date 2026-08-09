@@ -42,6 +42,7 @@
 	<script type="module" src="../src/js/lenis.js"></script>
 	<script type="module" src="../src/js/burger.js"></script>
 	<script type="module" src="../src/js/footer.js"></script>
+	<script type="module" src="../src/js/classes.js"></script>
 	<script type="module" src="../src/ts/main.ts"></script>
 	<script>
 		fetch('/schemas/schema-org.json')
@@ -85,6 +86,33 @@
 				</svg>
 			</button>
 		</header>
+
+		<section id="search">
+			<h2>Jdeš do toho?</h2>
+			<h1>Najdi svůj trénink</h1>
+			<div class="search">
+				<div class="search__summary" for="group">
+					<input type="checkbox" id="group"></input>
+					<label for="group" class="search__summary">
+						<span class="search__summary">Kategorie</span>
+						<svg viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+							<path d="M7.50674 0.292969C7.89727 -0.097553 8.53028 -0.0975479 8.92081 0.292969C9.31133 0.683493 9.31133 1.31651 8.92081 1.70703L5.38565 5.24219C5.33325 5.29459 5.2757 5.33959 5.21573 5.37793C4.82362 5.74373 4.2102 5.73665 3.82803 5.35449L0.292877 1.81934C-0.0976369 1.42882 -0.0976166 0.7958 0.292877 0.405273C0.683402 0.0147491 1.31642 0.0147491 1.70694 0.405273L4.55069 3.24902L7.50674 0.292969Z" fill="currentColor"/>
+						</svg>
+					</label>
+					<button type="button"><span>Vyhledat</span></button>
+				</div>
+
+				<div class="search__dropdown">
+					<button type="button" class="search__option" data-target="first">4-6 let</button>
+					<button type="button" class="search__option" data-target="second">7-10 let</button>
+					<button type="button" class="search__option" data-target="third">8-14 let</button>
+					<button type="button" class="search__option" data-target="fourth">Dorost</button>
+					<button type="button" class="search__option" data-target="fifth">Studenti</button>
+				</div>
+			</div>
+
+			
+		</section>
 		
 		<section id="categories">
 			<h1>Věkové skupiny</h1>
