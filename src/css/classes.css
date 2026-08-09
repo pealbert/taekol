@@ -99,7 +99,19 @@ html {
 				gap: 1rem;
 				user-select: none;
 				margin-left: 1.5rem;
-				
+
+				&:hover {
+					color: rgba(64, 64, 64, 0.25);
+
+					span {
+						color: rgba(64, 64, 64, 0.25);
+					}
+				}
+
+				span {
+					transition: all 0.2s ease;
+				}
+
 				svg {
 					min-width: 15px;
 					width: 15px;
