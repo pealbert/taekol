@@ -1,161 +1,260 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Akademie Taekwon-do SKUP Olomouc</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Akademie Taekwon-do SKUP Olomouc</title>
 
-	<!-- Primary metadata -->
-	<link rel="canonical" href="https://taekol.com">
-	<meta name="description" content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění.">
-	<meta name="keywords" content="Taekwon-do, Olomouc, tréninky, semináře, soutěže, bojové umění, děti, dospělí, sport, fitness, zdraví, sebeobrana, techniky, cvičení, klub, akademie, SKUP">
-	<meta name="author" content="Albert Petrovskyi">
-	<meta name="robots" content="index, follow">
-	<meta name="theme-color" content="#f9f9f9">
+		<!-- Primary metadata -->
+		<link rel="canonical" href="https://taekol.com">
+		<meta
+			name="description"
+			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
+		>
+		<meta
+			name="keywords"
+			content="Taekwon-do, Olomouc, tréninky, semináře, soutěže, bojové umění, děti, dospělí, sport, fitness, zdraví, sebeobrana, techniky, cvičení, klub, akademie, SKUP"
+		>
+		<meta name="author" content="Albert Petrovskyi">
+		<meta name="robots" content="index, follow">
+		<meta name="theme-color" content="#f9f9f9">
 
-	<!-- Icons and manifest -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-	<link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
-	<link rel="manifest" href="/site.webmanifest">
+		<!-- Icons and manifest -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/icons/apple-touch-icon.png"
+		>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/icons/favicon-32x32.png"
+		>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/icons/favicon-16x16.png"
+		>
+		<link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+		<link rel="manifest" href="/site.webmanifest">
 
-	<!-- Styles and preloads -->
-	<link rel="stylesheet" href="../src/css/template.css">
-	<link rel="preload" as="font" type="font/woff2" href="../src/assets/fonts/CalSans.woff2" crossorigin>
-	<link rel="preload" as="font" type="font/woff2" href="../src/assets/fonts/FunnelDisplay.woff2" crossorigin>
+		<!-- Styles and preloads -->
+		<link rel="stylesheet" href="../src/css/template.css">
+		<link
+			rel="preload"
+			as="font"
+			type="font/woff2"
+			href="../src/assets/fonts/CalSans.woff2"
+			crossorigin
+		>
+		<link
+			rel="preload"
+			as="font"
+			type="font/woff2"
+			href="../src/assets/fonts/FunnelDisplay.woff2"
+			crossorigin
+		>
 
-	<!-- Open Graph / Twitter -->
-	<meta property="og:title" content="Akademie Taekwon-do SKUP Olomouc">
-	<meta property="og:description" content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění.">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://taekol.com">
-	<meta property="og:image" content="https://taekol.com/banner.jpg">
-	<meta property="og:locale" content="cs_CZ">
+		<!-- Open Graph / Twitter -->
+		<meta property="og:title" content="Akademie Taekwon-do SKUP Olomouc">
+		<meta
+			property="og:description"
+			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
+		>
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://taekol.com">
+		<meta property="og:image" content="https://taekol.com/banner.jpg">
+		<meta property="og:locale" content="cs_CZ">
 
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Akademie Taekwon-do SKUP Olomouc">
-	<meta name="twitter:description" content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění.">
-	<meta name="twitter:image" content="https://taekol.com/banner.jpg">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Akademie Taekwon-do SKUP Olomouc">
+		<meta
+			name="twitter:description"
+			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
+		>
+		<meta name="twitter:image" content="https://taekol.com/banner.jpg">
 
-	<!-- Scripts -->
-	<script type="module" src="../src/js/lenis.js"></script>
-	<script type="module" src="../src/js/burger.js"></script>
-	<script type="module" src="../src/js/footer.js"></script>
-	<script>
-		fetch('/schemas/schema-faq.json')
-			.then(res => res.text())
-			.then(json => {
-				const s = document.createElement('script');
-				s.type = 'application/ld+json';
+		<!-- Scripts -->
+		<script type="module" src="../src/js/lenis.js"></script>
+		<script type="module" src="../src/js/burger.js"></script>
+		<script type="module" src="../src/js/footer.js"></script>
+		<script>
+		fetch("/schemas/schema-faq.json")
+			.then((res) => res.text())
+			.then((json) => {
+				const s = document.createElement("script");
+				s.type = "application/ld+json";
 				s.textContent = json;
 				document.head.appendChild(s);
 			});
-	</script>
-</head>
-<body>
-	<div class="progress-bar"></div>
-	<div id="wrapper">
-		<header>
-			<a href="/" class="logo">
-				<svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-					<title>Logo</title>
-					<circle cx="75" cy="75" r="75" fill="#EF4444"/>
-					<path d="M99.0586 36.9867C102.721 36.8075 107.962 42.5225 102.907 45.7621L97.083 50.4487C97.083 50.4487 91.8626 61.2119 87.122 63.5893C82.6868 65.8134 74.8983 65.2823 69.1601 64.4535C70.1974 68.0409 75.0858 78.7528 75.3515 83.2768C87.3434 68.8973 113.83 61.9586 130.591 51.7133L143.897 46.0453C144.004 46.0499 144.109 46.0571 144.213 46.0629C145.559 49.2777 146.687 52.606 147.579 56.0297L134.582 59.0366C118.685 74.0103 100.907 81.5037 84.5547 100.522C79.7 113.245 73.938 129.408 75.9267 149.994C75.6183 149.997 75.3093 150 75 150C71.5236 150 68.1026 149.762 64.7519 149.304C60.2173 134.664 56.5766 118.708 61.4902 99.5571C55.8598 94.8949 46.1164 91.2662 38.2763 79.2387C31.0728 84.7963 22.7333 89.4615 21.917 86.3764C19.4876 77.1938 22.1842 71.0897 26.5009 61.7914C26.937 61.0753 28.6903 55.6339 29.1123 54.9965C33.5588 46.8293 38.2809 55.368 36.0654 60.1049C35.6528 60.7011 32.6538 63.4558 32.248 64.101C29.7769 68.0313 27.5255 72.8026 26.6123 77.5903C31.267 74.3135 33.5518 71.0643 39.083 66.3422C40.1995 64.8129 41.4499 63.5022 42.8017 62.3715C45.7894 64.5876 49.3916 65.5857 52.8017 64.3608C56.4695 63.0434 58.8973 59.5213 59.9677 55.4448C61.0832 55.2416 62.201 55.0517 63.3203 54.8754C68.6998 54.0194 84.5761 57.0708 84.6572 57.0864L92.5761 46.6791L96.6142 38.7084C97.1311 37.5505 98.0334 37.0373 99.0586 36.9867ZM44.5781 33.0014C45.9426 32.9642 47.4643 33.5605 49.0517 34.8862C51.1686 36.6538 53.1915 39.6879 54.3535 43.4809C55.5157 47.2736 55.5688 51.016 54.8476 53.8032C54.1267 56.5907 52.7826 58.2623 51.1162 58.8608C49.4499 59.459 47.4497 58.9887 45.333 57.2211C43.2164 55.4534 41.1932 52.4181 40.0312 48.6254C38.8694 44.8328 38.8159 41.0912 39.5371 38.3041C40.2583 35.5169 41.6034 33.845 43.2695 33.2465C43.6922 33.0956 44.1333 33.0127 44.5781 33.0014Z" fill="white"/>
+		</script>
+	</head>
+	<body>
+		<div class="progress-bar"></div>
+		<div id="wrapper">
+			<header>
+				<a href="/" class="logo">
+					<svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+						<title>Logo</title>
+						<circle cx="75" cy="75" r="75" fill="#EF4444" />
+						<path
+							d="M99.0586 36.9867C102.721 36.8075 107.962 42.5225 102.907 45.7621L97.083 50.4487C97.083 50.4487 91.8626 61.2119 87.122 63.5893C82.6868 65.8134 74.8983 65.2823 69.1601 64.4535C70.1974 68.0409 75.0858 78.7528 75.3515 83.2768C87.3434 68.8973 113.83 61.9586 130.591 51.7133L143.897 46.0453C144.004 46.0499 144.109 46.0571 144.213 46.0629C145.559 49.2777 146.687 52.606 147.579 56.0297L134.582 59.0366C118.685 74.0103 100.907 81.5037 84.5547 100.522C79.7 113.245 73.938 129.408 75.9267 149.994C75.6183 149.997 75.3093 150 75 150C71.5236 150 68.1026 149.762 64.7519 149.304C60.2173 134.664 56.5766 118.708 61.4902 99.5571C55.8598 94.8949 46.1164 91.2662 38.2763 79.2387C31.0728 84.7963 22.7333 89.4615 21.917 86.3764C19.4876 77.1938 22.1842 71.0897 26.5009 61.7914C26.937 61.0753 28.6903 55.6339 29.1123 54.9965C33.5588 46.8293 38.2809 55.368 36.0654 60.1049C35.6528 60.7011 32.6538 63.4558 32.248 64.101C29.7769 68.0313 27.5255 72.8026 26.6123 77.5903C31.267 74.3135 33.5518 71.0643 39.083 66.3422C40.1995 64.8129 41.4499 63.5022 42.8017 62.3715C45.7894 64.5876 49.3916 65.5857 52.8017 64.3608C56.4695 63.0434 58.8973 59.5213 59.9677 55.4448C61.0832 55.2416 62.201 55.0517 63.3203 54.8754C68.6998 54.0194 84.5761 57.0708 84.6572 57.0864L92.5761 46.6791L96.6142 38.7084C97.1311 37.5505 98.0334 37.0373 99.0586 36.9867ZM44.5781 33.0014C45.9426 32.9642 47.4643 33.5605 49.0517 34.8862C51.1686 36.6538 53.1915 39.6879 54.3535 43.4809C55.5157 47.2736 55.5688 51.016 54.8476 53.8032C54.1267 56.5907 52.7826 58.2623 51.1162 58.8608C49.4499 59.459 47.4497 58.9887 45.333 57.2211C43.2164 55.4534 41.1932 52.4181 40.0312 48.6254C38.8694 44.8328 38.8159 41.0912 39.5371 38.3041C40.2583 35.5169 41.6034 33.845 43.2695 33.2465C43.6922 33.0956 44.1333 33.0127 44.5781 33.0014Z"
+							fill="white"
+						/>
+					</svg>
+					<span>Taekwon-do</span>
+				</a>
+				<nav>
+					<ul>
+						<li><a href="/">Domů</a></li>
+						<li><a href="/about">O nás</a></li>
+						<li><a href="/classes">Tréninky</a></li>
+						<li><a href="/blog">Blog</a></li>
+						<li><a href="/equipment">Vybavení</a></li>
+					</ul>
+				</nav>
+				<a href="/registration">Přihlásit se</a>
+				<button
+					class="burger"
+					type="button"
+					aria-label="Otevřít menu"
+					aria-expanded="false"
+				>
+					<svg
+						viewBox="0 0 12 10"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<title>Menu</title>
+						<rect width="12" height="2" rx="1" fill="currentColor" />
+						<rect y="4" width="12" height="2" rx="1" fill="currentColor" />
+						<rect y="8" width="12" height="2" rx="1" fill="currentColor" />
+					</svg>
+				</button>
+			</header>
+			<main>
+				<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>In Progress</title>
+					<path
+						d="M13.79 8.2L12.78 9.21L10.71 7.18L11.72 6.16C11.92 5.95 12.26 5.94 12.5 6.16L13.79 7.41C14 7.62 14.01 7.96 13.79 8.2ZM5.95 11.91L10.12 7.72L12.19 9.8L8.03 14H5.95V11.91ZM10.95 0V2C15.34 2.54 18.45 6.53 17.91 10.92C17.6893 12.689 16.885 14.3339 15.6244 15.5944C14.3639 16.855 12.719 17.6593 10.95 17.88V19.88C16.45 19.28 20.4 14.34 19.8 8.85C19.28 4.19 15.61 0.5 10.95 0ZM8.95 0C6.99 0.18 5.14 0.95 3.62 2.2L5.05 3.74C6.17 2.84 7.52 2.26 8.95 2.06V0.0599999M2.21 3.67C0.955145 5.18463 0.185093 7.04181 0 9H2C2.19 7.58 2.75 6.23 3.64 5.1L2.21 3.67ZM0.00999999 11C0.21 12.96 0.98 14.81 2.22 16.33L3.64 14.9C2.75684 13.7696 2.19386 12.4226 2.01 11H0.00999999ZM5.01 16.37L3.62 17.74C5.13497 19.0024 6.98936 19.7887 8.95 20V18C7.52737 17.8161 6.18035 17.2532 5.05 16.37H5.01Z"
+						fill="currentColor"
+					/>
 				</svg>
+				<h1>Pracujeme na tom...</h1>
+				<a href="/">Zpět domů</a>
+			</main>
+			<footer>
+				<div class="info">
+					<div class="impressum">
+						<span>Akademie Taekwondo <br>SKUP Olomouc</span>
+						<span>Oddíl tradičního Taekwon-do <br>ITF Olomouc</span>
+						<span
+							>Sídlo: SK UP Olomouc, <br>z.s. U sportovní haly 38/2 <br>779 00
+							Olomouc</span
+						>
+						<span>IČO: 00562335</span>
+						<span
+							>Zápis u soudu: Spisová <br>značka L 77, Krajský soud <br>v
+							Ostravě - pobočka v <br>Olomouci</span
+						>
+					</div>
+					<div class="contact">
+						<span>Kontakt</span>
+						<span>E-mail: akademie.tkd.cz@gmail.com</span>
+						<span>CZ: +420 730 800 708</span>
+						<span>UA: +420 775 355 347</span>
+					</div>
+					<div class="web">
+						<span>Web</span>
+						<a href="/">Domů</a>
+						<a href="/about">O nás</a>
+						<a href="/classes">Tréninky</a>
+						<a href="/blog">Blog</a>
+						<a href="/equipment">Vybavení</a>
+					</div>
+					<div class="community">
+						<span>Komunita</span>
+						<a
+							class="community__media"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.instagram.com/akademietaekwondo"
+						>
+							<svg viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
+								<title>Instagram</title>
+								<path
+									d="M5.8 0H14.2C17.4 0 20 2.6 20 5.8V14.2C20 15.7383 19.3889 17.2135 18.3012 18.3012C17.2135 19.3889 15.7383 20 14.2 20H5.8C2.6 20 0 17.4 0 14.2V5.8C0 4.26174 0.61107 2.78649 1.69878 1.69878C2.78649 0.61107 4.26174 0 5.8 0ZM5.6 2C4.64522 2 3.72955 2.37928 3.05442 3.05442C2.37928 3.72955 2 4.64522 2 5.6V14.4C2 16.39 3.61 18 5.6 18H14.4C15.3548 18 16.2705 17.6207 16.9456 16.9456C17.6207 16.2705 18 15.3548 18 14.4V5.6C18 3.61 16.39 2 14.4 2H5.6ZM15.25 3.5C15.5815 3.5 15.8995 3.6317 16.1339 3.86612C16.3683 4.10054 16.5 4.41848 16.5 4.75C16.5 5.08152 16.3683 5.39946 16.1339 5.63388C15.8995 5.8683 15.5815 6 15.25 6C14.9185 6 14.6005 5.8683 14.3661 5.63388C14.1317 5.39946 14 5.08152 14 4.75C14 4.41848 14.1317 4.10054 14.3661 3.86612C14.6005 3.6317 14.9185 3.5 15.25 3.5ZM10 5C11.3261 5 12.5979 5.52678 13.5355 6.46447C14.4732 7.40215 15 8.67392 15 10C15 11.3261 14.4732 12.5979 13.5355 13.5355C12.5979 14.4732 11.3261 15 10 15C8.67392 15 7.40215 14.4732 6.46447 13.5355C5.52678 12.5979 5 11.3261 5 10C5 8.67392 5.52678 7.40215 6.46447 6.46447C7.40215 5.52678 8.67392 5 10 5ZM10 7C9.20435 7 8.44129 7.31607 7.87868 7.87868C7.31607 8.44129 7 9.20435 7 10C7 10.7956 7.31607 11.5587 7.87868 12.1213C8.44129 12.6839 9.20435 13 10 13C10.7956 13 11.5587 12.6839 12.1213 12.1213C12.6839 11.5587 13 10.7956 13 10C13 9.20435 12.6839 8.44129 12.1213 7.87868C11.5587 7.31607 10.7956 7 10 7Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Instagram</span>
+						</a>
+						<a
+							class="community__media"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.facebook.com/groups/akademie.taekwondo.olomouc"
+						>
+							<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+								<title>Facebook</title>
+								<path
+									d="M20 10C20 4.48 15.52 0 10 0C4.48 0 0 4.48 0 10C0 14.84 3.44 18.87 8 19.8V13H6V10H8V7.5C8 5.57 9.57 4 11.5 4H14V7H12C11.45 7 11 7.45 11 8V10H14V13H11V19.95C16.05 19.45 20 15.19 20 10Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Facebook</span>
+						</a>
+						<a
+							class="community__media"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.youtube.com/@Taekwon-doOlomouc"
+						>
+							<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg">
+								<title>Youtube</title>
+								<path
+									d="M9.75 0C11.964 0 14.321 0.151 15.998 0.287C16.832 0.349786 17.6171 0.705036 18.2148 1.29011C18.8125 1.87518 19.1844 2.6525 19.265 3.485C19.385 4.719 19.5 6.288 19.5 7.75C19.5 9.212 19.384 10.78 19.265 12.015C19.1844 12.8475 18.8125 13.6248 18.2148 14.2099C17.6171 14.795 16.832 15.1502 15.998 15.213C14.321 15.349 11.964 15.5 9.75 15.5C7.536 15.5 5.179 15.349 3.502 15.213C2.66797 15.1502 1.88289 14.795 1.28519 14.2099C0.687497 13.6248 0.315572 12.8475 0.235 12.015C0.115 10.78 0 9.212 0 7.75C0 6.288 0.116 4.72 0.235 3.485C0.315572 2.6525 0.687497 1.87518 1.28519 1.29011C1.88289 0.705036 2.66797 0.349786 3.502 0.287C5.179 0.151 7.536 0 9.75 0ZM8.65 4.806C8.55876 4.75332 8.45526 4.7256 8.3499 4.72562C8.24455 4.72563 8.14106 4.75339 8.04983 4.8061C7.95861 4.8588 7.88287 4.9346 7.83024 5.02587C7.77761 5.11713 7.74993 5.22065 7.75 5.326V10.175C7.75 10.637 8.25 10.925 8.65 10.695L12.85 8.27C12.9414 8.21739 13.0173 8.14162 13.0701 8.05033C13.1229 7.95904 13.1507 7.85545 13.1507 7.75C13.1507 7.64455 13.1229 7.54096 13.0701 7.44967C13.0173 7.35838 12.9414 7.28261 12.85 7.23L8.65 4.806Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Youtube</span>
+						</a>
+						<a
+							class="community__media"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.tiktok.com/@akademietkd"
+						>
+							<svg
+								width="16"
+								height="18"
+								viewBox="0 0 16 18"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<title>Tiktok</title>
+								<path
+									d="M12.44 2.82C11.7566 2.03953 11.3799 1.0374 11.38 0H8.29V12.4C8.26666 13.0712 7.98352 13.7071 7.50031 14.1735C7.01709 14.6399 6.3716 14.9004 5.7 14.9C4.28 14.9 3.1 13.74 3.1 12.3C3.1 10.58 4.76 9.29 6.47 9.82V6.66C3.02 6.2 0 8.88 0 12.3C0 15.63 2.76 18 5.69 18C8.83 18 11.38 15.45 11.38 12.3V6.01C12.633 6.90985 14.1374 7.39265 15.68 7.39V4.3C15.68 4.3 13.8 4.39 12.44 2.82Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Tiktok</span>
+						</a>
+					</div>
+					<div class="documents">
+						<span>Dokumenty</span>
+						<a href="/terms">Podmínky použití</a>
+						<a href="/privacy">Zásady ochrany soukromí</a>
+						<a href="/credits">Kredity</a>
+					</div>
+				</div>
 				<span>Taekwon-do</span>
-			</a>
-			<nav>
-				<ul>
-					<li><a href="/">Domů</a></li>
-					<li><a href="/about">O nás</a></li>
-					<li><a href="/classes">Tréninky</a></li>
-					<li><a href="/blog">Blog</a></li>
-					<li><a href="/equipment">Vybavení</a></li>
-				</ul>
-			</nav>
-			<a href="/registration">Přihlásit se</a>
-			<button class="burger" type="button" aria-label="Otevřít menu" aria-expanded="false">
-				<svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<title>Menu</title>
-					<rect width="12" height="2" rx="1" fill="currentColor"/>
-					<rect y="4" width="12" height="2" rx="1" fill="currentColor"/>
-					<rect y="8" width="12" height="2" rx="1" fill="currentColor"/>
-				</svg>
-			</button>
-		</header>
-		<main>
-			<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-				<title>In Progress</title>
-				<path d="M13.79 8.2L12.78 9.21L10.71 7.18L11.72 6.16C11.92 5.95 12.26 5.94 12.5 6.16L13.79 7.41C14 7.62 14.01 7.96 13.79 8.2ZM5.95 11.91L10.12 7.72L12.19 9.8L8.03 14H5.95V11.91ZM10.95 0V2C15.34 2.54 18.45 6.53 17.91 10.92C17.6893 12.689 16.885 14.3339 15.6244 15.5944C14.3639 16.855 12.719 17.6593 10.95 17.88V19.88C16.45 19.28 20.4 14.34 19.8 8.85C19.28 4.19 15.61 0.5 10.95 0ZM8.95 0C6.99 0.18 5.14 0.95 3.62 2.2L5.05 3.74C6.17 2.84 7.52 2.26 8.95 2.06V0.0599999M2.21 3.67C0.955145 5.18463 0.185093 7.04181 0 9H2C2.19 7.58 2.75 6.23 3.64 5.1L2.21 3.67ZM0.00999999 11C0.21 12.96 0.98 14.81 2.22 16.33L3.64 14.9C2.75684 13.7696 2.19386 12.4226 2.01 11H0.00999999ZM5.01 16.37L3.62 17.74C5.13497 19.0024 6.98936 19.7887 8.95 20V18C7.52737 17.8161 6.18035 17.2532 5.05 16.37H5.01Z" fill="currentColor"/>
-			</svg>
-			<h1>Pracujeme na tom...</h1>
-			<a href="/">Zpět domů</a>
-		</main>
-		<footer>
-			<div class="info">
-				<div class="impressum">
-					<span>Akademie Taekwondo <br>SKUP Olomouc</span>
-					<span>Oddíl tradičního Taekwon-do <br>ITF Olomouc</span>
-					<span>Sídlo: SK UP Olomouc, <br>z.s. U sportovní haly 38/2 <br>779 00 Olomouc</span>
-					<span>IČO: 00562335</span>
-					<span>Zápis u soudu: Spisová <br>značka L 77, Krajský soud <br>v Ostravě - pobočka v <br>Olomouci</span>
-				</div>
-				<div class="contact">
-					<span>Kontakt</span>
-					<span>E-mail: akademie.tkd.cz@gmail.com</span>
-					<span>CZ: +420 730 800 708</span>
-					<span>UA: +420 775 355 347</span>
-				</div>
-				<div class="web">
-					<span>Web</span>
-					<a href="/">Domů</a>
-					<a href="/about">O nás</a>
-					<a href="/classes">Tréninky</a>
-					<a href="/blog">Blog</a>
-					<a href="/equipment">Vybavení</a>
-				</div>
-				<div class="community">
-					<span>Komunita</span>
-					<a class="community__media" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/akademietaekwondo">
-						<svg viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
-							<title>Instagram</title>
-							<path d="M5.8 0H14.2C17.4 0 20 2.6 20 5.8V14.2C20 15.7383 19.3889 17.2135 18.3012 18.3012C17.2135 19.3889 15.7383 20 14.2 20H5.8C2.6 20 0 17.4 0 14.2V5.8C0 4.26174 0.61107 2.78649 1.69878 1.69878C2.78649 0.61107 4.26174 0 5.8 0ZM5.6 2C4.64522 2 3.72955 2.37928 3.05442 3.05442C2.37928 3.72955 2 4.64522 2 5.6V14.4C2 16.39 3.61 18 5.6 18H14.4C15.3548 18 16.2705 17.6207 16.9456 16.9456C17.6207 16.2705 18 15.3548 18 14.4V5.6C18 3.61 16.39 2 14.4 2H5.6ZM15.25 3.5C15.5815 3.5 15.8995 3.6317 16.1339 3.86612C16.3683 4.10054 16.5 4.41848 16.5 4.75C16.5 5.08152 16.3683 5.39946 16.1339 5.63388C15.8995 5.8683 15.5815 6 15.25 6C14.9185 6 14.6005 5.8683 14.3661 5.63388C14.1317 5.39946 14 5.08152 14 4.75C14 4.41848 14.1317 4.10054 14.3661 3.86612C14.6005 3.6317 14.9185 3.5 15.25 3.5ZM10 5C11.3261 5 12.5979 5.52678 13.5355 6.46447C14.4732 7.40215 15 8.67392 15 10C15 11.3261 14.4732 12.5979 13.5355 13.5355C12.5979 14.4732 11.3261 15 10 15C8.67392 15 7.40215 14.4732 6.46447 13.5355C5.52678 12.5979 5 11.3261 5 10C5 8.67392 5.52678 7.40215 6.46447 6.46447C7.40215 5.52678 8.67392 5 10 5ZM10 7C9.20435 7 8.44129 7.31607 7.87868 7.87868C7.31607 8.44129 7 9.20435 7 10C7 10.7956 7.31607 11.5587 7.87868 12.1213C8.44129 12.6839 9.20435 13 10 13C10.7956 13 11.5587 12.6839 12.1213 12.1213C12.6839 11.5587 13 10.7956 13 10C13 9.20435 12.6839 8.44129 12.1213 7.87868C11.5587 7.31607 10.7956 7 10 7Z" fill="currentColor"/>
-						</svg>
-						<span>Instagram</span>
-					</a>
-					<a class="community__media" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/groups/akademie.taekwondo.olomouc">
-						<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-							<title>Facebook</title>
-							<path d="M20 10C20 4.48 15.52 0 10 0C4.48 0 0 4.48 0 10C0 14.84 3.44 18.87 8 19.8V13H6V10H8V7.5C8 5.57 9.57 4 11.5 4H14V7H12C11.45 7 11 7.45 11 8V10H14V13H11V19.95C16.05 19.45 20 15.19 20 10Z" fill="currentColor"/>
-						</svg>
-						<span>Facebook</span>
-					</a>
-					<a class="community__media" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@Taekwon-doOlomouc">
-						<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg">
-							<title>Youtube</title>
-							<path d="M9.75 0C11.964 0 14.321 0.151 15.998 0.287C16.832 0.349786 17.6171 0.705036 18.2148 1.29011C18.8125 1.87518 19.1844 2.6525 19.265 3.485C19.385 4.719 19.5 6.288 19.5 7.75C19.5 9.212 19.384 10.78 19.265 12.015C19.1844 12.8475 18.8125 13.6248 18.2148 14.2099C17.6171 14.795 16.832 15.1502 15.998 15.213C14.321 15.349 11.964 15.5 9.75 15.5C7.536 15.5 5.179 15.349 3.502 15.213C2.66797 15.1502 1.88289 14.795 1.28519 14.2099C0.687497 13.6248 0.315572 12.8475 0.235 12.015C0.115 10.78 0 9.212 0 7.75C0 6.288 0.116 4.72 0.235 3.485C0.315572 2.6525 0.687497 1.87518 1.28519 1.29011C1.88289 0.705036 2.66797 0.349786 3.502 0.287C5.179 0.151 7.536 0 9.75 0ZM8.65 4.806C8.55876 4.75332 8.45526 4.7256 8.3499 4.72562C8.24455 4.72563 8.14106 4.75339 8.04983 4.8061C7.95861 4.8588 7.88287 4.9346 7.83024 5.02587C7.77761 5.11713 7.74993 5.22065 7.75 5.326V10.175C7.75 10.637 8.25 10.925 8.65 10.695L12.85 8.27C12.9414 8.21739 13.0173 8.14162 13.0701 8.05033C13.1229 7.95904 13.1507 7.85545 13.1507 7.75C13.1507 7.64455 13.1229 7.54096 13.0701 7.44967C13.0173 7.35838 12.9414 7.28261 12.85 7.23L8.65 4.806Z" fill="currentColor"/>
-						</svg>
-						<span>Youtube</span>
-					</a>
-					<a class="community__media" target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@akademietkd">
-						<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<title>Tiktok</title>
-							<path d="M12.44 2.82C11.7566 2.03953 11.3799 1.0374 11.38 0H8.29V12.4C8.26666 13.0712 7.98352 13.7071 7.50031 14.1735C7.01709 14.6399 6.3716 14.9004 5.7 14.9C4.28 14.9 3.1 13.74 3.1 12.3C3.1 10.58 4.76 9.29 6.47 9.82V6.66C3.02 6.2 0 8.88 0 12.3C0 15.63 2.76 18 5.69 18C8.83 18 11.38 15.45 11.38 12.3V6.01C12.633 6.90985 14.1374 7.39265 15.68 7.39V4.3C15.68 4.3 13.8 4.39 12.44 2.82Z" fill="currentColor"/>
-						</svg>
-						<span>Tiktok</span>
-					</a>
-				</div>
-				<div class="documents">
-					<span>Dokumenty</span>
-					<a href="/terms">Podmínky použití</a>
-					<a href="/privacy">Zásady ochrany soukromí</a>
-					<a href="/credits">Kredity</a>
-				</div>
-			</div>
-			<span>Taekwon-do</span>
-			<p>2026 &copy; Akademie Taekwon-do SKUP Olomouc. Všechna práva vyhrazena.</p>
-		</footer>
-	</div>
-</body>
+				<p>
+					2026 &copy; Akademie Taekwon-do SKUP Olomouc. Všechna práva vyhrazena.
+				</p>
+			</footer>
+		</div>
+	</body>
 </html>

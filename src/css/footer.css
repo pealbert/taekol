@@ -6,7 +6,7 @@ footer {
 	align-items: flex-start;
 	background-color: var(--black-color);
 	padding: 2rem 0;
-	gap: 1rem
+	gap: 1rem;
 }
 
 footer .info {
@@ -24,7 +24,7 @@ footer .contact {
 	grid-column: span 2;
 }
 
-footer .impressum, 
+footer .impressum,
 footer .contact,
 footer .web,
 footer .documents,
@@ -62,7 +62,7 @@ footer > span {
 	cursor: pointer;
 	position: relative;
 	text-transform: uppercase;
-	font-family: 'Cal Sans', sans-serif;
+	font-family: "Cal Sans", sans-serif;
 	color: var(--black-color);
 	text-align: center;
 	font-size: 13cqw;

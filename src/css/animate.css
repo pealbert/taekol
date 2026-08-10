@@ -22,7 +22,7 @@
 	#call-to-action a:hover:not(:active) {
 		border-color: var(--white-color);
 		box-shadow: none;
-		color: var(--white-color)
+		color: var(--white-color);
 	}
 
 	#call-to-action a:hover:not(:active)::after {

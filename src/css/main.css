@@ -13,13 +13,17 @@
 		z-index: 0;
 		opacity: 0;
 		position: absolute;
-		content: '';
+		content: "";
 		top: 2rem;
 		left: 0;
 		animation: pop-up 0.5s ease forwards;
 		width: 100%;
 		height: 100%;
-		background: linear-gradient(0, var(--light-red-color) -25%, var(--white-color) 50%);
+		background: linear-gradient(
+			0,
+			var(--light-red-color) -25%,
+			var(--white-color) 50%
+		);
 	}
 }
 
@@ -74,7 +78,6 @@
 .hero__links a:last-of-type {
 	background-color: var(--black-color);
 }
-
 
 .hero__links a:first-of-type:after {
 	content: "";
@@ -380,7 +383,7 @@
 	height: 95px;
 }
 
-.disclosure input[type="radio"]:checked ~  svg {
+.disclosure input[type="radio"]:checked ~ svg {
 	transform: rotate(45deg);
 }
 
@@ -399,11 +402,10 @@
 	cursor: pointer;
 	position: relative;
 	font-size: var(--tiny-font-size);
-	font-family: 'Funnel Display', sans-serif;
+	font-family: "Funnel Display", sans-serif;
 	font-weight: 500;
 	color: var(--black-color);
 }
-
 
 #call-to-action {
 	display: flex;
@@ -416,7 +418,7 @@
 #call-to-action h2 {
 	color: var(--black-color);
 	font-size: var(--medium-font-size);
-	font-family: 'Cal Sans', sans-serif;
+	font-family: "Cal Sans", sans-serif;
 }
 
 #call-to-action h1 {
@@ -427,7 +429,7 @@
 #call-to-action a {
 	position: relative;
 	color: var(--black-color);
-	font-family: 'Cal Sans', sans-serif;
+	font-family: "Cal Sans", sans-serif;
 	padding: 0.5rem 1.5rem;
 	border: var(--black-color) solid 3px;
 	border-radius: var(--round-border-radius);
@@ -680,7 +682,7 @@
 	#hero svg:last-child {
 		width: 125px;
 		min-width: 125px;
-			margin-right: 0;
+		margin-right: 0;
 	}
 
 	#hero svg:first-child {
