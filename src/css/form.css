@@ -1,0 +1,8 @@
+@import "./index.css";
+@import "./animate.css";
+@import "./header.css";
+@import "./footer.css";
+
+html {
+	scroll-padding-top: 100px; 
+}

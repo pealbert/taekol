@@ -25,6 +25,7 @@ Akademie Taekwon-do SKUP Olomouc presents the academy’s programs for children 
 ## Documentation
 - [Project overview](../README.md)
 - [Homepage](../index.html)
+- [Classes](../pages/classes.html)
 - [Registration page](../pages/registration.html)
 - [Terms and conditions](../pages/terms.html)
 - [Privacy policy](../pages/privacy.html)
