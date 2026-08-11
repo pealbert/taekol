@@ -1,359 +1,778 @@
 <!DOCTYPE html>
 <html lang="cs">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Akademie Taekwon-do SKUP Olomouc</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Akademie Taekwon-do SKUP Olomouc</title>
 
-	<!-- Primary metadata -->
-	<link rel="canonical" href="https://taekol.com">
-	<meta name="description" content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění.">
-	<meta name="keywords" content="Taekwon-do, Olomouc, tréninky, semináře, soutěže, bojové umění, děti, dospělí, sport, fitness, zdraví, sebeobrana, techniky, cvičení, klub, akademie, SKUP">
-	<meta name="author" content="Albert Petrovskyi">
-	<meta name="robots" content="index, follow">
-	<meta name="theme-color" content="#f9f9f9">
+		<!-- Primary metadata -->
+		<link rel="canonical" href="https://taekol.com">
+		<meta
+			name="description"
+			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
+		>
+		<meta
+			name="keywords"
+			content="Taekwon-do, Olomouc, tréninky, semináře, soutěže, bojové umění, děti, dospělí, sport, fitness, zdraví, sebeobrana, techniky, cvičení, klub, akademie, SKUP"
+		>
+		<meta name="author" content="Albert Petrovskyi">
+		<meta name="robots" content="index, follow">
+		<meta name="theme-color" content="#f9f9f9">
 
-	<!-- Icons and manifest -->
-	<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-	<link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
-	<link rel="manifest" href="/site.webmanifest">
+		<!-- Icons and manifest -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/icons/apple-touch-icon.png"
+		>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/icons/favicon-32x32.png"
+		>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/icons/favicon-16x16.png"
+		>
+		<link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+		<link rel="manifest" href="/site.webmanifest">
 
-	<!-- Styles and preloads -->
-	<link rel="stylesheet" href="../src/css/classes.css">
-	<link rel="preload" as="font" type="font/woff2" href="../src/assets/fonts/CalSans.woff2" crossorigin>
-	<link rel="preload" as="font" type="font/woff2" href="../src/assets/fonts/FunnelDisplay.woff2" crossorigin>
+		<!-- Styles and preloads -->
+		<link rel="stylesheet" href="../src/css/classes.css">
+		<link
+			rel="preload"
+			as="font"
+			type="font/woff2"
+			href="../src/assets/fonts/CalSans.woff2"
+			crossorigin
+		>
+		<link
+			rel="preload"
+			as="font"
+			type="font/woff2"
+			href="../src/assets/fonts/FunnelDisplay.woff2"
+			crossorigin
+		>
 
-	<!-- Open Graph / Twitter -->
-	<meta property="og:title" content="Akademie Taekwon-do SKUP Olomouc">
-	<meta property="og:description" content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění.">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://taekol.com">
-	<meta property="og:image" content="https://taekol.com/banner.jpg">
-	<meta property="og:locale" content="cs_CZ">
+		<!-- Open Graph / Twitter -->
+		<meta property="og:title" content="Akademie Taekwon-do SKUP Olomouc">
+		<meta
+			property="og:description"
+			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
+		>
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://taekol.com">
+		<meta property="og:image" content="https://taekol.com/banner.jpg">
+		<meta property="og:locale" content="cs_CZ">
 
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Akademie Taekwon-do SKUP Olomouc">
-	<meta name="twitter:description" content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění.">
-	<meta name="twitter:image" content="https://taekol.com/banner.jpg">
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Akademie Taekwon-do SKUP Olomouc">
+		<meta
+			name="twitter:description"
+			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
+		>
+		<meta name="twitter:image" content="https://taekol.com/banner.jpg">
 
-	<!-- Scripts -->
-	<script type="module" src="../src/js/lenis.js"></script>
-	<script type="module" src="../src/js/burger.js"></script>
-	<script type="module" src="../src/js/footer.js"></script>
-	<script type="module" src="../src/ts/main.ts"></script>
-	<script>
-		fetch('/schemas/schema-org.json')
-			.then(res => res.text())
-			.then(json => {
-				const s = document.createElement('script');
-				s.type = 'application/ld+json';
+		<!-- Scripts -->
+		<script type="module" src="../src/js/lenis.js"></script>
+		<script type="module" src="../src/js/burger.js"></script>
+		<script type="module" src="../src/js/footer.js"></script>
+		<script type="module" src="../src/js/classes.js"></script>
+		<script type="module" src="../src/ts/main.ts"></script>
+		<script>
+		fetch("/schemas/schema-org.json")
+			.then((res) => res.text())
+			.then((json) => {
+				const s = document.createElement("script");
+				s.type = "application/ld+json";
 				s.textContent = json;
 				document.head.appendChild(s);
 			});
-	</script>
-</head>
-<body>
-	<div class="progress-bar"></div>
-	<div id="wrapper">
-		<header>
-			<a href="/" class="logo">
-				<svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
-					<title>Logo</title>
-					<circle cx="75" cy="75" r="75" fill="#EF4444"/>
-					<path d="M99.0586 36.9867C102.721 36.8075 107.962 42.5225 102.907 45.7621L97.083 50.4487C97.083 50.4487 91.8626 61.2119 87.122 63.5893C82.6868 65.8134 74.8983 65.2823 69.1601 64.4535C70.1974 68.0409 75.0858 78.7528 75.3515 83.2768C87.3434 68.8973 113.83 61.9586 130.591 51.7133L143.897 46.0453C144.004 46.0499 144.109 46.0571 144.213 46.0629C145.559 49.2777 146.687 52.606 147.579 56.0297L134.582 59.0366C118.685 74.0103 100.907 81.5037 84.5547 100.522C79.7 113.245 73.938 129.408 75.9267 149.994C75.6183 149.997 75.3093 150 75 150C71.5236 150 68.1026 149.762 64.7519 149.304C60.2173 134.664 56.5766 118.708 61.4902 99.5571C55.8598 94.8949 46.1164 91.2662 38.2763 79.2387C31.0728 84.7963 22.7333 89.4615 21.917 86.3764C19.4876 77.1938 22.1842 71.0897 26.5009 61.7914C26.937 61.0753 28.6903 55.6339 29.1123 54.9965C33.5588 46.8293 38.2809 55.368 36.0654 60.1049C35.6528 60.7011 32.6538 63.4558 32.248 64.101C29.7769 68.0313 27.5255 72.8026 26.6123 77.5903C31.267 74.3135 33.5518 71.0643 39.083 66.3422C40.1995 64.8129 41.4499 63.5022 42.8017 62.3715C45.7894 64.5876 49.3916 65.5857 52.8017 64.3608C56.4695 63.0434 58.8973 59.5213 59.9677 55.4448C61.0832 55.2416 62.201 55.0517 63.3203 54.8754C68.6998 54.0194 84.5761 57.0708 84.6572 57.0864L92.5761 46.6791L96.6142 38.7084C97.1311 37.5505 98.0334 37.0373 99.0586 36.9867ZM44.5781 33.0014C45.9426 32.9642 47.4643 33.5605 49.0517 34.8862C51.1686 36.6538 53.1915 39.6879 54.3535 43.4809C55.5157 47.2736 55.5688 51.016 54.8476 53.8032C54.1267 56.5907 52.7826 58.2623 51.1162 58.8608C49.4499 59.459 47.4497 58.9887 45.333 57.2211C43.2164 55.4534 41.1932 52.4181 40.0312 48.6254C38.8694 44.8328 38.8159 41.0912 39.5371 38.3041C40.2583 35.5169 41.6034 33.845 43.2695 33.2465C43.6922 33.0956 44.1333 33.0127 44.5781 33.0014Z" fill="white"/>
-				</svg>
+		</script>
+	</head>
+	<body>
+		<div class="progress-bar"></div>
+		<div id="wrapper">
+			<header>
+				<a href="/" class="logo">
+					<svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+						<title>Logo</title>
+						<circle cx="75" cy="75" r="75" fill="#EF4444" />
+						<path
+							d="M99.0586 36.9867C102.721 36.8075 107.962 42.5225 102.907 45.7621L97.083 50.4487C97.083 50.4487 91.8626 61.2119 87.122 63.5893C82.6868 65.8134 74.8983 65.2823 69.1601 64.4535C70.1974 68.0409 75.0858 78.7528 75.3515 83.2768C87.3434 68.8973 113.83 61.9586 130.591 51.7133L143.897 46.0453C144.004 46.0499 144.109 46.0571 144.213 46.0629C145.559 49.2777 146.687 52.606 147.579 56.0297L134.582 59.0366C118.685 74.0103 100.907 81.5037 84.5547 100.522C79.7 113.245 73.938 129.408 75.9267 149.994C75.6183 149.997 75.3093 150 75 150C71.5236 150 68.1026 149.762 64.7519 149.304C60.2173 134.664 56.5766 118.708 61.4902 99.5571C55.8598 94.8949 46.1164 91.2662 38.2763 79.2387C31.0728 84.7963 22.7333 89.4615 21.917 86.3764C19.4876 77.1938 22.1842 71.0897 26.5009 61.7914C26.937 61.0753 28.6903 55.6339 29.1123 54.9965C33.5588 46.8293 38.2809 55.368 36.0654 60.1049C35.6528 60.7011 32.6538 63.4558 32.248 64.101C29.7769 68.0313 27.5255 72.8026 26.6123 77.5903C31.267 74.3135 33.5518 71.0643 39.083 66.3422C40.1995 64.8129 41.4499 63.5022 42.8017 62.3715C45.7894 64.5876 49.3916 65.5857 52.8017 64.3608C56.4695 63.0434 58.8973 59.5213 59.9677 55.4448C61.0832 55.2416 62.201 55.0517 63.3203 54.8754C68.6998 54.0194 84.5761 57.0708 84.6572 57.0864L92.5761 46.6791L96.6142 38.7084C97.1311 37.5505 98.0334 37.0373 99.0586 36.9867ZM44.5781 33.0014C45.9426 32.9642 47.4643 33.5605 49.0517 34.8862C51.1686 36.6538 53.1915 39.6879 54.3535 43.4809C55.5157 47.2736 55.5688 51.016 54.8476 53.8032C54.1267 56.5907 52.7826 58.2623 51.1162 58.8608C49.4499 59.459 47.4497 58.9887 45.333 57.2211C43.2164 55.4534 41.1932 52.4181 40.0312 48.6254C38.8694 44.8328 38.8159 41.0912 39.5371 38.3041C40.2583 35.5169 41.6034 33.845 43.2695 33.2465C43.6922 33.0956 44.1333 33.0127 44.5781 33.0014Z"
+							fill="white"
+						/>
+					</svg>
+					<span>Taekwon-do</span>
+				</a>
+				<nav>
+					<ul>
+						<li><a href="/">Domů</a></li>
+						<li><a href="/about">O nás</a></li>
+						<li><a href="/classes">Tréninky</a></li>
+						<li><a href="/blog">Blog</a></li>
+						<li><a href="/equipment">Vybavení</a></li>
+					</ul>
+				</nav>
+				<a href="/registration">Přihlásit se</a>
+				<button
+					class="burger"
+					type="button"
+					aria-label="Otevřít menu"
+					aria-expanded="false"
+				>
+					<svg
+						viewBox="0 0 12 10"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+					>
+						<title>Menu</title>
+						<rect width="12" height="2" rx="1" fill="currentColor" />
+						<rect y="4" width="12" height="2" rx="1" fill="currentColor" />
+						<rect y="8" width="12" height="2" rx="1" fill="currentColor" />
+					</svg>
+				</button>
+			</header>
+
+			<section id="search">
+				<h2>Jdeš do toho?</h2>
+				<h1>Najdi svůj trénink</h1>
+				<div class="search">
+					<div class="search__summary" for="group">
+						<input type="checkbox" id="group">
+						<label for="group" class="search__summary">
+							<span class="search__summary">Kategorie</span>
+							<svg viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg">
+								<title>Toggle</title>
+								<path
+									d="M7.50674 0.292969C7.89727 -0.097553 8.53028 -0.0975479 8.92081 0.292969C9.31133 0.683493 9.31133 1.31651 8.92081 1.70703L5.38565 5.24219C5.33325 5.29459 5.2757 5.33959 5.21573 5.37793C4.82362 5.74373 4.2102 5.73665 3.82803 5.35449L0.292877 1.81934C-0.0976369 1.42882 -0.0976166 0.7958 0.292877 0.405273C0.683402 0.0147491 1.31642 0.0147491 1.70694 0.405273L4.55069 3.24902L7.50674 0.292969Z"
+									fill="currentColor"
+								/>
+							</svg>
+						</label>
+						<button type="button"><span>Vyhledat</span></button>
+					</div>
+
+					<div class="search__dropdown">
+						<button type="button" class="search__option" data-target="first">
+							4-6 let
+						</button>
+						<button type="button" class="search__option" data-target="second">
+							7-10 let
+						</button>
+						<button type="button" class="search__option" data-target="third">
+							8-14 let
+						</button>
+						<button type="button" class="search__option" data-target="fourth">
+							Dorost
+						</button>
+						<button type="button" class="search__option" data-target="fifth">
+							Studenti
+						</button>
+						<button type="button" class="search__option" data-target="fifth">
+							Dospělí
+						</button>
+					</div>
+				</div>
+			</section>
+
+			<section id="categories">
+				<h1>Věkové skupiny</h1>
+
+				<div class="categories">
+					<div class="category" id="first">
+						<div class="category__title">
+							<h2>Mírně pokročilí</h2>
+							<p>Předškoláci ve věku 4-6 let</p>
+						</div>
+						<div class="category__class">
+							<div class="category_group">
+								<b>Tělocvična</b>
+								<p><a href="#location__vorsily">ZŠ sv. Voršily</a></p>
+							</div>
+							<div class="category_group">
+								<b>Čas</b>
+								<p>Ponděli 17:00 - 17:45</p>
+								<p>Čtvrtek 17:00 - 17:45</p>
+							</div>
+							<div class="category_group">
+								<b>Trénuje</b>
+								<p><a href="#natalia">Natália Petrovská</a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="category" id="second">
+						<div class="category__title">
+							<h2>Mírně pokročilí</h2>
+							<p>Žáci ve věku 7-10 let</p>
+						</div>
+						<div class="category__class">
+							<div class="category_group">
+								<b>Tělocvična</b>
+								<p><a href="#location__vorsily">ZŠ sv. Voršily</a></p>
+							</div>
+							<div class="category_group">
+								<b>Čas</b>
+								<p>Ponděli 16:00 - 17:00</p>
+								<p>Čtvrtek 16:00 - 17:00</p>
+							</div>
+							<div class="category_group">
+								<b>Trénuje</b>
+								<p><a href="#natalia">Natália Petrovská</a></p>
+							</div>
+						</div>
+						<div class="category__class">
+							<div class="category_group">
+								<b>Tělocvična</b>
+								<p><a href="#location__sokol">T.J. Sokol</a></p>
+							</div>
+							<div class="category_group">
+								<b>Čas</b>
+								<p>Pátek 16:00 - 17:15</p>
+							</div>
+							<div class="category_group">
+								<b>Trénuje</b>
+								<p><a href="#natalia">Natália Petrovská</a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="category" id="third">
+						<div class="category__title">
+							<h2>Začátečnící</h2>
+							<p>Žáci ve věku 8-14 let</p>
+						</div>
+						<div class="category__class">
+							<div class="category_group">
+								<b>Tělocvična</b>
+								<p><a href="#location__roznavska">FZŠ Rožňavská</a></p>
+							</div>
+							<div class="category_group">
+								<b>Čas</b>
+								<p>Ponděli 18:00 - 19:00</p>
+								<p>Středa 17:00 - 18:00</p>
+							</div>
+							<div class="category_group">
+								<b>Trénuje</b>
+								<p><a href="#oleg">Oleg Petrovský</a></p>
+							</div>
+						</div>
+						<div class="category__class">
+							<div class="category_group">
+								<b>Tělocvična</b>
+								<p><a href="#location__sokol">T.J. Sokol</a></p>
+							</div>
+							<div class="category_group">
+								<b>Čas</b>
+								<p>Pátek 16:00 - 17:15</p>
+							</div>
+							<div class="category_group">
+								<b>Trénuje</b>
+								<p><a href="#oleg">Oleg Petrovský</a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="category" id="fourth">
+						<div class="category__title">
+							<h2>Pokračujicí</h2>
+							<p>Dorost a studenti</p>
+						</div>
+						<div class="category__class">
+							<div class="category_group">
+								<b>Tělocvična</b>
+								<p><a href="#location__roznavska">FZŠ Rožňavská</a></p>
+							</div>
+							<div class="category_group">
+								<b>Čas</b>
+								<p>Ponděli 18:00 - 19:30</p>
+								<p>Středa 17:00 - 18:30</p>
+							</div>
+							<div class="category_group">
+								<b>Trénuje</b>
+								<p><a href="#andrii">Andrii Khanas</a></p>
+							</div>
+						</div>
+						<div class="category__class">
+							<div class="category_group">
+								<b>Tělocvična</b>
+								<p><a href="#location__sokol">T.J. Sokol</a></p>
+							</div>
+							<div class="category_group">
+								<b>Čas</b>
+								<p>Pátek 16:00 - 17:15</p>
+							</div>
+							<div class="category_group">
+								<b>Trénuje</b>
+								<p><a href="#andrii">Andrii Khanas</a></p>
+							</div>
+						</div>
+					</div>
+
+					<div class="category" id="fifth">
+						<div class="category__title">
+							<h2>Začátečnící a Pokračujicí</h2>
+							<p>Studenti a dospělí</p>
+						</div>
+						<div class="category__class">
+							<div class="category_group">
+								<b>Tělocvična</b>
+								<p><a href="#location__sokol">T.J. Sokol</a></p>
+							</div>
+							<div class="category_group">
+								<b>Čas</b>
+								<p>Úterý 20:15 - 21:30</p>
+							</div>
+							<div class="category_group">
+								<b>Trénuje</b>
+								<p><a href="#andrii">Andrii Khanas</a></p>
+							</div>
+						</div>
+						<div class="category__class">
+							<div class="category_group">
+								<b>Tělocvična</b>
+								<p><a href="#location__sokol">T.J. Sokol</a></p>
+							</div>
+							<div class="category_group">
+								<b>Čas</b>
+								<p>Pátek 17:15 - 18:30</p>
+							</div>
+							<div class="category_group">
+								<b>Trénuje</b>
+								<p><a href="#andrii">Andrii Khanas</a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="locations">
+				<h1>Místa konání</h1>
+				<div class="location" id="location__vorsily">
+					<div class="context">
+						<h2>ZŠ sv. Voršily</h2>
+						<span>Adresa: Aksamitova 707/6, Olomouc, 779 00, Olomouc</span>
+						<span>Trénuje: <a href="#natalia">Natália Petrovská</a></span>
+						<a
+							href="https://mapy.com/cs/zakladni?vlastni-body&ut=Z%C5%A0%20sv.%20Vor%C5%A1ily&ut=FZ%C5%A0%20Ro%C5%BE%C5%88avsk%C3%A1&ut=T.J.%20Sokol%20Olomouc%20-%20Nov%C3%A9%20sady&uc=972CRxVFEw0eb1wgek5yH&ud=Aksamitova%20707%2F6%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Ro%C5%BE%C5%88avsk%C3%A1%20728%2F21%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Rooseveltova%20127%2F34%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&x=17.2543140&y=49.5898356&z=15"
+							target="_blank"
+							rel="noopener noreferrer"
+							><span>Otevřít mapy</span></a
+						>
+					</div>
+					<div id="vorsily"></div>
+				</div>
+
+				<div class="location" id="location__roznavska">
+					<div class="context">
+						<h2>FZŠ Rožňavská</h2>
+						<span>Adresa: Rožňavská 728/21, Olomouc, 779 00, Olomouc</span>
+						<span
+							>Trénuje: <a href="#oleg">Oleg Petrovský</a> a
+							<a href="#andrii">Andrii Khanas</a></span
+						>
+						<a
+							href="https://mapy.com/cs/zakladni?vlastni-body&ut=FZ%C5%A0%20Ro%C5%BE%C5%88avsk%C3%A1&ut=Z%C5%A0%20sv.%20Vor%C5%A1ily&ut=T.J.%20Sokol%20Olomouc%20-%20Nov%C3%A9%20sady&uc=97DpwxVAfs-Vk-2gTP3ZD&ud=Ro%C5%BE%C5%88avsk%C3%A1%20728%2F21%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Aksamitova%20707%2F6%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Rooseveltova%20127%2F34%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&x=17.2529916&y=49.5747690&z=15"
+							target="_blank"
+							rel="noopener noreferrer"
+							><span>Otevřít mapy</span></a
+						>
+					</div>
+					<div id="roznavska"></div>
+				</div>
+
+				<div class="location" id="location__sokol">
+					<div class="context">
+						<h2>T.J. Sokol</h2>
+						<span>Adresa: Rooseveltova 127/34, Olomouc, 779 00, Olomouc</span>
+						<span
+							>Trénuje: <a href="#oleg">Oleg Petrovský</a>,
+							<a href="#natalia">Natália Petrovská</a>
+							a
+							<a href="#andrii">Andrii Khanas</a></span
+						>
+						<a
+							href="https://mapy.com/cs/zakladni?vlastni-body&ut=T.J.%20Sokol%20Olomouc%20-%20Nov%C3%A9%20sady&ut=FZ%C5%A0%20Ro%C5%BE%C5%88avsk%C3%A1&ut=Z%C5%A0%20sv.%20Vor%C5%A1ily&uc=972VgxVDd.fUP3Bt-Vk-2&ud=Rooseveltova%20127%2F34%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Ro%C5%BE%C5%88avsk%C3%A1%20728%2F21%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Aksamitova%20707%2F6%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&x=17.2563136&y=49.5828860&z=15"
+							target="_blank"
+							rel="noopener noreferrer"
+							><span>Otevřít mapy</span></a
+						>
+					</div>
+					<div id="sokol"></div>
+				</div>
+			</section>
+
+			<section id="coaches">
+				<h1>Naši trenéři</h1>
+
+				<div class="coaches">
+					<div class="coach" id="oleg">
+						<picture>
+							<source srcset="../src/assets/images/oleg.avif" type="image/avif">
+							<source srcset="../src/assets/images/oleg.webp" type="image/webp">
+							<img
+								src="../src/assets/images/oleg.png"
+								alt="Oleg"
+								loading="eager"
+								fetchpriority="high"
+							>
+						</picture>
+						<div class="coach__title">
+							<h2>Hlavní trenér</h2>
+							<span>Mistr Oleg Petrovskyi, VIII. Dan</span>
+						</div>
+						<div class="coach__desc">
+							<h2>Trénuje skupiny:</h2>
+							<a href="#third">Žáci ve věku 8-14 let</a>
+							<a href="#fourth">Dorost a studenti</a>
+							<a href="#fifth">Studenti a dospělí</a>
+						</div>
+					</div>
+
+					<div class="coach" id="natalia">
+						<picture>
+							<source srcset="../src/assets/images/nata.avif" type="image/avif">
+							<source srcset="../src/assets/images/nata.webp" type="image/webp">
+							<img
+								src="../src/assets/images/nata.png"
+								alt="Natalia"
+								loading="eager"
+								fetchpriority="high"
+							>
+						</picture>
+						<div class="coach__title">
+							<h2>Trenérka a manažerka</h2>
+							<span>Sabum Natália Petrovská, V. Dan</span>
+						</div>
+						<div class="coach__desc">
+							<h2>Trénuje skupiny:</h2>
+							<a href="#first">Předškoláci ve věku 4-6 let</a>
+							<a href="#second">Žáci ve věku 7-10 let</a>
+						</div>
+					</div>
+
+					<div class="coach" id="andrii">
+						<picture>
+							<source
+								srcset="../src/assets/images/andrii.avif"
+								type="image/avif"
+							>
+							<source
+								srcset="../src/assets/images/andrii.webp"
+								type="image/webp"
+							>
+							<img
+								src="../src/assets/images/andrii.png"
+								alt="Andrii"
+								loading="eager"
+								fetchpriority="high"
+							>
+						</picture>
+						<div class="coach__title">
+							<h2>Trenér</h2>
+							<span>Sabum Andrii Khanas, IV. Dan</span>
+						</div>
+						<div class="coach__desc">
+							<h2>Trénuje skupiny:</h2>
+							<a href="#fourth">Dorost a studenti</a>
+							<a href="#fifth">Studenti a dospělí</a>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="plans">
+				<h1>Členské příspěvky</h1>
+				<div class="plans">
+					<div class="plan">
+						<div class="plan__title">
+							<h2>Start</h2>
+						</div>
+						<p>
+							Vyzkoušejte si atmosféru klubu, tréninky a základní techniky bez
+							dlouhodobého závazku.
+						</p>
+						<div class="plan__info">
+							<svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+								<title>Doba</title>
+								<path
+									d="M8.33337 4.16634V8.33301L10.8334 10.833M15.8334 8.33301C15.8334 9.31792 15.6394 10.2932 15.2625 11.2031C14.8856 12.1131 14.3331 12.9399 13.6367 13.6363C12.9402 14.3327 12.1134 14.8852 11.2035 15.2621C10.2936 15.639 9.31829 15.833 8.33337 15.833C7.34846 15.833 6.37319 15.639 5.46325 15.2621C4.55331 14.8852 3.72651 14.3327 3.03007 13.6363C2.33363 12.9399 1.78119 12.1131 1.40428 11.2031C1.02737 10.2932 0.833374 9.31792 0.833374 8.33301C0.833374 6.34388 1.62355 4.43623 3.03007 3.02971C4.4366 1.62318 6.34425 0.833008 8.33337 0.833008C10.3225 0.833008 12.2302 1.62318 13.6367 3.02971C15.0432 4.43623 15.8334 6.34388 15.8334 8.33301Z"
+									stroke="currentColor"
+									stroke-width="1.66667"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+							<b>Doba 3 měsíců</b>
+						</div>
+						<div class="plan__info">
+							<svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+								<title>Cena</title>
+								<path
+									d="M8.45526 0.22896C8.38149 0.155791 8.294 0.0979026 8.19781 0.0586148C8.10163 0.019327 7.99863 -0.000587509 7.89473 1.31955e-05H0.789473C0.355263 1.31955e-05 0 0.355276 0 0.789486V7.89474C0 8.1079 0.086842 8.30527 0.228947 8.45527L6.54473 14.7711C6.70263 14.9289 6.89999 15 7.10526 15C7.31052 15 7.50789 14.9211 7.66578 14.7711L14.771 7.6658C14.8442 7.59276 14.9023 7.506 14.9419 7.4105C14.9815 7.31499 15.0019 7.21261 15.0019 7.10922C15.0019 7.00582 14.9815 6.90344 14.9419 6.80794C14.9023 6.71243 14.8442 6.62568 14.771 6.55264L8.45526 0.22896ZM7.10526 13.0895L1.57895 7.56316V1.57106H7.57105L13.0974 7.09737L7.10526 13.0895Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M4.7369 3.1582C3.86059 3.1582 3.15796 3.86873 3.15796 4.73715C3.15796 5.60557 3.86848 6.3161 4.7369 6.3161C5.60533 6.3161 6.31585 5.60557 6.31585 4.73715C6.31585 3.86873 5.60533 3.1582 4.7369 3.1582Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<b>Cena <span>3000 Kč</span> 2500 Kč</b>
+						</div>
+						<div class="plan__info">
+							<svg viewBox="0 0 15 17" xmlns="http://www.w3.org/2000/svg">
+								<title>Garant</title>
+								<path
+									d="M7.28571 0L0 2.42857V9.71429C0 13.7385 3.2615 17 7.28571 17C11.3099 17 14.5714 13.7385 14.5714 9.71429V2.42857L7.28571 0ZM13.2054 9.71429C13.2054 12.9834 10.5548 15.6339 7.28571 15.6339C4.01663 15.6339 1.36607 12.9834 1.36607 9.71429V3.45312L7.28571 1.36607L13.2054 3.45312V9.71429Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M4.75086 7.80003C4.68756 7.73643 4.61231 7.68597 4.52945 7.65153C4.44658 7.6171 4.35773 7.59937 4.268 7.59937C4.17826 7.59937 4.08941 7.6171 4.00655 7.65153C3.92368 7.68597 3.84844 7.73643 3.78513 7.80003C3.72153 7.86334 3.67107 7.93858 3.63663 8.02145C3.6022 8.10431 3.58447 8.19316 3.58447 8.2829C3.58447 8.37263 3.6022 8.46148 3.63663 8.54435C3.67107 8.62721 3.72153 8.70246 3.78513 8.76577L6.24026 11.2209L6.28011 11.2607C6.33999 11.3207 6.41111 11.3683 6.48941 11.4008C6.56771 11.4333 6.65164 11.45 6.73641 11.45C6.82118 11.45 6.90511 11.4333 6.98341 11.4008C7.06171 11.3683 7.13283 11.3207 7.19272 11.2607L11.4332 7.02023C11.4932 6.96035 11.5408 6.88922 11.5733 6.81092C11.6058 6.73262 11.6225 6.64869 11.6225 6.56392C11.6225 6.47916 11.6058 6.39522 11.5733 6.31692C11.5408 6.23863 11.4932 6.1675 11.4332 6.10762L11.3801 6.05449C11.3202 5.9945 11.2491 5.9469 11.1708 5.91443C11.0925 5.88195 11.0086 5.86523 10.9238 5.86523C10.839 5.86523 10.7551 5.88195 10.6768 5.91443C10.5985 5.9469 10.5274 5.9945 10.4675 6.05449L6.73546 9.78463L4.75086 7.80003Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<b>Garantované storno před startem</b>
+						</div>
+					</div>
+
+					<div class="plan plan-highlighted">
+						<div class="plan__title">
+							<h2>Pololetní</h2>
+							<span>Doporučujeme</span>
+						</div>
+						<p>
+							Klasika na jeden školní půlrok. Skvělé tempo pro budování kondice
+							a přípravu na páskování.
+						</p>
+						<div class="plan__info">
+							<svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+								<title>Doba</title>
+								<path
+									d="M8.33337 4.16634V8.33301L10.8334 10.833M15.8334 8.33301C15.8334 9.31792 15.6394 10.2932 15.2625 11.2031C14.8856 12.1131 14.3331 12.9399 13.6367 13.6363C12.9402 14.3327 12.1134 14.8852 11.2035 15.2621C10.2936 15.639 9.31829 15.833 8.33337 15.833C7.34846 15.833 6.37319 15.639 5.46325 15.2621C4.55331 14.8852 3.72651 14.3327 3.03007 13.6363C2.33363 12.9399 1.78119 12.1131 1.40428 11.2031C1.02737 10.2932 0.833374 9.31792 0.833374 8.33301C0.833374 6.34388 1.62355 4.43623 3.03007 3.02971C4.4366 1.62318 6.34425 0.833008 8.33337 0.833008C10.3225 0.833008 12.2302 1.62318 13.6367 3.02971C15.0432 4.43623 15.8334 6.34388 15.8334 8.33301Z"
+									stroke="currentColor"
+									stroke-width="1.66667"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+							<b>Doba 5 měsíců</b>
+						</div>
+						<div class="plan__info">
+							<svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+								<title>Cena</title>
+								<path
+									d="M8.45526 0.22896C8.38149 0.155791 8.294 0.0979026 8.19781 0.0586148C8.10163 0.019327 7.99863 -0.000587509 7.89473 1.31955e-05H0.789473C0.355263 1.31955e-05 0 0.355276 0 0.789486V7.89474C0 8.1079 0.086842 8.30527 0.228947 8.45527L6.54473 14.7711C6.70263 14.9289 6.89999 15 7.10526 15C7.31052 15 7.50789 14.9211 7.66578 14.7711L14.771 7.6658C14.8442 7.59276 14.9023 7.506 14.9419 7.4105C14.9815 7.31499 15.0019 7.21261 15.0019 7.10922C15.0019 7.00582 14.9815 6.90344 14.9419 6.80794C14.9023 6.71243 14.8442 6.62568 14.771 6.55264L8.45526 0.22896ZM7.10526 13.0895L1.57895 7.56316V1.57106H7.57105L13.0974 7.09737L7.10526 13.0895Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M4.7369 3.1582C3.86059 3.1582 3.15796 3.86873 3.15796 4.73715C3.15796 5.60557 3.86848 6.3161 4.7369 6.3161C5.60533 6.3161 6.31585 5.60557 6.31585 4.73715C6.31585 3.86873 5.60533 3.1582 4.7369 3.1582Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<b>Cena <span>5000 Kč</span> 3750 Kč</b>
+						</div>
+						<div class="plan__info">
+							<svg viewBox="0 0 15 17" xmlns="http://www.w3.org/2000/svg">
+								<title>Garant</title>
+								<path
+									d="M7.28571 0L0 2.42857V9.71429C0 13.7385 3.2615 17 7.28571 17C11.3099 17 14.5714 13.7385 14.5714 9.71429V2.42857L7.28571 0ZM13.2054 9.71429C13.2054 12.9834 10.5548 15.6339 7.28571 15.6339C4.01663 15.6339 1.36607 12.9834 1.36607 9.71429V3.45312L7.28571 1.36607L13.2054 3.45312V9.71429Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M4.75086 7.80003C4.68756 7.73643 4.61231 7.68597 4.52945 7.65153C4.44658 7.6171 4.35773 7.59937 4.268 7.59937C4.17826 7.59937 4.08941 7.6171 4.00655 7.65153C3.92368 7.68597 3.84844 7.73643 3.78513 7.80003C3.72153 7.86334 3.67107 7.93858 3.63663 8.02145C3.6022 8.10431 3.58447 8.19316 3.58447 8.2829C3.58447 8.37263 3.6022 8.46148 3.63663 8.54435C3.67107 8.62721 3.72153 8.70246 3.78513 8.76577L6.24026 11.2209L6.28011 11.2607C6.33999 11.3207 6.41111 11.3683 6.48941 11.4008C6.56771 11.4333 6.65164 11.45 6.73641 11.45C6.82118 11.45 6.90511 11.4333 6.98341 11.4008C7.06171 11.3683 7.13283 11.3207 7.19272 11.2607L11.4332 7.02023C11.4932 6.96035 11.5408 6.88922 11.5733 6.81092C11.6058 6.73262 11.6225 6.64869 11.6225 6.56392C11.6225 6.47916 11.6058 6.39522 11.5733 6.31692C11.5408 6.23863 11.4932 6.1675 11.4332 6.10762L11.3801 6.05449C11.3202 5.9945 11.2491 5.9469 11.1708 5.91443C11.0925 5.88195 11.0086 5.86523 10.9238 5.86523C10.839 5.86523 10.7551 5.88195 10.6768 5.91443C10.5985 5.9469 10.5274 5.9945 10.4675 6.05449L6.73546 9.78463L4.75086 7.80003Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<b>Garantované storno před startem</b>
+						</div>
+					</div>
+
+					<div class="plan">
+						<div class="plan__title">
+							<h2>Roční</h2>
+						</div>
+						<p>
+							Kompletní tréninkový rok pro ty, kteří to myslí vážně. Maximální
+							posun za nejlepší cenu.
+						</p>
+						<div class="plan__info">
+							<svg viewBox="0 0 17 17" xmlns="http://www.w3.org/2000/svg">
+								<title>Doba</title>
+								<path
+									d="M8.33337 4.16634V8.33301L10.8334 10.833M15.8334 8.33301C15.8334 9.31792 15.6394 10.2932 15.2625 11.2031C14.8856 12.1131 14.3331 12.9399 13.6367 13.6363C12.9402 14.3327 12.1134 14.8852 11.2035 15.2621C10.2936 15.639 9.31829 15.833 8.33337 15.833C7.34846 15.833 6.37319 15.639 5.46325 15.2621C4.55331 14.8852 3.72651 14.3327 3.03007 13.6363C2.33363 12.9399 1.78119 12.1131 1.40428 11.2031C1.02737 10.2932 0.833374 9.31792 0.833374 8.33301C0.833374 6.34388 1.62355 4.43623 3.03007 3.02971C4.4366 1.62318 6.34425 0.833008 8.33337 0.833008C10.3225 0.833008 12.2302 1.62318 13.6367 3.02971C15.0432 4.43623 15.8334 6.34388 15.8334 8.33301Z"
+									stroke="currentColor"
+									stroke-width="1.66667"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+							<b>Doba 10 měsíců</b>
+						</div>
+						<div class="plan__info">
+							<svg viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg">
+								<title>Cena</title>
+								<path
+									d="M8.45526 0.22896C8.38149 0.155791 8.294 0.0979026 8.19781 0.0586148C8.10163 0.019327 7.99863 -0.000587509 7.89473 1.31955e-05H0.789473C0.355263 1.31955e-05 0 0.355276 0 0.789486V7.89474C0 8.1079 0.086842 8.30527 0.228947 8.45527L6.54473 14.7711C6.70263 14.9289 6.89999 15 7.10526 15C7.31052 15 7.50789 14.9211 7.66578 14.7711L14.771 7.6658C14.8442 7.59276 14.9023 7.506 14.9419 7.4105C14.9815 7.31499 15.0019 7.21261 15.0019 7.10922C15.0019 7.00582 14.9815 6.90344 14.9419 6.80794C14.9023 6.71243 14.8442 6.62568 14.771 6.55264L8.45526 0.22896ZM7.10526 13.0895L1.57895 7.56316V1.57106H7.57105L13.0974 7.09737L7.10526 13.0895Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M4.7369 3.1582C3.86059 3.1582 3.15796 3.86873 3.15796 4.73715C3.15796 5.60557 3.86848 6.3161 4.7369 6.3161C5.60533 6.3161 6.31585 5.60557 6.31585 4.73715C6.31585 3.86873 5.60533 3.1582 4.7369 3.1582Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<b>Cena <span>10000 Kč</span> 6500 Kč</b>
+						</div>
+						<div class="plan__info">
+							<svg viewBox="0 0 15 17" xmlns="http://www.w3.org/2000/svg">
+								<title>Garant</title>
+								<path
+									d="M7.28571 0L0 2.42857V9.71429C0 13.7385 3.2615 17 7.28571 17C11.3099 17 14.5714 13.7385 14.5714 9.71429V2.42857L7.28571 0ZM13.2054 9.71429C13.2054 12.9834 10.5548 15.6339 7.28571 15.6339C4.01663 15.6339 1.36607 12.9834 1.36607 9.71429V3.45312L7.28571 1.36607L13.2054 3.45312V9.71429Z"
+									fill="currentColor"
+								/>
+								<path
+									d="M4.75086 7.80003C4.68756 7.73643 4.61231 7.68597 4.52945 7.65153C4.44658 7.6171 4.35773 7.59937 4.268 7.59937C4.17826 7.59937 4.08941 7.6171 4.00655 7.65153C3.92368 7.68597 3.84844 7.73643 3.78513 7.80003C3.72153 7.86334 3.67107 7.93858 3.63663 8.02145C3.6022 8.10431 3.58447 8.19316 3.58447 8.2829C3.58447 8.37263 3.6022 8.46148 3.63663 8.54435C3.67107 8.62721 3.72153 8.70246 3.78513 8.76577L6.24026 11.2209L6.28011 11.2607C6.33999 11.3207 6.41111 11.3683 6.48941 11.4008C6.56771 11.4333 6.65164 11.45 6.73641 11.45C6.82118 11.45 6.90511 11.4333 6.98341 11.4008C7.06171 11.3683 7.13283 11.3207 7.19272 11.2607L11.4332 7.02023C11.4932 6.96035 11.5408 6.88922 11.5733 6.81092C11.6058 6.73262 11.6225 6.64869 11.6225 6.56392C11.6225 6.47916 11.6058 6.39522 11.5733 6.31692C11.5408 6.23863 11.4932 6.1675 11.4332 6.10762L11.3801 6.05449C11.3202 5.9945 11.2491 5.9469 11.1708 5.91443C11.0925 5.88195 11.0086 5.86523 10.9238 5.86523C10.839 5.86523 10.7551 5.88195 10.6768 5.91443C10.5985 5.9469 10.5274 5.9945 10.4675 6.05449L6.73546 9.78463L4.75086 7.80003Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<b>Garantované storno před startem</b>
+						</div>
+					</div>
+				</div>
+				<div class="notes">
+					<h2>Poznámky</h2>
+					<p>
+						Každý člen je povinen jednou ročně uhradit licenční poplatek
+						<a
+							href="https://www.taekwondocz.com/"
+							target="_blank"
+							rel="noopener noreferrer"
+							>České národní unie Taekwon-do (ČNUT)</a
+						>
+						ve výši 500 Kč. Poplatek se hradí s první platbout a není součástí
+						ceny balíčků.
+					</p>
+					<p>
+						Cena nezahrnuje červenec a srpen (letní prázdniny). V tomto období
+						probíhají soustředění, semináře a letní tábory. Účast na těchto
+						akcích se hradí zvlášť.
+					</p>
+				</div>
+			</section>
+
+			<footer>
+				<div class="info">
+					<div class="impressum">
+						<span>Akademie Taekwondo <br>SKUP Olomouc</span>
+						<span>Oddíl tradičního Taekwon-do <br>ITF Olomouc</span>
+						<span
+							>Sídlo: SK UP Olomouc, <br>z.s. U sportovní haly 38/2 <br>779 00
+							Olomouc</span
+						>
+						<span>IČO: 00562335</span>
+						<span
+							>Zápis u soudu: Spisová <br>značka L 77, Krajský soud <br>v
+							Ostravě - pobočka v <br>Olomouci</span
+						>
+					</div>
+					<div class="contact">
+						<span>Kontakt</span>
+						<span>E-mail: akademie.tkd.cz@gmail.com</span>
+						<span>CZ: +420 730 800 708</span>
+						<span>UA: +420 775 355 347</span>
+					</div>
+					<div class="web">
+						<span>Web</span>
+						<a href="/">Domů</a>
+						<a href="/about">O nás</a>
+						<a href="/classes">Tréninky</a>
+						<a href="/blog">Blog</a>
+						<a href="/equipment">Vybavení</a>
+					</div>
+					<div class="community">
+						<span>Komunita</span>
+						<a
+							class="community__media"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.instagram.com/akademietaekwondo"
+						>
+							<svg viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
+								<title>Instagram</title>
+								<path
+									d="M5.8 0H14.2C17.4 0 20 2.6 20 5.8V14.2C20 15.7383 19.3889 17.2135 18.3012 18.3012C17.2135 19.3889 15.7383 20 14.2 20H5.8C2.6 20 0 17.4 0 14.2V5.8C0 4.26174 0.61107 2.78649 1.69878 1.69878C2.78649 0.61107 4.26174 0 5.8 0ZM5.6 2C4.64522 2 3.72955 2.37928 3.05442 3.05442C2.37928 3.72955 2 4.64522 2 5.6V14.4C2 16.39 3.61 18 5.6 18H14.4C15.3548 18 16.2705 17.6207 16.9456 16.9456C17.6207 16.2705 18 15.3548 18 14.4V5.6C18 3.61 16.39 2 14.4 2H5.6ZM15.25 3.5C15.5815 3.5 15.8995 3.6317 16.1339 3.86612C16.3683 4.10054 16.5 4.41848 16.5 4.75C16.5 5.08152 16.3683 5.39946 16.1339 5.63388C15.8995 5.8683 15.5815 6 15.25 6C14.9185 6 14.6005 5.8683 14.3661 5.63388C14.1317 5.39946 14 5.08152 14 4.75C14 4.41848 14.1317 4.10054 14.3661 3.86612C14.6005 3.6317 14.9185 3.5 15.25 3.5ZM10 5C11.3261 5 12.5979 5.52678 13.5355 6.46447C14.4732 7.40215 15 8.67392 15 10C15 11.3261 14.4732 12.5979 13.5355 13.5355C12.5979 14.4732 11.3261 15 10 15C8.67392 15 7.40215 14.4732 6.46447 13.5355C5.52678 12.5979 5 11.3261 5 10C5 8.67392 5.52678 7.40215 6.46447 6.46447C7.40215 5.52678 8.67392 5 10 5ZM10 7C9.20435 7 8.44129 7.31607 7.87868 7.87868C7.31607 8.44129 7 9.20435 7 10C7 10.7956 7.31607 11.5587 7.87868 12.1213C8.44129 12.6839 9.20435 13 10 13C10.7956 13 11.5587 12.6839 12.1213 12.1213C12.6839 11.5587 13 10.7956 13 10C13 9.20435 12.6839 8.44129 12.1213 7.87868C11.5587 7.31607 10.7956 7 10 7Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Instagram</span>
+						</a>
+						<a
+							class="community__media"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.facebook.com/groups/akademie.taekwondo.olomouc"
+						>
+							<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+								<title>Facebook</title>
+								<path
+									d="M20 10C20 4.48 15.52 0 10 0C4.48 0 0 4.48 0 10C0 14.84 3.44 18.87 8 19.8V13H6V10H8V7.5C8 5.57 9.57 4 11.5 4H14V7H12C11.45 7 11 7.45 11 8V10H14V13H11V19.95C16.05 19.45 20 15.19 20 10Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Facebook</span>
+						</a>
+						<a
+							class="community__media"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.youtube.com/@Taekwon-doOlomouc"
+						>
+							<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg">
+								<title>Youtube</title>
+								<path
+									d="M9.75 0C11.964 0 14.321 0.151 15.998 0.287C16.832 0.349786 17.6171 0.705036 18.2148 1.29011C18.8125 1.87518 19.1844 2.6525 19.265 3.485C19.385 4.719 19.5 6.288 19.5 7.75C19.5 9.212 19.384 10.78 19.265 12.015C19.1844 12.8475 18.8125 13.6248 18.2148 14.2099C17.6171 14.795 16.832 15.1502 15.998 15.213C14.321 15.349 11.964 15.5 9.75 15.5C7.536 15.5 5.179 15.349 3.502 15.213C2.66797 15.1502 1.88289 14.795 1.28519 14.2099C0.687497 13.6248 0.315572 12.8475 0.235 12.015C0.115 10.78 0 9.212 0 7.75C0 6.288 0.116 4.72 0.235 3.485C0.315572 2.6525 0.687497 1.87518 1.28519 1.29011C1.88289 0.705036 2.66797 0.349786 3.502 0.287C5.179 0.151 7.536 0 9.75 0ZM8.65 4.806C8.55876 4.75332 8.45526 4.7256 8.3499 4.72562C8.24455 4.72563 8.14106 4.75339 8.04983 4.8061C7.95861 4.8588 7.88287 4.9346 7.83024 5.02587C7.77761 5.11713 7.74993 5.22065 7.75 5.326V10.175C7.75 10.637 8.25 10.925 8.65 10.695L12.85 8.27C12.9414 8.21739 13.0173 8.14162 13.0701 8.05033C13.1229 7.95904 13.1507 7.85545 13.1507 7.75C13.1507 7.64455 13.1229 7.54096 13.0701 7.44967C13.0173 7.35838 12.9414 7.28261 12.85 7.23L8.65 4.806Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Youtube</span>
+						</a>
+						<a
+							class="community__media"
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://www.tiktok.com/@akademietkd"
+						>
+							<svg
+								width="16"
+								height="18"
+								viewBox="0 0 16 18"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<title>Tiktok</title>
+								<path
+									d="M12.44 2.82C11.7566 2.03953 11.3799 1.0374 11.38 0H8.29V12.4C8.26666 13.0712 7.98352 13.7071 7.50031 14.1735C7.01709 14.6399 6.3716 14.9004 5.7 14.9C4.28 14.9 3.1 13.74 3.1 12.3C3.1 10.58 4.76 9.29 6.47 9.82V6.66C3.02 6.2 0 8.88 0 12.3C0 15.63 2.76 18 5.69 18C8.83 18 11.38 15.45 11.38 12.3V6.01C12.633 6.90985 14.1374 7.39265 15.68 7.39V4.3C15.68 4.3 13.8 4.39 12.44 2.82Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<span>Tiktok</span>
+						</a>
+					</div>
+					<div class="documents">
+						<span>Dokumenty</span>
+						<a href="/terms">Podmínky použití</a>
+						<a href="/privacy">Zásady ochrany soukromí</a>
+						<a href="/credits">Kredity</a>
+					</div>
+				</div>
 				<span>Taekwon-do</span>
-			</a>
-			<nav>
-				<ul>
-					<li><a href="/">Domů</a></li>
-					<li><a href="/about">O nás</a></li>
-					<li><a href="/classes">Tréninky</a></li>
-					<li><a href="/blog">Blog</a></li>
-					<li><a href="/shop">E-shop</a></li>
-				</ul>
-			</nav>
-			<a href="/registration">Přihlásit se</a>
-			<button class="burger" type="button" aria-label="Otevřít menu" aria-expanded="false">
-				<svg viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-					<title>Menu</title>
-					<rect width="12" height="2" rx="1" fill="currentColor"/>
-					<rect y="4" width="12" height="2" rx="1" fill="currentColor"/>
-					<rect y="8" width="12" height="2" rx="1" fill="currentColor"/>
-				</svg>
-			</button>
-		</header>
-		
-		<section id="categories">
-			<h1>Věkové skupiny</h1>
-
-			<div class="categories">
-				<div class="category">
-					<div class="category__title">
-						<h2>Mírně pokročilí</h2>
-						<p>Předškoláci ve věku 4-6 let</p>
-					</div>
-					<div class="category__class">
-						<div class="category_group">
-							<b>Tělocvična</b>
-							<p>ZŠ sv. Voršily</p>
-						</div>
-						<div class="category_group">
-							<b>Čas</b>
-							<p>Ponděli 17:00 - 17:45</p>
-							<p>Čtvrtek 17:00 - 17:45</p>
-						</div>
-						<div class="category_group">
-							<b>Trénuje</b>
-							<p>Natália Petrovská</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="category">
-					<div class="category__title">
-						<h2>Mírně pokročilí</h2>
-						<p>Žáci ve věku 7-10 let</p>
-					</div>
-					<div class="category__class">
-						<div class="category_group">
-							<b>Tělocvična</b>
-							<p>ZŠ sv. Voršily</p>
-						</div>
-						<div class="category_group">
-							<b>Čas</b>
-							<p>Ponděli 16:00 - 17:00</p>
-							<p>Čtvrtek 16:00 - 17:00</p>
-						</div>
-						<div class="category_group">
-							<b>Trénuje</b>
-							<p>Natália Petrovská</p>
-						</div>
-					</div>
-					<div class="category__class">
-						<div class="category_group">
-							<b>Tělocvična</b>
-							<p>T.J. Sokol</p>
-						</div>
-						<div class="category_group">
-							<b>Čas</b>
-							<p>Pátek 16:00 - 17:15</p>
-						</div>
-						<div class="category_group">
-							<b>Trénuje</b>
-							<p>Natália Petrovská</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="category">
-					<div class="category__title">
-						<h2>Začátečnící</h2>
-						<p>Žáci ve věku 8-14 let</p>
-					</div>
-					<div class="category__class">
-						<div class="category_group">
-							<b>Tělocvična</b>
-							<p>FZŠ Rožňavská</p>
-						</div>
-						<div class="category_group">
-							<b>Čas</b>
-							<p>Ponděli 18:00 - 19:00</p>
-							<p>Středa 17:00 - 18:00</p>
-						</div>
-						<div class="category_group">
-							<b>Trénuje</b>
-							<p>Oleg Petrovský</p>
-						</div>
-					</div>
-					<div class="category__class">
-						<div class="category_group">
-							<b>Tělocvična</b>
-							<p>T.J. Sokol</p>
-						</div>
-						<div class="category_group">
-							<b>Čas</b>
-							<p>Pátek 16:00 - 17:15</p>
-						</div>
-						<div class="category_group">
-							<b>Trénuje</b>
-							<p>Oleg Petrovský</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="category">
-					<div class="category__title">
-						<h2>Pokračujicí</h2>
-						<p>Dorost a studenti</p>
-					</div>
-					<div class="category__class">
-						<div class="category_group">
-							<b>Tělocvična</b>
-							<p>FZŠ Rožňavská</p>
-						</div>
-						<div class="category_group">
-							<b>Čas</b>
-							<p>Ponděli 18:00 - 19:30</p>
-							<p>Středa 17:00 - 18:30</p>
-						</div>
-						<div class="category_group">
-							<b>Trénuje</b>
-							<p>Andrii Khanas</p>
-						</div>
-					</div>
-					<div class="category__class">
-						<div class="category_group">
-							<b>Tělocvična</b>
-							<p>T.J. Sokol</p>
-						</div>
-						<div class="category_group">
-							<b>Čas</b>
-							<p>Pátek 16:00 - 17:15</p>
-						</div>
-						<div class="category_group">
-							<b>Trénuje</b>
-							<p>Andrii Khanas</p>
-						</div>
-					</div>
-				</div>
-
-				<div class="category">
-					<div class="category__title">
-						<h2>Začátečnící a Pokračujicí</h2>
-						<p>Studenti a dospělí</p>
-					</div>
-					<div class="category__class">
-						<div class="category_group">
-							<b>Tělocvična</b>
-							<p>T.J. Sokol</p>
-						</div>
-						<div class="category_group">
-							<b>Čas</b>
-							<p>Úterý 20:15 - 21:30</p>
-						</div>
-						<div class="category_group">
-							<b>Trénuje</b>
-							<p>Andrii Khanas</p>
-						</div>
-					</div>
-					<div class="category__class">
-						<div class="category_group">
-							<b>Tělocvična</b>
-							<p>T.J. Sokol</p>
-						</div>
-						<div class="category_group">
-							<b>Čas</b>
-							<p>Pátek 17:15 - 18:30</p>
-						</div>
-						<div class="category_group">
-							<b>Trénuje</b>
-							<p>Andrii Khanas</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<section id="locations">
-			<h1>Místa konání</h1>
-			<div class="location">
-				<div class="context">
-					<h2>ZŠ sv. Voršily</h2>
-					<span>Adresa: Aksamitova 707/6, Olomouc, 779 00, Olomouc</span>
-					<span>Trénuje: Natália Petrovská</span>
-					<a href="https://mapy.com/cs/zakladni?vlastni-body&ut=Z%C5%A0%20sv.%20Vor%C5%A1ily&ut=FZ%C5%A0%20Ro%C5%BE%C5%88avsk%C3%A1&ut=T.J.%20Sokol%20Olomouc%20-%20Nov%C3%A9%20sady&uc=972CRxVFEw0eb1wgek5yH&ud=Aksamitova%20707%2F6%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Ro%C5%BE%C5%88avsk%C3%A1%20728%2F21%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Rooseveltova%20127%2F34%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&x=17.2543140&y=49.5898356&z=15" target="_blank" rel="noopener noreferrer"><span>Otevřít mapy</span></a>
-				</div>
-				<div id="vorsily"></div>
-			</div>
-
-			<div class="location">
-				<div class="context">
-					<h2>FZŠ Rožňavská</h2>
-					<span>Adresa: Rožňavská 728/21, Olomouc, 779 00, Olomouc</span>
-					<span>Trénuje: Oleg Petrovský a Andrii Khanas</span>
-					<a href="https://mapy.com/cs/zakladni?vlastni-body&ut=FZ%C5%A0%20Ro%C5%BE%C5%88avsk%C3%A1&ut=Z%C5%A0%20sv.%20Vor%C5%A1ily&ut=T.J.%20Sokol%20Olomouc%20-%20Nov%C3%A9%20sady&uc=97DpwxVAfs-Vk-2gTP3ZD&ud=Ro%C5%BE%C5%88avsk%C3%A1%20728%2F21%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Aksamitova%20707%2F6%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Rooseveltova%20127%2F34%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&x=17.2529916&y=49.5747690&z=15" target="_blank" rel="noopener noreferrer"><span>Otevřít mapy</span></a>
-				</div>
-				<div id="roznavska"></div>
-			</div>
-
-			<div class="location">
-				<div class="context">
-					<h2>T.J. Sokol</h2>
-					<span>Adresa: Rooseveltova 127/34, Olomouc, 779 00, Olomouc</span>
-					<span>Trénuje: Oleg Petrovský, Natália Petrovská a Andrii Khanas</span>
-					<a href="https://mapy.com/cs/zakladni?vlastni-body&ut=T.J.%20Sokol%20Olomouc%20-%20Nov%C3%A9%20sady&ut=FZ%C5%A0%20Ro%C5%BE%C5%88avsk%C3%A1&ut=Z%C5%A0%20sv.%20Vor%C5%A1ily&uc=972VgxVDd.fUP3Bt-Vk-2&ud=Rooseveltova%20127%2F34%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Ro%C5%BE%C5%88avsk%C3%A1%20728%2F21%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&ud=Aksamitova%20707%2F6%2C%20Olomouc%2C%20779%2000%2C%20Olomouc&x=17.2563136&y=49.5828860&z=15" target="_blank" rel="noopener noreferrer"><span>Otevřít mapy</span></a>
-				</div>
-				<div id="sokol"></div>
-			</div>
-		</section>
-
-		<footer>
-			<div class="info">
-				<div class="impressum">
-					<span>Akademie Taekwondo <br>SKUP Olomouc</span>
-					<span>Oddíl tradičního Taekwon-do <br>ITF Olomouc</span>
-					<span>Sídlo: SK UP Olomouc, <br>z.s. U sportovní haly 38/2 <br>779 00 Olomouc</span>
-					<span>IČO: 00562335</span>
-					<span>Zápis u soudu: Spisová <br>značka L 77, Krajský soud <br>v Ostravě - pobočka v <br>Olomouci</span>
-				</div>
-				<div class="contact">
-					<span>Kontakt</span>
-					<span>E-mail: akademie.tkd.cz@gmail.com</span>
-					<span>CZ: +420 730 800 708</span>
-					<span>UA: +420 775 355 347</span>
-				</div>
-				<div class="web">
-					<span>Web</span>
-					<a href="/">Domů</a>
-					<a href="/about">O nás</a>
-					<a href="/classes">Tréninky</a>
-					<a href="/blog">Blog</a>
-					<a href="/shop">E-shop</a>
-				</div>
-				<div class="community">
-					<span>Komunita</span>
-					<a class="community__media" target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/akademietaekwondo">
-						<svg viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
-							<title>Instagram</title>
-							<path d="M5.8 0H14.2C17.4 0 20 2.6 20 5.8V14.2C20 15.7383 19.3889 17.2135 18.3012 18.3012C17.2135 19.3889 15.7383 20 14.2 20H5.8C2.6 20 0 17.4 0 14.2V5.8C0 4.26174 0.61107 2.78649 1.69878 1.69878C2.78649 0.61107 4.26174 0 5.8 0ZM5.6 2C4.64522 2 3.72955 2.37928 3.05442 3.05442C2.37928 3.72955 2 4.64522 2 5.6V14.4C2 16.39 3.61 18 5.6 18H14.4C15.3548 18 16.2705 17.6207 16.9456 16.9456C17.6207 16.2705 18 15.3548 18 14.4V5.6C18 3.61 16.39 2 14.4 2H5.6ZM15.25 3.5C15.5815 3.5 15.8995 3.6317 16.1339 3.86612C16.3683 4.10054 16.5 4.41848 16.5 4.75C16.5 5.08152 16.3683 5.39946 16.1339 5.63388C15.8995 5.8683 15.5815 6 15.25 6C14.9185 6 14.6005 5.8683 14.3661 5.63388C14.1317 5.39946 14 5.08152 14 4.75C14 4.41848 14.1317 4.10054 14.3661 3.86612C14.6005 3.6317 14.9185 3.5 15.25 3.5ZM10 5C11.3261 5 12.5979 5.52678 13.5355 6.46447C14.4732 7.40215 15 8.67392 15 10C15 11.3261 14.4732 12.5979 13.5355 13.5355C12.5979 14.4732 11.3261 15 10 15C8.67392 15 7.40215 14.4732 6.46447 13.5355C5.52678 12.5979 5 11.3261 5 10C5 8.67392 5.52678 7.40215 6.46447 6.46447C7.40215 5.52678 8.67392 5 10 5ZM10 7C9.20435 7 8.44129 7.31607 7.87868 7.87868C7.31607 8.44129 7 9.20435 7 10C7 10.7956 7.31607 11.5587 7.87868 12.1213C8.44129 12.6839 9.20435 13 10 13C10.7956 13 11.5587 12.6839 12.1213 12.1213C12.6839 11.5587 13 10.7956 13 10C13 9.20435 12.6839 8.44129 12.1213 7.87868C11.5587 7.31607 10.7956 7 10 7Z" fill="currentColor"/>
-						</svg>
-						<span>Instagram</span>
-					</a>
-					<a class="community__media" target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/groups/akademie.taekwondo.olomouc">
-						<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-							<title>Facebook</title>
-							<path d="M20 10C20 4.48 15.52 0 10 0C4.48 0 0 4.48 0 10C0 14.84 3.44 18.87 8 19.8V13H6V10H8V7.5C8 5.57 9.57 4 11.5 4H14V7H12C11.45 7 11 7.45 11 8V10H14V13H11V19.95C16.05 19.45 20 15.19 20 10Z" fill="currentColor"/>
-						</svg>
-						<span>Facebook</span>
-					</a>
-					<a class="community__media" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/@Taekwon-doOlomouc">
-						<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg">
-							<title>Youtube</title>
-							<path d="M9.75 0C11.964 0 14.321 0.151 15.998 0.287C16.832 0.349786 17.6171 0.705036 18.2148 1.29011C18.8125 1.87518 19.1844 2.6525 19.265 3.485C19.385 4.719 19.5 6.288 19.5 7.75C19.5 9.212 19.384 10.78 19.265 12.015C19.1844 12.8475 18.8125 13.6248 18.2148 14.2099C17.6171 14.795 16.832 15.1502 15.998 15.213C14.321 15.349 11.964 15.5 9.75 15.5C7.536 15.5 5.179 15.349 3.502 15.213C2.66797 15.1502 1.88289 14.795 1.28519 14.2099C0.687497 13.6248 0.315572 12.8475 0.235 12.015C0.115 10.78 0 9.212 0 7.75C0 6.288 0.116 4.72 0.235 3.485C0.315572 2.6525 0.687497 1.87518 1.28519 1.29011C1.88289 0.705036 2.66797 0.349786 3.502 0.287C5.179 0.151 7.536 0 9.75 0ZM8.65 4.806C8.55876 4.75332 8.45526 4.7256 8.3499 4.72562C8.24455 4.72563 8.14106 4.75339 8.04983 4.8061C7.95861 4.8588 7.88287 4.9346 7.83024 5.02587C7.77761 5.11713 7.74993 5.22065 7.75 5.326V10.175C7.75 10.637 8.25 10.925 8.65 10.695L12.85 8.27C12.9414 8.21739 13.0173 8.14162 13.0701 8.05033C13.1229 7.95904 13.1507 7.85545 13.1507 7.75C13.1507 7.64455 13.1229 7.54096 13.0701 7.44967C13.0173 7.35838 12.9414 7.28261 12.85 7.23L8.65 4.806Z" fill="currentColor"/>
-						</svg>
-						<span>Youtube</span>
-					</a>
-					<a class="community__media" target="_blank" rel="noopener noreferrer" href="https://www.tiktok.com/@akademietkd">
-						<svg width="16" height="18" viewBox="0 0 16 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<title>Tiktok</title>
-							<path d="M12.44 2.82C11.7566 2.03953 11.3799 1.0374 11.38 0H8.29V12.4C8.26666 13.0712 7.98352 13.7071 7.50031 14.1735C7.01709 14.6399 6.3716 14.9004 5.7 14.9C4.28 14.9 3.1 13.74 3.1 12.3C3.1 10.58 4.76 9.29 6.47 9.82V6.66C3.02 6.2 0 8.88 0 12.3C0 15.63 2.76 18 5.69 18C8.83 18 11.38 15.45 11.38 12.3V6.01C12.633 6.90985 14.1374 7.39265 15.68 7.39V4.3C15.68 4.3 13.8 4.39 12.44 2.82Z" fill="currentColor"/>
-						</svg>
-						<span>Tiktok</span>
-					</a>
-				</div>
-				<div class="documents">
-					<span>Dokumenty</span>
-					<a href="/terms">Podmínky použití</a>
-					<a href="/privacy">Zásady ochrany soukromí</a>
-					<a href="/credits">Kredity</a>
-				</div>
-			</div>
-			<span>Taekwon-do</span>
-			<p>2026 &copy; Akademie Taekwon-do SKUP Olomouc. Všechna práva vyhrazena.</p>
-		</footer>
-	</div>
-</body>
+				<p>
+					2026 &copy; Akademie Taekwon-do SKUP Olomouc. Všechna práva vyhrazena.
+				</p>
+			</footer>
+		</div>
+	</body>
 </html>

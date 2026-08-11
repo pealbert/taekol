@@ -41,7 +41,7 @@
 		<link rel="manifest" href="/site.webmanifest">
 
 		<!-- Styles and preloads -->
-		<link rel="stylesheet" href="../src/css/docs.css">
+		<link rel="stylesheet" href="../src/css/template.css">
 		<link
 			rel="preload"
 			as="font"
@@ -81,7 +81,7 @@
 		<script type="module" src="../src/js/burger.js"></script>
 		<script type="module" src="../src/js/footer.js"></script>
 		<script>
-		fetch("/schemas/schema-org.json")
+		fetch("/schemas/schema-faq.json")
 			.then((res) => res.text())
 			.then((json) => {
 				const s = document.createElement("script");
@@ -134,180 +134,17 @@
 					</svg>
 				</button>
 			</header>
-
 			<main>
-				<article>
-					<h2>Podmínky použití</h2>
-					<span
-						>Níže naleznete pravidla a podmínky pro používání našich webových
-						stránek. Tento dokument upravuje vaše práva a povinnosti při
-						prohlížení obsahu, využívání našich služeb a ochraně autorských
-						práv.</span
-					>
-
-					<h2 id="first">1. Úvodní ustanovení</h2>
-					<span
-						>Tyto podmínky upravují pravidla používání webových stránek
-						taekol.com a základní podmínky registrace do kurzů a členství v
-						oddíle <b>SKUP Olomouc, z.s. (Oddíl Akademie Taekwon-do)</b>, IČO:
-						00562335, se sídlem U sportovní haly 2, 779 00 Olomouc, zapsaném ve
-						spolkovém rejstříku vedeném Krajským soudem v Ostravě (dále jen
-						„Správce“ nebo „Oddíl“).</span
-					>
-
-					<h2 id="second">2. Registrace a přihlášení do kurzů</h2>
-					<ul>
-						<li>
-							Přihlášení do tréninkových kurzů probíhá prostřednictvím online
-							formuláře na tomto webu nebo osobně na tréninku.
-						</li>
-						<li>
-							Odesláním přihlášky zájemce (nebo jeho zákonný zástupce) stvrzuje,
-							že se seznámil s těmito podmínkami, souhlasí s nimi a potvrzuje
-							zdravotní způsobilost cvičence.
-						</li>
-						<li>
-							Kapacita tréninkových skupin je omezená. Přijetí zájemce za člena
-							podléhá schválení vedením oddílu a doručení potvrzení o úhradě. Po
-							ověření platby zašle Oddíl zájemci potvrzovací e-mail s
-							kompletními informacemi.
-						</li>
-						<li>
-							Zájemce má právo stornovat online přihlášku bez udání důvodu do 14
-							dnů od jejího odeslání, nejpozději však před zahájením prvního
-							tréninku daného kurzu.
-						</li>
-					</ul>
-
-					<h2 id="third">3. Členské příspěvky a platby</h2>
-					<ul>
-						<li>
-							Výše členských příspěvků pro danou sezónu je uvedena v sekci
-							<a href="/classes">Tréninky</a>
-							na tomto webu.
-						</li>
-						<li>
-							Členské příspěvky se hradí bankovním převodem na účet SKUP
-							Olomouc: <b>1804576309 / 0800</b> (variabilní symbol: <b>18</b>,
-							detailní informace k <b>poznámce</b> pro příjemce naleznete přímo
-							ve <a href="/registration">formuláři</a> pro registraci).
-						</li>
-						<li>
-							Součástí první platby v sezóně je roční poplatek za svazovou
-							licenci
-							<a
-								href="https://www.taekwondocz.com/"
-								target="_blank"
-								rel="noopener noreferrer"
-								>České národní unie Taekwon-do (ČNUT)</a
-							>
-							ve výši 500 Kč.
-						</li>
-						<li>
-							Zaplacené členské příspěvky se v případě neúčasti na trénincích z
-							důvodů na straně cvičence (nemoc, dovolená apod.) nevracejí.
-						</li>
-						<li>
-							V případě zrušení tréninku ze strany Oddílu (např. havárie v
-							tělocvičně, nemoc trenéra) bude členům nabídnut náhradní termín
-							tréninku nebo adekvátní kompenzace.
-						</li>
-					</ul>
-
-					<h2 id="fourth">4. Zdravotní stav a bezpečnost</h2>
-					<ul>
-						<li>
-							Každý účastník tréninku (u nezletilých jeho zákonný zástupce)
-							prohlašuje, že je zdravotně způsobilý k vykonávání bojového sportu
-							Taekwon-do ITF. Jakákoliv zdravotní omezení je nutné předem
-							nahlásit trenérovi.
-						</li>
-						<li>
-							Tréninky probíhají pod vedením kvalifikovaných instruktorů.
-							Účastníci jsou povinni přísně dodržovat pokyny trenérů, etiku
-							Taekwon-do a provozní řád navštěvovaných tělocvičen.
-						</li>
-						<li>
-							Účastníci trénují na vlastní nebezpečí s vědomím rizik spojených s
-							úpolovými sporty. Registrovaní členové jsou pojištěni v rámci
-							kolektivního úrazového pojištění sportovců (prostřednictvím
-							<a
-								href="http://cuscz.cz/"
-								target="_blank"
-								rel="noopener noreferrer"
-								>ČUS</a
-							>
-							/
-							<a
-								href="https://www.taekwondocz.com/"
-								target="_blank"
-								rel="noopener noreferrer"
-								>ČNUT</a
-							>). Oddíl neodpovídá za škody a úrazy vzniklé v důsledku úmyslného
-							porušení bezpečnostních pokynů nebo zatajení zdravotního stavu
-							cvičence.
-						</li>
-					</ul>
-
-					<h2 id="fifth">5. Ochrana osobních údajů</h2>
-					<span
-						>Nakládání s osobními údaji získanými prostřednictvím webového
-						formuláře a v rámci členství se řídí samostatným dokumentem
-						<a href="/privacy">Zásady ochrany osobních údajů (GDPR)</a>, který
-						je dostupný na tomto webu.</span
-					>
-
-					<h2 id="sixth">6. Autorská práva a obsah webu</h2>
-					<ul>
-						<li>
-							Veškerý autorský obsah na tomto webu (texty, fotografie, videa,
-							grafika a logo) je chráněn autorským právem a je majetkem Správce,
-							případně je užíván na základě příslušných licencí či souhlasu
-							držitelů práv.
-						</li>
-						<li>
-							Vybrané grafické prvky, ikony a multimediální obsah třetích stran
-							jsou použity v souladu s jejich licenčními podmínkami a jejich
-							přehled včetně uvedení autorů je dostupný na podstránce
-							<a href="/credits">Kredity</a>.
-						</li>
-						<li>
-							Jakékoliv kopírování, šíření nebo komerční využití obsahu webu bez
-							předchozího písemného souhlasu Správce nebo příslušného držitele
-							autorských práv je zakázáno.
-						</li>
-					</ul>
-
-					<h2 id="seventh">7. Závěrečná ustanovení</h2>
-					<span
-						>Správce si vyhrazuje právo tyto podmínky v přiměřeném rozsahu
-						aktualizovat. Změny budou zveřejněny na tomto webu.</span
-					>
-					<span
-						>Právní vztahy neupravené těmito podmínkami se řídí příslušnými
-						ustanoveními zákona č. 89/2012 Sb., občanský zákoník, v platném
-						znění.</span
-					>
-
-					<h2>Tyto podmínky jsou platné a účinné od 1. srpna 2026.</h2>
-				</article>
+				<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+					<title>In Progress</title>
+					<path
+						d="M13.79 8.2L12.78 9.21L10.71 7.18L11.72 6.16C11.92 5.95 12.26 5.94 12.5 6.16L13.79 7.41C14 7.62 14.01 7.96 13.79 8.2ZM5.95 11.91L10.12 7.72L12.19 9.8L8.03 14H5.95V11.91ZM10.95 0V2C15.34 2.54 18.45 6.53 17.91 10.92C17.6893 12.689 16.885 14.3339 15.6244 15.5944C14.3639 16.855 12.719 17.6593 10.95 17.88V19.88C16.45 19.28 20.4 14.34 19.8 8.85C19.28 4.19 15.61 0.5 10.95 0ZM8.95 0C6.99 0.18 5.14 0.95 3.62 2.2L5.05 3.74C6.17 2.84 7.52 2.26 8.95 2.06V0.0599999M2.21 3.67C0.955145 5.18463 0.185093 7.04181 0 9H2C2.19 7.58 2.75 6.23 3.64 5.1L2.21 3.67ZM0.00999999 11C0.21 12.96 0.98 14.81 2.22 16.33L3.64 14.9C2.75684 13.7696 2.19386 12.4226 2.01 11H0.00999999ZM5.01 16.37L3.62 17.74C5.13497 19.0024 6.98936 19.7887 8.95 20V18C7.52737 17.8161 6.18035 17.2532 5.05 16.37H5.01Z"
+						fill="currentColor"
+					/>
+				</svg>
+				<h1>Pracujeme na tom...</h1>
+				<a href="/">Zpět domů</a>
 			</main>
-
-			<aside>
-				<h2>Na této stránce</h2>
-				<nav>
-					<ul>
-						<li><a href="#first">Úvodní ustanovení</a></li>
-						<li><a href="#second">Registrace a přihlášení do kurzů</a></li>
-						<li><a href="#third">Členské příspěvky a platby</a></li>
-						<li><a href="#fourth">Zdravotní stav a bezpečnost</a></li>
-						<li><a href="#fifth">Ochrana osobních údajů</a></li>
-						<li><a href="#sixth">Autorská práva a obsah webu</a></li>
-						<li><a href="#seventh">Závěrečná ustanovení</a></li>
-					</ul>
-				</nav>
-			</aside>
-
 			<footer>
 				<div class="info">
 					<div class="impressum">

@@ -22,7 +22,7 @@
 	#call-to-action a:hover:not(:active) {
 		border-color: var(--white-color);
 		box-shadow: none;
-		color: var(--white-color)
+		color: var(--white-color);
 	}
 
 	#call-to-action a:hover:not(:active)::after {
@@ -108,6 +108,17 @@ main > a:active::after {
 	to {
 		opacity: 1;
 		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes pop-up {
+	from {
+		opacity: 0;
+		transform: translateY(100px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
 

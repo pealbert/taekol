@@ -8,6 +8,23 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
+
+	&::before {
+		z-index: 0;
+		opacity: 0;
+		position: absolute;
+		content: "";
+		top: 2rem;
+		left: 0;
+		animation: pop-up 0.5s ease forwards;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(
+			0,
+			var(--light-red-color) -25%,
+			var(--white-color) 50%
+		);
+	}
 }
 
 .hero__title h1 {
@@ -62,7 +79,6 @@
 	background-color: var(--black-color);
 }
 
-
 .hero__links a:first-of-type:after {
 	content: "";
 	position: absolute;
@@ -93,6 +109,7 @@
 }
 
 #about {
+	z-index: 1;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -348,15 +365,25 @@
 	content: "Určitě. Každý začíná od absolutních základů a tempo přizpůsobujeme aktuálním fyzickým možnostem.";
 }
 
+.disclosure-4::after {
+	content: "Červenec a srpen patří letním táborům a seminářům.";
+}
+
+.disclosure-5::after {
+	content: "Po přijetí platby vše zkontrolujeme a e-mailem vám zašleme informace.";
+}
+
 .disclosure:has(input[type="radio"]:checked) {
 	height: 80px;
 }
 
-.disclosure-3:has(input[type="radio"]:checked) {
+.disclosure-3:has(input[type="radio"]:checked),
+.disclosure-4:has(input[type="radio"]:checked),
+.disclosure-5:has(input[type="radio"]:checked) {
 	height: 95px;
 }
 
-.disclosure input[type="radio"]:checked ~  svg {
+.disclosure input[type="radio"]:checked ~ svg {
 	transform: rotate(45deg);
 }
 
@@ -375,11 +402,10 @@
 	cursor: pointer;
 	position: relative;
 	font-size: var(--tiny-font-size);
-	font-family: 'Funnel Display', sans-serif;
+	font-family: "Funnel Display", sans-serif;
 	font-weight: 500;
 	color: var(--black-color);
 }
-
 
 #call-to-action {
 	display: flex;
@@ -392,7 +418,7 @@
 #call-to-action h2 {
 	color: var(--black-color);
 	font-size: var(--medium-font-size);
-	font-family: 'Cal Sans', sans-serif;
+	font-family: "Cal Sans", sans-serif;
 }
 
 #call-to-action h1 {
@@ -403,7 +429,7 @@
 #call-to-action a {
 	position: relative;
 	color: var(--black-color);
-	font-family: 'Cal Sans', sans-serif;
+	font-family: "Cal Sans", sans-serif;
 	padding: 0.5rem 1.5rem;
 	border: var(--black-color) solid 3px;
 	border-radius: var(--round-border-radius);
@@ -535,7 +561,9 @@
 		height: 115px;
 	}
 
-	.disclosure-3:has(input[type="radio"]:checked) {
+	.disclosure-3:has(input[type="radio"]:checked),
+	.disclosure-4:has(input[type="radio"]:checked),
+	.disclosure-5:has(input[type="radio"]:checked) {
 		height: 120px;
 	}
 
@@ -654,7 +682,7 @@
 	#hero svg:last-child {
 		width: 125px;
 		min-width: 125px;
-			margin-right: 0;
+		margin-right: 0;
 	}
 
 	#hero svg:first-child {

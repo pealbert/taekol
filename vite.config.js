@@ -1,15 +1,15 @@
-import { resolve } from 'path';
-import { defineConfig } from 'vite';
+import { resolve } from "path";
+import { defineConfig } from "vite";
 
 export default defineConfig({
 	plugins: [
 		{
-			name: 'flatten-html-output',
-			enforce: 'post',
+			name: "flatten-html-output",
+			enforce: "post",
 			generateBundle(_, bundle) {
 				for (const [fileName, file] of Object.entries(bundle)) {
-					if (fileName.startsWith('pages/') && fileName.endsWith('.html')) {
-						file.fileName = fileName.replace('pages/', '');
+					if (fileName.startsWith("pages/") && fileName.endsWith(".html")) {
+						file.fileName = fileName.replace("pages/", "");
 					}
 				}
 			},
@@ -18,12 +18,12 @@ export default defineConfig({
 	build: {
 		rollupOptions: {
 			input: {
-				main: resolve(import.meta.dirname, 'index.html'),
-				classes: resolve(import.meta.dirname, 'pages/classes.html'),
-				registration: resolve(import.meta.dirname, 'pages/registration.html'),
-				terms: resolve(import.meta.dirname, 'pages/terms.html'),
-				privacy: resolve(import.meta.dirname, 'pages/privacy.html'),
-				credits: resolve(import.meta.dirname, 'pages/credits.html'),
+				main: resolve(import.meta.dirname, "index.html"),
+				classes: resolve(import.meta.dirname, "pages/classes.html"),
+				registration: resolve(import.meta.dirname, "pages/registration.html"),
+				terms: resolve(import.meta.dirname, "pages/terms.html"),
+				privacy: resolve(import.meta.dirname, "pages/privacy.html"),
+				credits: resolve(import.meta.dirname, "pages/credits.html"),
 			},
 		},
 	},

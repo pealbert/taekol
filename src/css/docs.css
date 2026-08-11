@@ -4,14 +4,14 @@
 @import "./footer.css";
 
 html {
-	scroll-padding-top: 120px; 
+	scroll-padding-top: 120px;
 }
 
 main {
 	display: flex;
 	justify-content: center;
 	padding: 5rem 1rem;
-	
+
 	article {
 		width: clamp(280px, 80%, 360px);
 		display: flex;
@@ -48,7 +48,7 @@ main {
 		}
 
 		h2 {
-			font-family: 'Cal Sans', sans-serif;
+			font-family: "Cal Sans", sans-serif;
 			font-size: var(--small-font-size);
 			align-self: flex-start;
 			text-align: left;
@@ -68,7 +68,8 @@ main {
 			}
 		}
 
-		span, ul li {
+		span,
+		ul li {
 			align-self: flex-start;
 			text-align: left;
 			font-size: var(--tiny-font-size);
