@@ -47,9 +47,9 @@ main {
 			}
 		}
 
-		/* &:has(#step-1.active) .stepper{
+		&:has(#step-1.active) .stepper{
 			
-		} */
+		}
 
 		.reg__step {
 			display: flex;
