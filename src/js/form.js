@@ -1,5 +1,37 @@
 let currentStep = 1;
 
+function isSecurityVerified() {
+	const honeypot = document.querySelector('input[name="website"]');
+	if (honeypot && honeypot.value.trim() !== '') {
+		console.warn('Bot detekován pomocí honeypotu.');
+		return false;
+	}
+
+	if (typeof turnstile !== 'undefined') {
+		const token = turnstile.getResponse();
+		if (!token) {
+			alert('Probíhá bezpečnostní ověření. Počkejte chvíli a zkuste to znovu.');
+			return false;
+		}
+	}
+
+	return true;
+}
+
+function onTurnstileError() {
+	console.warn('Došlo k chybě Turnstile. Automatické resetování....');
+	
+	if (typeof turnstile !== 'undefined') {
+		turnstile.reset();
+	}
+}
+
+function onTurnstileExpired() {
+	if (typeof turnstile !== 'undefined') {
+		turnstile.reset();
+	}
+}
+
 window.addEventListener("DOMContentLoaded", () => {
 	if ("scrollRestoration" in history) {
 		history.scrollRestoration = "manual";
@@ -26,6 +58,12 @@ window.addEventListener("beforeunload", (event) => {
 });
 
 function goToStep(targetStep) {
+	if (currentStep === 1 && targetStep === 2) {
+		if (!isSecurityVerified()) {
+			return;
+		}
+	}
+
 	currentStep = targetStep;
 	renderStep(targetStep);
 

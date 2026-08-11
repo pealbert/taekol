@@ -77,7 +77,8 @@
 		<meta name="twitter:image" content="https://taekol.com/banner.jpg">
 
 		<!-- Scripts -->
-		<!-- <script src="../src/js/form.js"></script> -->
+		<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+		<script src="../src/js/form.js"></script>
 		<script>
 		fetch("/schemas/schema-combined.json")
 			.then((res) => res.text())
@@ -94,15 +95,39 @@
 			<img src="../src/assets/images/red-bg.jpg" alt="background_image">
 
 			<main>
-				<form id="reg" onsubmit="event.preventDefault();">
+				<form id="reg" onsubmit="event.preventDefault();" action="" method="">
 					<h1>Registrace</h1>
 
 					<!-- KROK 1: ÚDAJE -->
 					<div id="step-1" class="reg__step active">
-						<i>Pracujeme na tom ;)</i>
 						<div class="stepper">
-							
+							<div class="stepper__item active">
+								<div class="stepper__circle">1</div>
+								<span class="stepper__label">Údaje</span>
+							</div>
+
+							<div class="stepper__line"></div>
+
+							<div class="stepper__item">
+								<div class="stepper__circle">2</div>
+								<span class="stepper__label">Platba</span>
+							</div>
+
+							<div class="stepper__line"></div>
+
+							<div class="stepper__item">
+								<div class="stepper__circle">3</div>
+								<span class="stepper__label">Potvrzení</span>
+							</div>
 						</div>
+
+
+
+						<!-- Turnstile Widget -->
+						<div class="cf-turnstile" data-sitekey="%VITE_TURNSTILE_SITE_KEY%" data-theme="light" data-appearance="interaction-only" data-size="flexible" data-language="cs" data-error-callback="onTurnstileError" data-expired-callback="onTurnstileExpired"></div>
+
+						<!-- Honeypot -->
+						<input type="text" name="website" style="display:none !important;" tabindex="-1" autocomplete="off">
 
 						<div class="action-btns">
 							<a href="/">Domů</a>
@@ -113,7 +138,24 @@
 					<!-- KROK 2: PLATBA -->
 					<div id="step-2" class="reg__step" style="display: none;">
 						<div class="stepper">
-							
+							<div class="stepper__item completed">
+								<div class="stepper__circle">1</div>
+								<span class="stepper__label">Údaje</span>
+							</div>
+
+							<div class="stepper__line-dark"></div>
+
+							<div class="stepper__item active">
+								<div class="stepper__circle">2</div>
+								<span class="stepper__label">Platba</span>
+							</div>
+
+							<div class="stepper__line"></div>
+
+							<div class="stepper__item">
+								<div class="stepper__circle">3</div>
+								<span class="stepper__label">Potvrzení</span>
+							</div>
 						</div>
 
 						<div class="action-btns">
@@ -125,7 +167,24 @@
 					<!-- KROK 3: POTVRZENÍ -->
 					<div id="step-3" class="reg__step" style="display: none;">
 						<div class="stepper">
-							
+							<div class="stepper__item completed">
+								<div class="stepper__circle">1</div>
+								<span class="stepper__label">Údaje</span>
+							</div>
+
+							<div class="stepper__line-dark"></div>
+
+							<div class="stepper__item completed">
+								<div class="stepper__circle">2</div>
+								<span class="stepper__label">Platba</span>
+							</div>
+
+							<div class="stepper__line-dark"></div>
+
+							<div class="stepper__item active">
+								<div class="stepper__circle">3</div>
+								<span class="stepper__label">Potvrzení</span>
+							</div>
 						</div>
 
 						<div class="action-btns">
