@@ -77,7 +77,7 @@
 		<meta name="twitter:image" content="https://taekol.com/banner.jpg">
 
 		<!-- Scripts -->
-		<script src="../src/js/form.js"></script>
+		<!-- <script src="../src/js/form.js"></script> -->
 		<script>
 		fetch("/schemas/schema-combined.json")
 			.then((res) => res.text())
@@ -95,16 +95,27 @@
 
 			<main>
 				<form id="reg" onsubmit="event.preventDefault();">
+					<h1>Registrace</h1>
+
 					<!-- KROK 1: ÚDAJE -->
 					<div id="step-1" class="reg__step active">
+						<i>Pracujeme na tom ;)</i>
+						<div class="stepper">
+							
+						</div>
+
 						<div class="action-btns">
 							<a href="/">Domů</a>
-							<button type="button" onclick="goToStep(2)">Next</button>
+							<button type="button">Next</button>
 						</div>
 					</div>
 
 					<!-- KROK 2: PLATBA -->
 					<div id="step-2" class="reg__step" style="display: none;">
+						<div class="stepper">
+							
+						</div>
+
 						<div class="action-btns">
 							<button type="button" onclick="goToStep(1)">Zpátky</button>
 							<button type="button" onclick="submitForm()">Zaplaceno</button>
@@ -113,6 +124,10 @@
 
 					<!-- KROK 3: POTVRZENÍ -->
 					<div id="step-3" class="reg__step" style="display: none;">
+						<div class="stepper">
+							
+						</div>
+
 						<div class="action-btns">
 							<button type="button" onclick="goToStep(2)">Zpátky</button>
 							<a href="/classes">Domů</a>
