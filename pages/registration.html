@@ -77,7 +77,11 @@
 		<meta name="twitter:image" content="https://taekol.com/banner.jpg">
 
 		<!-- Scripts -->
-		<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+		<script
+			src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+			async
+			defer
+		></script>
 		<script src="../src/js/form.js"></script>
 		<script>
 		fetch("/schemas/schema-combined.json")
@@ -121,22 +125,178 @@
 							</div>
 						</div>
 
+						<fieldset>
+							<legend>
+								<b>Základní údaje</b>
+								<div class="line"></div>
+								<p>
+									Nejprve zadejte své základní osobní a kontaktní údaje. Při
+									registraci dítěte uveďte jeho jméno, příjmení a datum
+									narození.
+								</p>
+							</legend>
 
+							<!-- First Name -->
+							<div>
+								<label for="first_name"><span>*</span> Jméno</label>
+								<input required
+									type="text"
+									name="first_name"
+									id="first_name"
+									tabindex="1"
+									title="Jméno"
+									minlength="3"
+									maxlength="10"
+									oninput="
+										this.value = this.value.replace(/[^a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]/g, '');
+										if (this.value.length > 0 && this.value.length < 3) {
+											this.setCustomValidity('Jméno musí mít alespoň 3 znaky.');
+										} else {
+											this.setCustomValidity('');
+										}
+									"
+									oninvalid="
+										if (this.validity.valueMissing) {
+											this.setCustomValidity('Toto pole je povinné');
+										}
+									"
+								>
+							</div>
 
-						<!-- Turnstile Widget -->
-						<div class="cf-turnstile" data-sitekey="%VITE_TURNSTILE_SITE_KEY%" data-theme="light" data-appearance="interaction-only" data-size="flexible" data-language="cs" data-error-callback="onTurnstileError" data-expired-callback="onTurnstileExpired"></div>
+							<!-- Last Name -->
+							<div>
+								<label for="last_name"><span>*</span> Příjmení</label>
+								<input required
+									type="text"
+									name="last_name"
+									id="last_name"
+									tabindex="2"
+									title="Příjmení"
+									minlength="3"
+									maxlength="15"
+									oninput="
+										this.value = this.value.replace(/[^a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]/g, '');
+										if (this.value.length > 0 && this.value.length < 3) {
+											this.setCustomValidity('Příjmení musí mít alespoň 3 znaky.');
+										} else {
+											this.setCustomValidity('');
+										}
+									"
+									oninvalid="
+										if (this.validity.valueMissing) {
+											this.setCustomValidity('Toto pole je povinné');
+										}
+									"
+								>
+							</div>
 
-						<!-- Honeypot -->
-						<input type="text" name="website" style="display:none !important;" tabindex="-1" autocomplete="off">
+							<!-- Date of birth -->
+							<div>
+								<label for="birth_date"><span>*</span> Datum narození</label>
+								<input required
+									type="date"
+									name="birth_date"
+									id="birth_date"
+									tabindex="3"
+									title="Datum narození"
+									min="1960-01-01"
+									max="2023-01-01"
+									oninput="this.setCustomValidity('');"
+									oninvalid="
+										if (this.validity.valueMissing) {
+											this.setCustomValidity('Toto pole je povinné.');
+										} else {
+											this.setCustomValidity('Zadejte platné datum narození.');
+										}
+									"
+								>
+							</div>
+
+							<!-- E-mail -->
+							<div>
+								<label for="email"><span>*</span> E-mail</label>
+								<input required
+									type="email"
+									name="email"
+									id="email"
+									tabindex="4"
+									title="E-mail"
+									oninput="this.setCustomValidity('');"
+									oninvalid="
+										if (this.validity.valueMissing) {
+											this.setCustomValidity('Toto pole je povinné.');
+										} else {
+											this.setCustomValidity('Zadejte e-mail ve správném formátu.');
+										}
+									"
+								>
+							</div>
+
+							<!-- Phone number -->
+							<div>
+								<label for="phone"><span>*</span> Telefonní číslo</label>
+								<input required
+									type="tel"
+									name="phone"
+									id="phone"
+									tabindex="5"
+									title="Telefonní číslo"
+									value="+420"
+									minlength="13"
+									maxlength="13"
+									oninput="
+										if (!this.value.startsWith('+')) {
+											this.value = '+' + this.value.replace(/[^0-9]/g, '');
+										} else {
+											this.value = '+' + this.value.slice(1).replace(/[^0-9]/g, '');
+										}
+
+										const digitsOnly = this.value.replace(/\D/g, '');
+										if (digitsOnly.length > 0 && digitsOnly.length < 12) {
+											this.setCustomValidity('Zadejte platné číslo i s předvolbou.');
+										} else {
+											this.setCustomValidity('');
+										}
+									"
+									oninvalid="
+										if (this.validity.valueMissing) {
+											this.setCustomValidity('Toto pole je povinné.');
+										}
+									"
+								>
+							</div>
+						</fieldset>
+
+						<fieldset>
+							<legend>
+								<b>Typ členství</b>
+								<div class="line"></div>
+								<p>
+									Zvolte věkovou kategorii a požadovanou délku platnosti členství.
+								</p>
+							</legend>
+
+							<!-- Location -->
+							<div>
+								<label for="location"><span>*</span> Lokace</label>
+								<input required disabled
+									type="text"
+									name="location"
+									id="location"
+									title="Lokace"
+									value="Olomouc"
+								>
+							</div>
+						</fieldset>
 
 						<div class="action-btns">
-							<a href="/">Domů</a>
+							<a href="/" tabindex="-1">Domů</a>
 							<button type="button" onclick="goToStep(2)">Next</button>
 						</div>
 					</div>
 
 					<!-- KROK 2: PLATBA -->
-					<div id="step-2" class="reg__step" style="display: none;">
+					<div id="step-2" class="reg__step">
 						<div class="stepper">
 							<div class="stepper__item completed">
 								<div class="stepper__circle">1</div>
@@ -158,6 +318,29 @@
 							</div>
 						</div>
 
+						<!-- Turnstile Widget -->
+						<div
+							class="cf-turnstile"
+							data-sitekey="%VITE_TURNSTILE_SITE_KEY%"
+							data-theme="light"
+							data-appearance="interaction-only"
+							data-size="flexible"
+							data-language="cs"
+							data-error-callback="onTurnstileError"
+							data-expired-callback="onTurnstileExpired"
+						></div>
+
+						<!-- Honeypot -->
+						<label for="honeypot"></label>
+						<input
+							id="honeypot"
+							title="text"
+							type="text"
+							name="website"
+							tabindex="-1"
+							autocomplete="off"
+						>
+
 						<div class="action-btns">
 							<button type="button" onclick="goToStep(1)">Zpátky</button>
 							<button type="button" onclick="submitForm()">Zaplaceno</button>
@@ -165,7 +348,7 @@
 					</div>
 
 					<!-- KROK 3: POTVRZENÍ -->
-					<div id="step-3" class="reg__step" style="display: none;">
+					<div id="step-3" class="reg__step">
 						<div class="stepper">
 							<div class="stepper__item completed">
 								<div class="stepper__circle">1</div>
