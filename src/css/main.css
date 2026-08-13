@@ -22,7 +22,7 @@
 		background: linear-gradient(
 			0,
 			var(--light-red-color) -25%,
-			var(--white-color) 50%
+			var(--white-color) 25%
 		);
 	}
 }
