@@ -1,6 +1,6 @@
 let currentStep = 1;
+let isFormDirty = false;
 
-// 1. Attach Turnstile callbacks to window
 window.onTurnstileError = function () {
 	console.warn("Došlo k chybě Turnstile. Automatické resetování....");
 	if (typeof turnstile !== "undefined") turnstile.reset();
@@ -33,6 +33,16 @@ window.addEventListener("DOMContentLoaded", () => {
 		history.scrollRestoration = "manual";
 	}
 
+	const form = document.getElementById("reg");
+	const markFormDirty = (event) => {
+		if (event.target.name !== "website") {
+			isFormDirty = true;
+		}
+	};
+
+	form?.addEventListener("input", markFormDirty);
+	form?.addEventListener("change", markFormDirty);
+
 	const hash = window.location.hash;
 	const stepFromHash = hash ? parseInt(hash.replace("#step", ""), 10) : 1;
 	currentStep = stepFromHash >= 1 && stepFromHash <= 3 ? stepFromHash : 1;
@@ -42,21 +52,31 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("beforeunload", (event) => {
-	if (currentStep === 1 || currentStep === 2) {
-		event.preventDefault();
-		event.returnValue = "";
-	}
+	if (!isFormDirty || currentStep === 3) return;
+
+	event.preventDefault();
+	event.returnValue = "";
 });
 
-function goToStep(targetStep) {
-	if (targetStep === 2) {
-		const step1Inputs = document.querySelectorAll("#step-1 input");
-		for (const input of step1Inputs) {
-			if (!input.checkValidity()) {
-				input.reportValidity();
-				return;
-			}
+function validateStep1() {
+	const fields = document.querySelectorAll("#step-1 input, #step-1 select");
+
+	for (const field of fields) {
+		if (field.disabled) continue;
+
+		if (!field.checkValidity()) {
+			field.reportValidity();
+			field.focus();
+			return false;
 		}
+	}
+
+	return true;
+}
+
+function goToStep(targetStep) {
+	if (targetStep === 2 && !validateStep1()) {
+		return;
 	}
 
 	currentStep = targetStep;
@@ -86,7 +106,6 @@ window.addEventListener("popstate", (event) => {
 	}
 });
 
-// 2. Updated submitForm with API call and security check
 async function submitForm() {
 	if (!isSecurityVerified()) return;
 
@@ -116,6 +135,7 @@ async function submitForm() {
 		//  }
 
 		// Success -> proceed to Step 3
+		isFormDirty = false;
 		goToStep(3);
 	} catch (err) {
 		alert("Chyba při odesílání serveru.");

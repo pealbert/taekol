@@ -166,10 +166,11 @@ main {
 						padding: 0.75rem;
 						border-radius: 10px;
 						color: var(--black-color);
+						caret-color: var(--black-color);
 						transition: border-color 0.1s ease;
 
 						&:disabled {
-							color: var(--bright-gray-color);
+							color: var(--gray-color);
 						}
 
 						&:focus {
@@ -177,6 +178,10 @@ main {
 
 							&:valid {
 								border-color: var(--green-color);
+							}
+
+							&:not(:required) {
+								border-color: var(--gray-color);
 							}
 						}
 
@@ -195,9 +200,62 @@ main {
 						}
 					}
 
-					label::first-letter {
-						color: var(--red-color);
+					select {
+						width: 100%;
+						max-width: 100%;
+						outline: none;
+						border: 2px solid var(--bright-gray-color);
+						background-color: var(--white-color);
+						padding: 0.75rem;
+						border-radius: 10px;
+						color: var(--black-color);
+
+						option {
+							background-color: var(--white-color);
+							color: var(--black-color);
+						}
 					}
+
+					textarea {
+						resize: vertical;
+						outline: none;
+						border: 2px solid var(--bright-gray-color);
+						background-color: var(--white-color);
+						padding: 0.75rem;
+						border-radius: 10px;
+						color: var(--black-color);
+						caret-color: var(--black-color);
+						transition: border-color 0.1s ease;
+
+						&:disabled {
+							color: var(--gray-color);
+						}
+
+						&:focus {
+							border-color: var(--gray-color);
+						}
+					}
+				}
+			}
+
+			.terms {
+				display: flex;
+				align-items: flex-start;
+				gap: 0.5rem;
+				margin-bottom: 3rem;
+
+				input {
+					margin-top: 0.2rem;
+					cursor: pointer;
+					accent-color: var(--red-color);
+					width: 18px;
+					min-width: 18px;
+					height: 18px;
+					border-color: var(--bright-gray-color);
+				}
+
+				a {
+					color: var(--red-color);
 				}
 			}
 

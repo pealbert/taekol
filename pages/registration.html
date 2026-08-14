@@ -82,7 +82,7 @@
 			async
 			defer
 		></script>
-		<script src="../src/js/form.js"></script>
+		<script src="../src/js/form.js" type="module"></script>
 		<script>
 		fetch("/schemas/schema-combined.json")
 			.then((res) => res.text())
@@ -149,7 +149,7 @@
 									maxlength="10"
 									oninput="
 										this.value = this.value.replace(/[^a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]/g, '');
-										if (this.value.length > 0 && this.value.length < 3) {
+										if (this.value.length < 3) {
 											this.setCustomValidity('Jméno musí mít alespoň 3 znaky.');
 										} else {
 											this.setCustomValidity('');
@@ -176,7 +176,7 @@
 									maxlength="15"
 									oninput="
 										this.value = this.value.replace(/[^a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]/g, '');
-										if (this.value.length > 0 && this.value.length < 3) {
+										if (this.value.length < 3) {
 											this.setCustomValidity('Příjmení musí mít alespoň 3 znaky.');
 										} else {
 											this.setCustomValidity('');
@@ -241,18 +241,14 @@
 									id="phone"
 									tabindex="5"
 									title="Telefonní číslo"
-									value="+420"
 									minlength="13"
-									maxlength="13"
+									maxlength="16"
 									oninput="
-										if (!this.value.startsWith('+')) {
-											this.value = '+' + this.value.replace(/[^0-9]/g, '');
-										} else {
-											this.value = '+' + this.value.slice(1).replace(/[^0-9]/g, '');
-										}
+										this.value = this.value.replace(/[^\d +]/g, '');
 
 										const digitsOnly = this.value.replace(/\D/g, '');
-										if (digitsOnly.length > 0 && digitsOnly.length < 12) {
+
+										if (digitsOnly.length !== 12) {
 											this.setCustomValidity('Zadejte platné číslo i s předvolbou.');
 										} else {
 											this.setCustomValidity('');
@@ -287,7 +283,111 @@
 									value="Olomouc"
 								>
 							</div>
+
+							<!-- Category -->
+							<div>
+								<label for="category"><span>*</span> Kategorie</label>
+								<select required
+									name="category"
+									id="category"
+									tabindex="6"
+									title="Kategorie"
+									onchange="this.setCustomValidity('');"
+									oninvalid="
+										if (this.validity.valueMissing) {
+											this.setCustomValidity('Vyberte prosím kategorii ze seznamu.');
+										}
+									"
+								>
+									<option value="" disabled selected hidden>Vyberte kategorii</option>
+									<option value="mirne-pokrocili-4-6">Mírně pokročilí (4-6 let)</option>
+									<option value="mirne-pokrocili-7-9">Mírně pokročilí (7-9 let)</option>
+									<option value="zacatecnici-8-14">Začátečníci (8-14 let)</option>
+									<option value="pokracujici-14-18">Pokračující (14-18 let)</option>
+									<option value="dospeli-18-plus">Začátečníci a Pokračující (18+ let)</option>
+								</select>
+							</div>
+
+							<!-- Membership validity -->
+							 <div>
+								<label for="membership_validity"><span>*</span> Platnost členství</label>
+								<select required
+									name="membership_validity"
+									id="membership_validity"
+									tabindex="7"
+									title="Platnost členství"
+									onchange="this.setCustomValidity('');"
+									oninvalid="
+										if (this.validity.valueMissing) {
+											this.setCustomValidity('Vyberte prosím platnost členství.');
+										}
+									"
+								>
+									<option value="" disabled selected hidden>Vyberte platnost</option>
+									<option value="start">Start (3 měsíců)</option>
+									<option value="pololetni">Pololetní (5 měsíců)</option>
+									<option value="rocni">Roční (10 měsíců)</option>
+								</select>
+							</div>
 						</fieldset>
+
+						<fieldset>
+							<legend>
+								<b>Další údaje</b>
+								<div class="line"></div>
+								<p>
+									Zadejte doplňující informace, jako jsou zdravotní omezení nebo poznámky k registraci.
+								</p>
+							</legend>
+
+							<!-- Source -->
+							<div>
+								<label for="source">Jak jste se o nás dozvěděli?</label>
+								<input
+									type="text"
+									name="source"
+									id="source"
+									tabindex="8"
+									title="Jak jste se o nás dozvěděli?"
+									maxlength="100"
+								>
+							</div>
+
+							<!-- Note -->
+							<div>
+								<label for="note">Ještě něco, co bychom měli vědět?</label>
+								<textarea
+									name="note"
+									id="note"
+									tabindex="9"
+									rows="4"
+									title="Doplňující informace"
+									maxlength="500"
+								></textarea>
+							</div>
+						</fieldset>
+
+						<!-- Terms & Privacy -->
+						<div class="terms">
+							<input required
+								type="checkbox"
+								name="terms"
+								id="terms"
+								tabindex="10"
+								onchange="this.setCustomValidity('');"
+								oninvalid="
+									if (this.validity.valueMissing) {
+									this.setCustomValidity('Pro odeslání formuláře musíte souhlasit s podmínkami.');
+									}
+								"
+							>
+							<label for="terms">
+									Odesláním formuláře souhlasím s 
+									<a href="/terms" target="_blank" rel="noopener noreferrer">Podmínkami použití</a>
+										a 
+									<a href="/privacy" target="_blank" rel="noopener noreferrer">Zásadami ochrany osobních údajů</a>.
+							</label>
+						</div>
 
 						<div class="action-btns">
 							<a href="/" tabindex="-1">Domů</a>
