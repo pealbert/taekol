@@ -1,6 +1,28 @@
 let currentStep = 1;
 let isFormDirty = false;
 
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('birth_date').setAttribute('max', today);
+
+
+// const memberships = {
+// 	{
+		
+// 	},
+// 	{
+
+// 	},
+// 	{
+
+// 	},
+// 	{
+
+// 	},
+// 	{
+
+// 	},
+// };
+
 window.onTurnstileError = function () {
 	console.warn("Došlo k chybě Turnstile. Automatické resetování....");
 	if (typeof turnstile !== "undefined") turnstile.reset();
@@ -134,7 +156,6 @@ async function submitForm() {
 		//    return;
 		//  }
 
-		// Success -> proceed to Step 3
 		isFormDirty = false;
 		goToStep(3);
 	} catch (err) {

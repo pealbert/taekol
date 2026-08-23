@@ -259,6 +259,34 @@ main {
 				}
 			}
 
+			.preview {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				padding: 1.5rem;
+				border-radius: 25px;
+				background-color: var(--black-color);
+				color: var(--white-color);
+				font-size: var(--tiny-font-size);
+				font-weight: 500;
+				gap: 1.5rem;
+				margin-bottom: 3rem;
+
+				@media (width >= 480px) {
+					padding: 2rem;
+				}
+
+				.preview__title {
+					margin-bottom: 0.5rem;
+				}
+
+				.preview__row {
+					display: flex;
+					width: 100%;
+					justify-content: space-between;
+				}
+			}
+
 			.action-btns {
 				display: flex;
 				justify-content: space-between;
@@ -312,10 +340,10 @@ main {
 			display: none;
 		}
 
-		#step-2 {
-			#honeypot {
-				display: none !important;
-			}
+		
+		#honeypot {
+			display: none !important;
 		}
+		
 	}
 }

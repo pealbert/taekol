@@ -103,7 +103,7 @@
 					<h1>Registrace</h1>
 
 					<!-- Data -->
-					<div id="step-1" class="reg__step active">
+					<div id="step-2" class="reg__step active">
 						<div class="stepper">
 							<div class="stepper__item active">
 								<div class="stepper__circle">1</div>
@@ -146,7 +146,7 @@
 									tabindex="1"
 									title="Jméno"
 									minlength="3"
-									maxlength="10"
+									maxlength="100"
 									oninput="
 										this.value = this.value.replace(/[^a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]/g, '');
 										if (this.value.length < 3) {
@@ -173,7 +173,7 @@
 									tabindex="2"
 									title="Příjmení"
 									minlength="3"
-									maxlength="15"
+									maxlength="100"
 									oninput="
 										this.value = this.value.replace(/[^a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]/g, '');
 										if (this.value.length < 3) {
@@ -199,8 +199,7 @@
 									id="birth_date"
 									tabindex="3"
 									title="Datum narození"
-									min="1960-01-01"
-									max="2023-01-01"
+									min="1900-01-01"
 									oninput="this.setCustomValidity('');"
 									oninvalid="
 										if (this.validity.valueMissing) {
@@ -221,6 +220,8 @@
 									id="email"
 									tabindex="4"
 									title="E-mail"
+									maxlength="255"
+									pattern="^[^@]+@[^@]+\.[^@]+$"
 									oninput="this.setCustomValidity('');"
 									oninvalid="
 										if (this.validity.valueMissing) {
@@ -241,8 +242,8 @@
 									id="phone"
 									tabindex="5"
 									title="Telefonní číslo"
-									minlength="13"
-									maxlength="16"
+									minlength="12"
+									maxlength="30"
 									oninput="
 										this.value = this.value.replace(/[^\d +]/g, '');
 
@@ -396,7 +397,7 @@
 					</div>
 
 					<!-- Payment -->
-					<div id="step-2" class="reg__step">
+					<div id="step-1" class="reg__step">
 						<div class="stepper">
 							<div class="stepper__item completed">
 								<div class="stepper__circle">1</div>
@@ -417,6 +418,59 @@
 								<span class="stepper__label">Potvrzení</span>
 							</div>
 						</div>
+
+						<div class="preview">
+							<span class="preview__title">
+								Přehled platby
+							</span>
+							<div class="preview__row">
+								<span>Platnost členství</span>
+								<span>3 měsíců</span>
+							</div>
+							<div class="preview__row">
+								<span>Celková částka</span>
+								<span>2000 Kč</span>
+							</div>
+						</div>
+
+						<fieldset>
+							<legend>
+								<b>Jak postupovat</b>
+								<div class="line"></div>
+								<p>
+									1. Zaplaťte pomocí QR kódu nebo ručním zadáním údajů.
+								</p>
+								<p>
+									2. Přiložte potvrzení o platbě (PDF nebo obrázek).
+								</p>
+								<p>
+									3. Klikněte na tlačítko „Zaplaceno“.
+								</p>
+							</legend>
+						</fieldset>
+
+						<fieldset>
+							<legend>
+								<b>Upozornění</b>
+								<div class="line"></div>
+								<p>
+									Vaši platbu a registraci schvalujeme ručně. Přiložené potvrzení zkontrolujeme a co nejdříve se vám ozveme na e-mail.
+								</p>
+							</legend>
+						</fieldset>
+
+						<fieldset>
+							<legend>
+								<b>Platba</b>
+								<div class="line"></div>
+								<p>
+									Zaplatit pomocí QR kódu:
+								</p>
+								<p>
+									Nebo zaplatit ručně:
+								</p>
+							</legend>
+						</fieldset>
 
 						<!-- Turnstile Widget -->
 						<div
