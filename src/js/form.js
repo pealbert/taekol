@@ -5,23 +5,43 @@ const today = new Date().toISOString().split('T')[0];
 document.getElementById('birth_date').setAttribute('max', today);
 
 
-// const memberships = {
-// 	{
-		
-// 	},
-// 	{
+const plans = [
+	{
+		id: 1,
+		name: "Start",
+		validity: "3",
+		price: "2000"
+	},
+	{
+		id: 2,
+		name: "Pololetni",
+		validity: "5",
+		price: "3750"
+	},
+	{
+		id: 3,
+		name: "Rocni",
+		validity: "10",
+		price: "6500"
+	},
+]
 
-// 	},
-// 	{
+import QRCode from 'qrcode';
 
-// 	},
-// 	{
+const spaydString = "SPD*1.0*ACC:CZ8008000000001804576309*CC:CZK*X-VS:18*";
+const canvas = document.getElementById('qr-canvas');
 
-// 	},
-// 	{
-
-// 	},
-// };
+QRCode.toCanvas(canvas, spaydString, {
+	width: 200,
+	margin: 2,
+	errorCorrectionLevel: 'M',
+	color: {
+		dark: '#F9F9F9',
+		light: '#00000000'
+	}
+	}, (error) => {
+	if (error) console.error('QR generation failed:', error);
+});
 
 window.onTurnstileError = function () {
 	console.warn("Došlo k chybě Turnstile. Automatické resetování....");
