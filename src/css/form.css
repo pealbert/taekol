@@ -55,6 +55,7 @@ main {
 			min-height: 100vh;
 
 			.stepper {
+				width: 100%;
 				display: flex;
 				align-items: center;
 				margin-bottom: 3rem;
@@ -141,6 +142,7 @@ main {
 					b {
 						color: var(--black-color);
 						font-weight: 600;
+						overflow-wrap: anywhere;
 					}
 
 					.line {
@@ -211,6 +213,11 @@ main {
 						padding: 0.75rem;
 						border-radius: 10px;
 						color: var(--black-color);
+						transition: border-color 0.1s ease;
+
+						&:focus {
+							border-color: var(--gray-color);
+						}
 
 						option {
 							background-color: var(--white-color);
@@ -331,8 +338,14 @@ main {
 						svg {
 							color: var(--white-color);
 							cursor: pointer;
-							width: 17px;
-							min-width: 17px;
+							height: 17px;
+							min-height: 17px;
+							max-width: 17px;
+							transition: all 0.3s ease;
+
+							&:hover:not(:active) {
+								transform: scale(1.1);
+							}
 						}
 					}
 					
@@ -360,7 +373,7 @@ main {
 					border: 3px dashed var(--middle-gray-color);
 					transition: all 0.3s ease;
 
-					&:hover:not(:active) {
+					&:hover {
 						background-color: var(--white-color);
 
 						svg {
@@ -435,6 +448,7 @@ main {
 			}
 
 			.action-btns {
+				width: 100%;
 				display: flex;
 				justify-content: space-between;
 				align-items: center;
@@ -485,6 +499,16 @@ main {
 		#step-2,
 		#step-3 {
 			display: none;
+		}
+
+		#step-3 {
+			.action-btns {
+				justify-content: center;
+
+				a {
+					box-shadow: none;
+				}
+			}
 		}
 
 		
