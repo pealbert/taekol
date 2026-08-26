@@ -3,6 +3,10 @@ import { neon } from "@neondatabase/serverless";
 const MAX_FILE_SIZE = 5 * 1024 * 1024;
 const MAX_REQUEST_SIZE = 6 * 1024 * 1024;
 const EXPECTED_TURNSTILE_ACTION = "registration";
+const RESEND_EMAILS_URL = "https://api.resend.com/emails";
+const CONFIRMATION_EMAIL_FROM =
+	"Akademie Taekwon-do <registrace@mail.taekol.com>";
+const CONFIRMATION_EMAIL_REPLY_TO = "akademie.tkd.cz@gmail.com";
 
 const FILE_TYPES = {
 	jpg: "image/jpeg",
@@ -12,9 +16,24 @@ const FILE_TYPES = {
 };
 
 const MEMBERSHIPS = {
-	start: { amountCzk: 2000, validityMonths: 3 },
-	pololetni: { amountCzk: 3750, validityMonths: 5 },
-	rocni: { amountCzk: 6500, validityMonths: 10 },
+	start: {
+		amountCzk: 2000,
+		validityMonths: 3,
+		label: "Start",
+		validityLabel: "3 měsíce",
+	},
+	pololetni: {
+		amountCzk: 3750,
+		validityMonths: 5,
+		label: "Pololetní",
+		validityLabel: "5 měsíců",
+	},
+	rocni: {
+		amountCzk: 6500,
+		validityMonths: 10,
+		label: "Roční",
+		validityLabel: "10 měsíců",
+	},
 };
 
 const CATEGORIES = new Set([
@@ -245,7 +264,117 @@ async function verifyTurnstile(request, env, token) {
 	}
 }
 
-async function submitRegistration(request, env) {
+function escapeHtml(value) {
+	return value.replace(
+		/[&<>'"]/g,
+		(character) =>
+			({
+				"&": "&amp;",
+				"<": "&lt;",
+				">": "&gt;",
+				"'": "&#39;",
+				'"': "&quot;",
+			})[character],
+	);
+}
+
+async function sendRegistrationConfirmation(
+	env,
+	registration,
+	membership,
+	membershipId,
+) {
+	if (!env.RESEND_API_KEY) {
+		console.error({
+			event: "registration_confirmation_email_not_configured",
+			membershipId,
+		});
+		return;
+	}
+
+	const firstName = escapeHtml(registration.firstName);
+	const formattedAmount = membership.amountCzk.toLocaleString("cs-CZ");
+	const subject = "Potvrzení přijetí registrace – Akademie Taekwon-do";
+	const text = [
+		`Dobrý den, ${registration.firstName},`,
+		"",
+		"děkujeme za registraci do Akademie Taekwon-do SKUP Olomouc.",
+		"Registraci a potvrzení o platbě jsme v pořádku přijali.",
+		"",
+		`Členství: ${membership.label} (${membership.validityLabel})`,
+		`Částka: ${formattedAmount} Kč`,
+		"Stav: čeká na kontrolu",
+		"",
+		"Po ověření platby vás budeme informovat.",
+		"",
+		"Akademie Taekwon-do SKUP Olomouc",
+	].join("\n");
+	const html = `
+		<!doctype html>
+		<html lang="cs">
+			<body style="margin:0;background:#f5f5f5;font-family:Arial,sans-serif;color:#171717;">
+				<div style="max-width:600px;margin:0 auto;padding:32px 16px;">
+					<div style="background:#ffffff;border-radius:12px;padding:32px;">
+						<h1 style="margin:0 0 24px;font-size:24px;">Registraci jsme přijali</h1>
+						<p>Dobrý den, ${firstName},</p>
+						<p>děkujeme za registraci do Akademie Taekwon-do SKUP Olomouc. Registraci a potvrzení o platbě jsme v pořádku přijali.</p>
+						<table role="presentation" style="width:100%;margin:24px 0;border-collapse:collapse;">
+							<tr><td style="padding:8px 0;"><strong>Členství</strong></td><td style="padding:8px 0;text-align:right;">${membership.label} (${membership.validityLabel})</td></tr>
+							<tr><td style="padding:8px 0;"><strong>Částka</strong></td><td style="padding:8px 0;text-align:right;">${formattedAmount} Kč</td></tr>
+							<tr><td style="padding:8px 0;"><strong>Stav</strong></td><td style="padding:8px 0;text-align:right;">Čeká na kontrolu</td></tr>
+						</table>
+						<p>Po ověření platby vás budeme informovat.</p>
+						<p style="margin:24px 0 0;">Akademie Taekwon-do SKUP Olomouc</p>
+					</div>
+				</div>
+			</body>
+		</html>
+	`;
+
+	try {
+		const response = await fetch(RESEND_EMAILS_URL, {
+			method: "POST",
+			headers: {
+				Authorization: `Bearer ${env.RESEND_API_KEY}`,
+				"Content-Type": "application/json",
+				"Idempotency-Key": `registration-confirmation-${membershipId}`,
+			},
+			body: JSON.stringify({
+				from: CONFIRMATION_EMAIL_FROM,
+				to: [registration.email],
+				reply_to: CONFIRMATION_EMAIL_REPLY_TO,
+				subject,
+				text,
+				html,
+				tags: [{ name: "type", value: "registration_confirmation" }],
+			}),
+		});
+
+		if (!response.ok) {
+			console.error({
+				event: "registration_confirmation_email_failed",
+				membershipId,
+				status: response.status,
+			});
+			return;
+		}
+
+		const result = await response.json();
+		console.info({
+			event: "registration_confirmation_email_sent",
+			membershipId,
+			resendEmailId: result.id,
+		});
+	} catch (error) {
+		console.error({
+			event: "registration_confirmation_email_request_failed",
+			membershipId,
+			message: error instanceof Error ? error.message : "Unknown error",
+		});
+	}
+}
+
+async function submitRegistration(request, env, ctx) {
 	const contentType = request.headers.get("Content-Type") ?? "";
 	if (!contentType.startsWith("multipart/form-data")) {
 		return json({ error: "Neplatný formát požadavku." }, 415);
@@ -337,6 +466,15 @@ async function submitRegistration(request, env) {
 			RETURNING id
 		`;
 
+		ctx.waitUntil(
+			sendRegistrationConfirmation(
+				env,
+				registration,
+				membership,
+				createdMembership.id,
+			),
+		);
+
 		return json({ success: true, membershipId: createdMembership.id }, 201);
 	} catch (error) {
 		if (objectKey) {
@@ -369,14 +507,14 @@ async function submitRegistration(request, env) {
 }
 
 export default {
-	async fetch(request, env) {
+	async fetch(request, env, ctx) {
 		const url = new URL(request.url);
 
 		if (url.pathname === "/api/submit") {
 			if (request.method !== "POST") {
 				return json({ error: "Metoda není povolena." }, 405);
 			}
-			return submitRegistration(request, env);
+			return submitRegistration(request, env, ctx);
 		}
 
 		if (url.pathname.startsWith("/api/")) {
