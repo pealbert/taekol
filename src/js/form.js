@@ -1,4 +1,4 @@
-import QRCode from 'qrcode';
+import QRCode from "qrcode";
 
 let currentStep = 1;
 let isFormDirty = false;
@@ -8,21 +8,37 @@ const plans = [
 		id: 1,
 		name: "start",
 		validity: "3 měsíců",
-		price: "2000 Kč"
+		price: "2000 Kč",
 	},
 	{
 		id: 2,
 		name: "pololetni",
 		validity: "5 měsíců",
-		price: "3750 Kč"
+		price: "3750 Kč",
 	},
 	{
 		id: 3,
 		name: "rocni",
 		validity: "10 měsíců",
-		price: "6500 Kč"
+		price: "6500 Kč",
 	},
-]
+];
+
+const MAX_PAYMENT_PROOF_SIZE = 5 * 1024 * 1024;
+const PAYMENT_PROOF_TYPES = {
+	jpg: "image/jpeg",
+	jpeg: "image/jpeg",
+	png: "image/png",
+	pdf: "application/pdf",
+};
+const ATTACHED_PAYMENT_PROOF_ICON = `
+	<svg viewBox="0 0 38 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<title>Potvrzení přiloženo</title>
+		<path d="M19.3663 0.240238C19.1315 0.0835951 18.8556 0 18.5733 0C18.2911 0 18.0152 0.0835951 17.7804 0.240238C13.6157 3.01766 8.12226 5.75366 1.28727 6.43658C0.934605 6.47167 0.607565 6.63658 0.369676 6.89929C0.131787 7.162 3.09874e-05 7.50375 0 7.85816V20.0023C0 25.5457 3.0346 30.2461 6.7164 33.6408C10.3911 37.0297 14.9129 39.3142 18.3104 39.9514L18.5733 40L18.8362 39.9514C22.2337 39.3142 26.7556 37.0297 30.4302 33.6408C34.112 30.2461 37.1466 25.5457 37.1466 20.0023V7.85816C37.1466 7.50397 37.0151 7.16241 36.7775 6.89973C36.5399 6.63706 36.2132 6.472 35.8608 6.43658C29.0244 5.75366 23.531 3.01766 19.3663 0.240238ZM2.85743 20.0023V9.12686C9.28094 8.24677 14.5243 5.72651 18.5733 3.13482C22.6223 5.72651 27.8657 8.24677 34.2892 9.12686V20.0023C34.2892 24.4598 31.839 28.4545 28.4929 31.5406C25.2426 34.538 21.3393 36.4982 18.5733 37.0897C15.8073 36.4968 11.9041 34.538 8.65374 31.5406C5.30768 28.4545 2.85743 24.4598 2.85743 20.0023ZM28.1557 15.2975C28.416 15.028 28.56 14.6671 28.5567 14.2925C28.5535 13.9179 28.4032 13.5596 28.1383 13.2947C27.8734 13.0298 27.5151 12.8795 27.1405 12.8763C26.7659 12.873 26.405 13.017 26.1355 13.2773L15.7159 23.6969L12.4398 20.4209C12.1704 20.1606 11.8095 20.0166 11.4349 20.0199C11.0603 20.0231 10.7019 20.1734 10.437 20.4383C10.1721 20.7032 10.0219 21.0615 10.0186 21.4361C10.0154 21.8107 10.1594 22.1716 10.4196 22.4411L14.7058 26.7272C14.9737 26.9951 15.337 27.1455 15.7159 27.1455C16.0947 27.1455 16.4581 26.9951 16.726 26.7272L28.1557 15.2975Z" fill="currentColor"/>
+	</svg>
+`;
+
+let defaultPaymentProofIcon = "";
 
 function getSelectedPlan() {
 	const selectedName = document.getElementById("membership_validity").value;
@@ -83,9 +99,7 @@ function initializeCopyButtons() {
 	copyButtons.forEach((button) => {
 		button.addEventListener("click", async () => {
 			const detailsValue = button.closest(".details__value");
-			let value = detailsValue
-				?.querySelector("span")
-				?.textContent.trim();
+			let value = detailsValue?.querySelector("span")?.textContent.trim();
 
 			if (!value) return;
 
@@ -118,6 +132,126 @@ function initializeCopyButtons() {
 				console.error("Copying failed:", error);
 			}
 		});
+	});
+}
+
+function getFileExtension(filename) {
+	return filename.split(".").pop()?.toLowerCase() ?? "";
+}
+
+async function hasValidFileSignature(file, extension) {
+	const bytes = new Uint8Array(await file.slice(0, 8).arrayBuffer());
+
+	if (extension === "jpg" || extension === "jpeg") {
+		return bytes[0] === 0xff && bytes[1] === 0xd8 && bytes[2] === 0xff;
+	}
+
+	if (extension === "png") {
+		const pngSignature = [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a];
+		return pngSignature.every((byte, index) => bytes[index] === byte);
+	}
+
+	if (extension === "pdf") {
+		const pdfSignature = [0x25, 0x50, 0x44, 0x46, 0x2d];
+		return pdfSignature.every((byte, index) => bytes[index] === byte);
+	}
+
+	return false;
+}
+
+function showPaymentProofStatus(message, isError = false) {
+	const status = document.querySelector(".proof__status");
+	if (!status) return;
+
+	status.textContent = message;
+	status.classList.toggle("proof__status--error", isError);
+}
+
+function updatePaymentProofButton(hasFile) {
+	const button = document.querySelector(".proof__button");
+	if (!button) return;
+
+	button.textContent = hasFile ? "Odebrat" : "Nahrát";
+}
+
+function updatePaymentProofIcon(hasFile) {
+	const icon = document.querySelector(".proof label > svg");
+	if (!icon) return;
+
+	icon.outerHTML = hasFile
+		? ATTACHED_PAYMENT_PROOF_ICON
+		: defaultPaymentProofIcon;
+}
+
+function removePaymentProof() {
+	const input = document.getElementById("payment_proof");
+	if (!input) return;
+
+	input.value = "";
+	showPaymentProofStatus("Potvrzení o platbě");
+	updatePaymentProofButton(false);
+	updatePaymentProofIcon(false);
+}
+
+async function validatePaymentProof() {
+	const input = document.getElementById("payment_proof");
+	const file = input?.files?.[0];
+
+	if (!input || !file) {
+		showPaymentProofStatus("Přiložte potvrzení o platbě.", true);
+		updatePaymentProofButton(false);
+		updatePaymentProofIcon(false);
+		return false;
+	}
+
+	const extension = getFileExtension(file.name);
+	const expectedType = PAYMENT_PROOF_TYPES[extension];
+	let errorMessage = "";
+
+	if (!expectedType || file.type !== expectedType) {
+		errorMessage = "Povolené formáty jsou JPG, PNG a PDF.";
+	} else if (file.size > MAX_PAYMENT_PROOF_SIZE) {
+		errorMessage = "Soubor může mít maximálně 5 MB.";
+	} else if (!(await hasValidFileSignature(file, extension))) {
+		errorMessage = "Obsah souboru neodpovídá jeho formátu.";
+	}
+
+	if (errorMessage) {
+		input.value = "";
+		showPaymentProofStatus(errorMessage, true);
+		updatePaymentProofButton(false);
+		updatePaymentProofIcon(false);
+		return false;
+	}
+
+	showPaymentProofStatus(file.name);
+	updatePaymentProofButton(true);
+	updatePaymentProofIcon(true);
+	return true;
+}
+
+function initializePaymentProof() {
+	const input = document.getElementById("payment_proof");
+	const button = document.querySelector(".proof__button");
+	const icon = document.querySelector(".proof label > svg");
+	defaultPaymentProofIcon = icon?.outerHTML ?? "";
+	const handleButtonAction = (event) => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		if (input?.files?.length) {
+			removePaymentProof();
+		} else {
+			input?.click();
+		}
+	};
+
+	input?.addEventListener("change", validatePaymentProof);
+	button?.addEventListener("click", handleButtonAction);
+	button?.addEventListener("keydown", (event) => {
+		if (event.key === "Enter" || event.key === " ") {
+			handleButtonAction(event);
+		}
 	});
 }
 
@@ -177,14 +311,14 @@ function updatePaymentPreview() {
 	if (!selectedPlan) return;
 
 	const previewValues = document.querySelectorAll(
-		"#step-2 .preview__row span:last-child"
+		"#step-2 .preview__row span:last-child",
 	);
 
 	previewValues[0].textContent = selectedPlan.validity;
 	previewValues[1].textContent = selectedPlan.price;
 
 	const detailValues = document.querySelectorAll(
-		"#step-2 .details .details__value span"
+		"#step-2 .details .details__value span",
 	);
 
 	detailValues[3].textContent = selectedPlan.price;
@@ -193,9 +327,7 @@ function updatePaymentPreview() {
 
 function updateConfirmationEmail() {
 	const email = document.getElementById("email")?.value;
-	const output = document.querySelector(
-		"#step-3 fieldset:first-of-type p b"
-	);
+	const output = document.querySelector("#step-3 fieldset:first-of-type p b");
 
 	if (output) output.textContent = email;
 }
@@ -212,50 +344,51 @@ function goToStep(targetStep) {
 
 	currentStep = targetStep;
 	renderStep(targetStep);
-	history.pushState({ step: targetStep }, "", `#step${targetStep}`);
+	history.replaceState({ step: targetStep }, "", `#step${targetStep}`);
 }
 
 async function submitForm() {
+	if (!(await validatePaymentProof())) return;
 	if (!isSecurityVerified()) return;
 
+	const form = document.getElementById("reg");
 	const honeypot = document.querySelector('input[name="website"]')?.value || "";
 	const token = typeof turnstile !== "undefined" ? turnstile.getResponse() : "";
-	const firstName = document.getElementById("first_name")?.value;
-	const lastName = document.getElementById("last_name")?.value;
+
+	if (!form) return;
 
 	try {
-		//  const response = await fetch('/api/submit', {
-		//    method: 'POST',
-		//    headers: { 'Content-Type': 'application/json' },
-		//    body: JSON.stringify({
-		//      token,
-		//      honeypot,
-		//      first_name: firstName,
-		//      last_name: lastName,
-		//    }),
-		//  });
+		const formData = new FormData(form);
+		formData.set("website", honeypot);
+		formData.set("cf-turnstile-response", token);
 
-		//  const result = await response.json();
+		const response = await fetch("/api/submit", {
+			method: "POST",
+			body: formData,
+		});
+		const result = await response.json();
 
-		//  if (!response.ok || !result.success) {
-		//    alert(result.error || 'Ověření selhalo. Zkuste to prosím znovu.');
-		//    if (typeof turnstile !== 'undefined') turnstile.reset();
-		//    return;
-		//  }
+		if (!response.ok || !result.success) {
+			alert(
+				result.error || "Registraci se nepodařilo odeslat. Zkuste to znovu.",
+			);
+			if (typeof turnstile !== "undefined") turnstile.reset();
+			return;
+		}
 
 		isFormDirty = false;
 		updateConfirmationEmail();
 		goToStep(3);
-	} catch (err) {
-		alert("Chyba při odesílání serveru.");
+	} catch (error) {
+		console.error("Registration submission failed:", error);
+		alert("Server není dostupný. Zkuste to prosím znovu.");
+		if (typeof turnstile !== "undefined") turnstile.reset();
 	}
 }
 
-function handlePopState(event) {
-	if (event.state && event.state.step) {
-		currentStep = event.state.step;
-		renderStep(currentStep);
-	}
+function handlePopState() {
+	history.replaceState({ step: currentStep }, "", `#step${currentStep}`);
+	renderStep(currentStep);
 }
 
 function handleBeforeUnload(event) {
@@ -263,6 +396,20 @@ function handleBeforeUnload(event) {
 
 	event.preventDefault();
 	event.returnValue = "";
+}
+
+function resetRegistrationForm() {
+	const form = document.getElementById("reg");
+	form?.reset();
+	removePaymentProof();
+	isFormDirty = false;
+	currentStep = 1;
+	renderStep(currentStep);
+	history.replaceState({ step: currentStep }, "", "#step1");
+}
+
+function handlePageShow() {
+	resetRegistrationForm();
 }
 
 function handleTurnstileError() {
@@ -277,7 +424,7 @@ function handleTurnstileExpired() {
 function initializeForm() {
 	initializeBirthDate();
 	initializeCopyButtons();
-
+	initializePaymentProof();
 
 	const form = document.getElementById("reg");
 
@@ -293,18 +440,13 @@ function initializeForm() {
 		}
 	});
 
-	currentStep = 1;
-	renderStep(currentStep);
-	history.replaceState(
-		{ step: currentStep },
-		"",
-		`#step${currentStep}`,
-	);
+	resetRegistrationForm();
 }
 
 window.addEventListener("DOMContentLoaded", initializeForm);
 window.addEventListener("popstate", handlePopState);
 window.addEventListener("beforeunload", handleBeforeUnload);
+window.addEventListener("pageshow", handlePageShow);
 
 window.goToStep = goToStep;
 window.submitForm = submitForm;

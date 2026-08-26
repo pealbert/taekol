@@ -9,7 +9,9 @@
 	},
 	"scripts": {
 		"dev": "vite",
+		"dev:worker": "npm run build && wrangler dev",
 		"build": "vite build",
+		"deploy:dry-run": "npm run build && wrangler deploy --dry-run",
 		"preview": "vite preview",
 		"lint": "biome lint",
 		"format": "biome format",
