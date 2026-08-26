@@ -278,12 +278,17 @@ function isSecurityVerified() {
 		return false;
 	}
 
-	if (typeof turnstile !== "undefined") {
-		const token = turnstile.getResponse();
-		if (!token) {
-			alert("Probíhá bezpečnostní ověření. Počkejte chvíli a zkuste to znovu.");
-			return false;
-		}
+	if (typeof turnstile === "undefined") {
+		alert(
+			"Bezpečnostní ověření se nepodařilo načíst. Obnovte stránku a zkuste to znovu.",
+		);
+		return false;
+	}
+
+	const token = turnstile.getResponse();
+	if (!token) {
+		alert("Probíhá bezpečnostní ověření. Počkejte chvíli a zkuste to znovu.");
+		return false;
 	}
 
 	return true;
