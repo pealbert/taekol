@@ -688,7 +688,9 @@
 									/>
 								</svg>
 								<span class="proof__status">Potvrzení o platbě</span>
-								<span class="proof__button" role="button" tabindex="0">Nahrát</span>
+								<span class="proof__button" role="button" tabindex="0"
+									>Nahrát</span
+								>
 							</label>
 							<input
 								type="file"
@@ -704,7 +706,7 @@
 							class="cf-turnstile"
 							data-sitekey="%VITE_TURNSTILE_SITE_KEY%"
 							data-theme="light"
-							data-appearance="interaction-only"
+							data-appearance="always"
 							data-size="flexible"
 							data-language="cs"
 							data-action="registration"
@@ -725,7 +727,9 @@
 
 						<div class="action-btns">
 							<button type="button" onclick="goToStep(1)">Zpátky</button>
-							<button type="submit" onclick="submitForm()">Zaplaceno</button>
+							<button id="submit-payment" type="submit" onclick="submitForm()">
+								Zaplaceno
+							</button>
 						</div>
 					</div>
 

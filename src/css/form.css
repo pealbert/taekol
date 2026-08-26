@@ -492,6 +492,11 @@ main {
 					&:hover {
 						background-color: var(--light-red-color);
 					}
+
+					&:disabled {
+						cursor: wait;
+						opacity: 0.65;
+					}
 				}
 			}
 
