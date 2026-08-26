@@ -82,7 +82,7 @@
 			async
 			defer
 		></script>
-		<script src="../src/js/form.js"></script>
+		<script src="../src/js/form.js" type="module"></script>
 		<script>
 		fetch("/schemas/schema-combined.json")
 			.then((res) => res.text())
@@ -139,17 +139,18 @@
 							<!-- First Name -->
 							<div>
 								<label for="first_name"><span>*</span> Jméno</label>
-								<input required
+								<input
+									required
 									type="text"
 									name="first_name"
 									id="first_name"
 									tabindex="1"
 									title="Jméno"
 									minlength="3"
-									maxlength="10"
+									maxlength="100"
 									oninput="
 										this.value = this.value.replace(/[^a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]/g, '');
-										if (this.value.length > 0 && this.value.length < 3) {
+										if (this.value.length < 3) {
 											this.setCustomValidity('Jméno musí mít alespoň 3 znaky.');
 										} else {
 											this.setCustomValidity('');
@@ -166,17 +167,18 @@
 							<!-- Last Name -->
 							<div>
 								<label for="last_name"><span>*</span> Příjmení</label>
-								<input required
+								<input
+									required
 									type="text"
 									name="last_name"
 									id="last_name"
 									tabindex="2"
 									title="Příjmení"
 									minlength="3"
-									maxlength="15"
+									maxlength="100"
 									oninput="
 										this.value = this.value.replace(/[^a-zA-ZáčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ\s]/g, '');
-										if (this.value.length > 0 && this.value.length < 3) {
+										if (this.value.length < 3) {
 											this.setCustomValidity('Příjmení musí mít alespoň 3 znaky.');
 										} else {
 											this.setCustomValidity('');
@@ -193,14 +195,14 @@
 							<!-- Date of birth -->
 							<div>
 								<label for="birth_date"><span>*</span> Datum narození</label>
-								<input required
+								<input
+									required
 									type="date"
 									name="birth_date"
 									id="birth_date"
 									tabindex="3"
 									title="Datum narození"
-									min="1960-01-01"
-									max="2023-01-01"
+									min="1900-01-01"
 									oninput="this.setCustomValidity('');"
 									oninvalid="
 										if (this.validity.valueMissing) {
@@ -215,12 +217,15 @@
 							<!-- E-mail -->
 							<div>
 								<label for="email"><span>*</span> E-mail</label>
-								<input required
+								<input
+									required
 									type="email"
 									name="email"
 									id="email"
 									tabindex="4"
 									title="E-mail"
+									maxlength="255"
+									pattern="^[^@]+@[^@]+\.[^@]+$"
 									oninput="this.setCustomValidity('');"
 									oninvalid="
 										if (this.validity.valueMissing) {
@@ -235,24 +240,21 @@
 							<!-- Phone number -->
 							<div>
 								<label for="phone"><span>*</span> Telefonní číslo</label>
-								<input required
+								<input
+									required
 									type="tel"
 									name="phone"
 									id="phone"
 									tabindex="5"
 									title="Telefonní číslo"
-									value="+420"
-									minlength="13"
-									maxlength="13"
+									minlength="12"
+									maxlength="30"
 									oninput="
-										if (!this.value.startsWith('+')) {
-											this.value = '+' + this.value.replace(/[^0-9]/g, '');
-										} else {
-											this.value = '+' + this.value.slice(1).replace(/[^0-9]/g, '');
-										}
+										this.value = this.value.replace(/[^\d +]/g, '');
 
 										const digitsOnly = this.value.replace(/\D/g, '');
-										if (digitsOnly.length > 0 && digitsOnly.length < 12) {
+
+										if (digitsOnly.length !== 12) {
 											this.setCustomValidity('Zadejte platné číslo i s předvolbou.');
 										} else {
 											this.setCustomValidity('');
@@ -272,14 +274,17 @@
 								<b>Typ členství</b>
 								<div class="line"></div>
 								<p>
-									Zvolte věkovou kategorii a požadovanou délku platnosti členství.
+									Zvolte věkovou kategorii a požadovanou délku platnosti
+									členství.
 								</p>
 							</legend>
 
 							<!-- Location -->
 							<div>
 								<label for="location"><span>*</span> Lokace</label>
-								<input required disabled
+								<input
+									required
+									disabled
 									type="text"
 									name="location"
 									id="location"
@@ -287,7 +292,136 @@
 									value="Olomouc"
 								>
 							</div>
+
+							<!-- Category -->
+							<div>
+								<label for="category"><span>*</span> Kategorie</label>
+								<select
+									required
+									name="category"
+									id="category"
+									tabindex="6"
+									title="Kategorie"
+									onchange="this.setCustomValidity('');"
+									oninvalid="
+										if (this.validity.valueMissing) {
+											this.setCustomValidity('Vyberte prosím kategorii ze seznamu.');
+										}
+									"
+								>
+									<option value="" disabled selected hidden>
+										Vyberte kategorii
+									</option>
+									<option value="mirne-pokrocili-4-6">
+										Mírně pokročilí (4-6 let)
+									</option>
+									<option value="mirne-pokrocili-7-9">
+										Mírně pokročilí (7-9 let)
+									</option>
+									<option value="zacatecnici-8-14">
+										Začátečníci (8-14 let)
+									</option>
+									<option value="pokracujici-14-18">
+										Pokračující (14-18 let)
+									</option>
+									<option value="dospeli-18-plus">
+										Začátečníci a Pokračující (18+ let)
+									</option>
+								</select>
+							</div>
+
+							<!-- Membership validity -->
+							<div>
+								<label for="membership_validity"
+									><span>*</span>
+									Platnost členství</label
+								>
+								<select
+									required
+									name="membership_validity"
+									id="membership_validity"
+									tabindex="7"
+									title="Platnost členství"
+									onchange="this.setCustomValidity('');"
+									oninvalid="
+										if (this.validity.valueMissing) {
+											this.setCustomValidity('Vyberte prosím platnost členství.');
+										}
+									"
+								>
+									<option value="" disabled selected hidden>
+										Vyberte platnost
+									</option>
+									<option value="start">Start (3 měsíců)</option>
+									<option value="pololetni">Pololetní (5 měsíců)</option>
+									<option value="rocni">Roční (10 měsíců)</option>
+								</select>
+							</div>
 						</fieldset>
+
+						<fieldset>
+							<legend>
+								<b>Další údaje</b>
+								<div class="line"></div>
+								<p>
+									Zadejte doplňující informace, jako jsou zdravotní omezení nebo
+									poznámky k registraci.
+								</p>
+							</legend>
+
+							<!-- Source -->
+							<div>
+								<label for="source">Jak jste se o nás dozvěděli?</label>
+								<input
+									type="text"
+									name="source"
+									id="source"
+									tabindex="8"
+									title="Jak jste se o nás dozvěděli?"
+									maxlength="100"
+								>
+							</div>
+
+							<!-- Note -->
+							<div>
+								<label for="note">Ještě něco, co bychom měli vědět?</label>
+								<textarea
+									name="note"
+									id="note"
+									tabindex="9"
+									rows="4"
+									title="Doplňující informace"
+									maxlength="500"
+								></textarea>
+							</div>
+						</fieldset>
+
+						<!-- Terms & Privacy -->
+						<div class="terms">
+							<input
+								required
+								type="checkbox"
+								name="terms"
+								id="terms"
+								tabindex="10"
+								onchange="this.setCustomValidity('');"
+								oninvalid="
+									if (this.validity.valueMissing) {
+									this.setCustomValidity('Pro odeslání formuláře musíte souhlasit s podmínkami.');
+									}
+								"
+							>
+							<label for="terms">
+								Odesláním formuláře souhlasím s
+								<a href="/terms" target="_blank" rel="noopener noreferrer"
+									>Podmínkami použití</a
+								>
+								a
+								<a href="/privacy" target="_blank" rel="noopener noreferrer"
+									>Zásadami ochrany osobních údajů</a
+								>.
+							</label>
+						</div>
 
 						<div class="action-btns">
 							<a href="/" tabindex="-1">Domů</a>
@@ -318,6 +452,253 @@
 							</div>
 						</div>
 
+						<div class="preview">
+							<span class="preview__title"> Přehled platby </span>
+							<div class="preview__row">
+								<span>Platnost členství</span>
+								<span>Placeholder</span>
+							</div>
+							<div class="preview__row">
+								<span>Celková částka</span>
+								<span>Placeholder</span>
+							</div>
+						</div>
+
+						<fieldset>
+							<legend>
+								<b>Jak postupovat</b>
+								<div class="line"></div>
+								<p>
+									1. Zaplaťte pomocí QR kódu v bankovní aplikaci nebo ručním
+									převodem.
+								</p>
+								<p>2. Přiložte potvrzení o platbě (PDF nebo obrázek).</p>
+								<p>3. Klikněte na tlačítko „Zaplaceno“.</p>
+							</legend>
+						</fieldset>
+
+						<fieldset>
+							<legend>
+								<b>Upozornění</b>
+								<div class="line"></div>
+								<p>
+									Vaši platbu a registraci schvalujeme ručně. Přiložené
+									potvrzení zkontrolujeme a co nejdříve se vám ozveme na e-mail.
+								</p>
+							</legend>
+						</fieldset>
+
+						<fieldset>
+							<legend>
+								<b>Platba</b>
+								<div class="line"></div>
+								<p>Zaplatit pomocí QR kódu:</p>
+
+								<div id="qr-container">
+									<canvas id="qr-canvas" aria-label="QR kod"></canvas>
+								</div>
+
+								<p>Nebo zaplatit ručně:</p>
+
+								<div class="details">
+									<b>Předčíslí účtu</b>
+									<div class="details__value">
+										<span>000000</span>
+										<button
+											type="button"
+											class="copy-button"
+											aria-label="Zkopírovat číslo účtu"
+										>
+											<svg
+												viewBox="0 0 13 13"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<title>Kopírovat</title>
+												<path
+													d="M4.5 4.5V2.63333C4.5 1.88667 4.5 1.51333 4.64533 1.228C4.77333 0.976667 4.97667 0.773333 5.228 0.645333C5.51333 0.5 5.88667 0.5 6.63333 0.5H10.3667C11.1133 0.5 11.4867 0.5 11.772 0.645333C12.0229 0.773163 12.2268 0.977128 12.3547 1.228C12.5 1.51333 12.5 1.88667 12.5 2.63333V6.36667C12.5 7.11333 12.5 7.48667 12.3547 7.772C12.2268 8.02287 12.0229 8.22684 11.772 8.35467C11.4867 8.5 11.1133 8.5 10.3687 8.5H8.5M4.5 4.5H2.63333C1.88667 4.5 1.51333 4.5 1.228 4.64533C0.977128 4.77316 0.773163 4.97713 0.645333 5.228C0.5 5.51333 0.5 5.88667 0.5 6.63333V10.3667C0.5 11.1133 0.5 11.4867 0.645333 11.772C0.773163 12.0229 0.977128 12.2268 1.228 12.3547C1.51267 12.5 1.886 12.5 2.63133 12.5H6.36933C7.114 12.5 7.48667 12.5 7.772 12.3547C8.02287 12.2268 8.22684 12.0229 8.35467 11.772C8.5 11.4867 8.5 11.114 8.5 10.3687V8.5M4.5 4.5H6.36667C7.11333 4.5 7.48667 4.5 7.772 4.64533C8.02287 4.77316 8.22684 4.97713 8.35467 5.228C8.5 5.51267 8.5 5.886 8.5 6.63133V8.5"
+													stroke="currentColor"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+									<b>Číslo účtu</b>
+									<div class="details__value">
+										<span>1804576309/0800</span>
+										<button
+											type="button"
+											class="copy-button"
+											aria-label="Zkopírovat číslo účtu"
+										>
+											<svg
+												viewBox="0 0 13 13"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<title>Kopírovat</title>
+												<path
+													d="M4.5 4.5V2.63333C4.5 1.88667 4.5 1.51333 4.64533 1.228C4.77333 0.976667 4.97667 0.773333 5.228 0.645333C5.51333 0.5 5.88667 0.5 6.63333 0.5H10.3667C11.1133 0.5 11.4867 0.5 11.772 0.645333C12.0229 0.773163 12.2268 0.977128 12.3547 1.228C12.5 1.51333 12.5 1.88667 12.5 2.63333V6.36667C12.5 7.11333 12.5 7.48667 12.3547 7.772C12.2268 8.02287 12.0229 8.22684 11.772 8.35467C11.4867 8.5 11.1133 8.5 10.3687 8.5H8.5M4.5 4.5H2.63333C1.88667 4.5 1.51333 4.5 1.228 4.64533C0.977128 4.77316 0.773163 4.97713 0.645333 5.228C0.5 5.51333 0.5 5.88667 0.5 6.63333V10.3667C0.5 11.1133 0.5 11.4867 0.645333 11.772C0.773163 12.0229 0.977128 12.2268 1.228 12.3547C1.51267 12.5 1.886 12.5 2.63133 12.5H6.36933C7.114 12.5 7.48667 12.5 7.772 12.3547C8.02287 12.2268 8.22684 12.0229 8.35467 11.772C8.5 11.4867 8.5 11.114 8.5 10.3687V8.5M4.5 4.5H6.36667C7.11333 4.5 7.48667 4.5 7.772 4.64533C8.02287 4.77316 8.22684 4.97713 8.35467 5.228C8.5 5.51267 8.5 5.886 8.5 6.63133V8.5"
+													stroke="currentColor"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+									<b>Variabilní symbol</b>
+									<div class="details__value">
+										<span>18</span>
+										<button
+											type="button"
+											class="copy-button"
+											aria-label="Zkopírovat číslo účtu"
+										>
+											<svg
+												viewBox="0 0 13 13"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<title>Kopírovat</title>
+												<path
+													d="M4.5 4.5V2.63333C4.5 1.88667 4.5 1.51333 4.64533 1.228C4.77333 0.976667 4.97667 0.773333 5.228 0.645333C5.51333 0.5 5.88667 0.5 6.63333 0.5H10.3667C11.1133 0.5 11.4867 0.5 11.772 0.645333C12.0229 0.773163 12.2268 0.977128 12.3547 1.228C12.5 1.51333 12.5 1.88667 12.5 2.63333V6.36667C12.5 7.11333 12.5 7.48667 12.3547 7.772C12.2268 8.02287 12.0229 8.22684 11.772 8.35467C11.4867 8.5 11.1133 8.5 10.3687 8.5H8.5M4.5 4.5H2.63333C1.88667 4.5 1.51333 4.5 1.228 4.64533C0.977128 4.77316 0.773163 4.97713 0.645333 5.228C0.5 5.51333 0.5 5.88667 0.5 6.63333V10.3667C0.5 11.1133 0.5 11.4867 0.645333 11.772C0.773163 12.0229 0.977128 12.2268 1.228 12.3547C1.51267 12.5 1.886 12.5 2.63133 12.5H6.36933C7.114 12.5 7.48667 12.5 7.772 12.3547C8.02287 12.2268 8.22684 12.0229 8.35467 11.772C8.5 11.4867 8.5 11.114 8.5 10.3687V8.5M4.5 4.5H6.36667C7.11333 4.5 7.48667 4.5 7.772 4.64533C8.02287 4.77316 8.22684 4.97713 8.35467 5.228C8.5 5.51267 8.5 5.886 8.5 6.63133V8.5"
+													stroke="currentColor"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+									<b>Částka</b>
+									<div class="details__value">
+										<span>Placeholder</span>
+										<button
+											type="button"
+											class="copy-button"
+											aria-label="Zkopírovat číslo účtu"
+										>
+											<svg
+												viewBox="0 0 13 13"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<title>Kopírovat</title>
+												<path
+													d="M4.5 4.5V2.63333C4.5 1.88667 4.5 1.51333 4.64533 1.228C4.77333 0.976667 4.97667 0.773333 5.228 0.645333C5.51333 0.5 5.88667 0.5 6.63333 0.5H10.3667C11.1133 0.5 11.4867 0.5 11.772 0.645333C12.0229 0.773163 12.2268 0.977128 12.3547 1.228C12.5 1.51333 12.5 1.88667 12.5 2.63333V6.36667C12.5 7.11333 12.5 7.48667 12.3547 7.772C12.2268 8.02287 12.0229 8.22684 11.772 8.35467C11.4867 8.5 11.1133 8.5 10.3687 8.5H8.5M4.5 4.5H2.63333C1.88667 4.5 1.51333 4.5 1.228 4.64533C0.977128 4.77316 0.773163 4.97713 0.645333 5.228C0.5 5.51333 0.5 5.88667 0.5 6.63333V10.3667C0.5 11.1133 0.5 11.4867 0.645333 11.772C0.773163 12.0229 0.977128 12.2268 1.228 12.3547C1.51267 12.5 1.886 12.5 2.63133 12.5H6.36933C7.114 12.5 7.48667 12.5 7.772 12.3547C8.02287 12.2268 8.22684 12.0229 8.35467 11.772C8.5 11.4867 8.5 11.114 8.5 10.3687V8.5M4.5 4.5H6.36667C7.11333 4.5 7.48667 4.5 7.772 4.64533C8.02287 4.77316 8.22684 4.97713 8.35467 5.228C8.5 5.51267 8.5 5.886 8.5 6.63133V8.5"
+													stroke="currentColor"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+									<b>Poznámka</b>
+									<div class="details__value">
+										<span>Placeholder</span>
+										<button
+											type="button"
+											class="copy-button"
+											aria-label="Zkopírovat číslo účtu"
+										>
+											<svg
+												viewBox="0 0 13 13"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<title>Kopírovat</title>
+												<path
+													d="M4.5 4.5V2.63333C4.5 1.88667 4.5 1.51333 4.64533 1.228C4.77333 0.976667 4.97667 0.773333 5.228 0.645333C5.51333 0.5 5.88667 0.5 6.63333 0.5H10.3667C11.1133 0.5 11.4867 0.5 11.772 0.645333C12.0229 0.773163 12.2268 0.977128 12.3547 1.228C12.5 1.51333 12.5 1.88667 12.5 2.63333V6.36667C12.5 7.11333 12.5 7.48667 12.3547 7.772C12.2268 8.02287 12.0229 8.22684 11.772 8.35467C11.4867 8.5 11.1133 8.5 10.3687 8.5H8.5M4.5 4.5H2.63333C1.88667 4.5 1.51333 4.5 1.228 4.64533C0.977128 4.77316 0.773163 4.97713 0.645333 5.228C0.5 5.51333 0.5 5.88667 0.5 6.63333V10.3667C0.5 11.1133 0.5 11.4867 0.645333 11.772C0.773163 12.0229 0.977128 12.2268 1.228 12.3547C1.51267 12.5 1.886 12.5 2.63133 12.5H6.36933C7.114 12.5 7.48667 12.5 7.772 12.3547C8.02287 12.2268 8.22684 12.0229 8.35467 11.772C8.5 11.4867 8.5 11.114 8.5 10.3687V8.5M4.5 4.5H6.36667C7.11333 4.5 7.48667 4.5 7.772 4.64533C8.02287 4.77316 8.22684 4.97713 8.35467 5.228C8.5 5.51267 8.5 5.886 8.5 6.63133V8.5"
+													stroke="currentColor"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+									<b>IBAN</b>
+									<div class="details__value">
+										<span>CZ8008000000001804576309</span>
+										<button
+											type="button"
+											class="copy-button"
+											aria-label="Zkopírovat číslo účtu"
+										>
+											<svg
+												viewBox="0 0 13 13"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<title>Kopírovat</title>
+												<path
+													d="M4.5 4.5V2.63333C4.5 1.88667 4.5 1.51333 4.64533 1.228C4.77333 0.976667 4.97667 0.773333 5.228 0.645333C5.51333 0.5 5.88667 0.5 6.63333 0.5H10.3667C11.1133 0.5 11.4867 0.5 11.772 0.645333C12.0229 0.773163 12.2268 0.977128 12.3547 1.228C12.5 1.51333 12.5 1.88667 12.5 2.63333V6.36667C12.5 7.11333 12.5 7.48667 12.3547 7.772C12.2268 8.02287 12.0229 8.22684 11.772 8.35467C11.4867 8.5 11.1133 8.5 10.3687 8.5H8.5M4.5 4.5H2.63333C1.88667 4.5 1.51333 4.5 1.228 4.64533C0.977128 4.77316 0.773163 4.97713 0.645333 5.228C0.5 5.51333 0.5 5.88667 0.5 6.63333V10.3667C0.5 11.1133 0.5 11.4867 0.645333 11.772C0.773163 12.0229 0.977128 12.2268 1.228 12.3547C1.51267 12.5 1.886 12.5 2.63133 12.5H6.36933C7.114 12.5 7.48667 12.5 7.772 12.3547C8.02287 12.2268 8.22684 12.0229 8.35467 11.772C8.5 11.4867 8.5 11.114 8.5 10.3687V8.5M4.5 4.5H6.36667C7.11333 4.5 7.48667 4.5 7.772 4.64533C8.02287 4.77316 8.22684 4.97713 8.35467 5.228C8.5 5.51267 8.5 5.886 8.5 6.63133V8.5"
+													stroke="currentColor"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+									<b>BIC / SWIFT</b>
+									<div class="details__value">
+										<span>GIBACZPX</span>
+										<button
+											type="button"
+											class="copy-button"
+											aria-label="Zkopírovat číslo účtu"
+										>
+											<svg
+												viewBox="0 0 13 13"
+												fill="none"
+												xmlns="http://www.w3.org/2000/svg"
+											>
+												<title>Kopírovat</title>
+												<path
+													d="M4.5 4.5V2.63333C4.5 1.88667 4.5 1.51333 4.64533 1.228C4.77333 0.976667 4.97667 0.773333 5.228 0.645333C5.51333 0.5 5.88667 0.5 6.63333 0.5H10.3667C11.1133 0.5 11.4867 0.5 11.772 0.645333C12.0229 0.773163 12.2268 0.977128 12.3547 1.228C12.5 1.51333 12.5 1.88667 12.5 2.63333V6.36667C12.5 7.11333 12.5 7.48667 12.3547 7.772C12.2268 8.02287 12.0229 8.22684 11.772 8.35467C11.4867 8.5 11.1133 8.5 10.3687 8.5H8.5M4.5 4.5H2.63333C1.88667 4.5 1.51333 4.5 1.228 4.64533C0.977128 4.77316 0.773163 4.97713 0.645333 5.228C0.5 5.51333 0.5 5.88667 0.5 6.63333V10.3667C0.5 11.1133 0.5 11.4867 0.645333 11.772C0.773163 12.0229 0.977128 12.2268 1.228 12.3547C1.51267 12.5 1.886 12.5 2.63133 12.5H6.36933C7.114 12.5 7.48667 12.5 7.772 12.3547C8.02287 12.2268 8.22684 12.0229 8.35467 11.772C8.5 11.4867 8.5 11.114 8.5 10.3687V8.5M4.5 4.5H6.36667C7.11333 4.5 7.48667 4.5 7.772 4.64533C8.02287 4.77316 8.22684 4.97713 8.35467 5.228C8.5 5.51267 8.5 5.886 8.5 6.63133V8.5"
+													stroke="currentColor"
+													stroke-linecap="round"
+													stroke-linejoin="round"
+												/>
+											</svg>
+										</button>
+									</div>
+								</div>
+							</legend>
+						</fieldset>
+
+						<div class="proof">
+							<label for="payment_proof">
+								<svg
+									viewBox="0 0 39 43"
+									fill="none"
+									xmlns="http://www.w3.org/2000/svg"
+								>
+									<title>Štít Ikona</title>
+									<path
+										d="M19.5 15.5C17.29 15.5 15.5 16.844 15.5 18.5C15.5 20.156 17.29 21.5 19.5 21.5C21.71 21.5 23.5 22.844 23.5 24.5C23.5 26.156 21.71 27.5 19.5 27.5M19.5 15.5C21.24 15.5 22.724 16.334 23.272 17.5M19.5 15.5V13.5M19.5 27.5C17.76 27.5 16.276 26.666 15.728 25.5M19.5 27.5V29.5"
+										stroke="currentColor"
+										stroke-width="3"
+										stroke-linecap="round"
+									/>
+									<path
+										d="M37.5 19.866V14.06C37.5 10.78 37.5 9.14 36.692 8.07C35.884 7 34.056 6.482 30.402 5.442C28.1981 4.80901 26.0403 4.02516 23.944 3.096C21.546 2.032 20.348 1.5 19.5 1.5C18.652 1.5 17.454 2.032 15.056 3.096C13.296 3.876 11.096 4.732 8.598 5.442C4.944 6.482 3.118 7.002 2.308 8.07C1.5 9.14 1.5 10.78 1.5 14.06V19.866C1.5 31.116 11.626 37.866 16.688 40.538C17.902 41.178 18.508 41.5 19.5 41.5C20.492 41.5 21.098 41.18 22.312 40.54C27.374 37.864 37.5 31.116 37.5 19.866Z"
+										stroke="currentColor"
+										stroke-width="3"
+										stroke-linecap="round"
+									/>
+								</svg>
+								<span class="proof__status">Potvrzení o platbě</span>
+								<span class="proof__button" role="button" tabindex="0">Nahrát</span>
+							</label>
+							<input
+								type="file"
+								name="payment_proof"
+								id="payment_proof"
+								accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf"
+								required
+							>
+						</div>
+
 						<!-- Turnstile Widget -->
 						<div
 							class="cf-turnstile"
@@ -326,6 +707,7 @@
 							data-appearance="interaction-only"
 							data-size="flexible"
 							data-language="cs"
+							data-action="registration"
 							data-error-callback="onTurnstileError"
 							data-expired-callback="onTurnstileExpired"
 						></div>
@@ -343,7 +725,7 @@
 
 						<div class="action-btns">
 							<button type="button" onclick="goToStep(1)">Zpátky</button>
-							<button type="button" onclick="submitForm()">Zaplaceno</button>
+							<button type="submit" onclick="submitForm()">Zaplaceno</button>
 						</div>
 					</div>
 
@@ -370,8 +752,68 @@
 							</div>
 						</div>
 
+						<div class="success">
+							<svg
+								viewBox="0 0 55 55"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<title>Úspěch</title>
+								<path
+									d="M40 5.84503C36.2014 3.64684 31.8888 2.4928 27.5 2.50003C13.6925 2.50003 2.5 13.6925 2.5 27.5C2.5 41.3075 13.6925 52.5 27.5 52.5C41.3075 52.5 52.5 41.3075 52.5 27.5C52.4966 25.7834 52.33 24.1167 52 22.5"
+									stroke="currentColor"
+									stroke-width="5"
+									stroke-linecap="round"
+								/>
+								<path
+									d="M17.5 28.75C17.5 28.75 21.25 28.75 26.25 37.5C26.25 37.5 40.1475 14.5825 52.5 10"
+									stroke="currentColor"
+									stroke-width="5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+								/>
+							</svg>
+							<b>Úspěch!</b>
+						</div>
+
+						<fieldset>
+							<legend>
+								<b>Máte hotovo!</b>
+								<div class="line"></div>
+								<p>
+									Vaši žádost jsme přijali a brzy se vám ozveme na e-mail
+									<b>placeholder@email.cz</b>.
+								</p>
+							</legend>
+						</fieldset>
+
+						<fieldset>
+							<legend>
+								<b>Tréninky</b>
+								<div class="line"></div>
+								<p>
+									Mezitím si můžete prohlédnout náš
+									<b><a href="/classes">Rozvrh tréninků a místa konání</a></b>.
+								</p>
+							</legend>
+						</fieldset>
+
+						<div class="close-note">
+							<svg
+								viewBox="0 0 38 40"
+								fill="none"
+								xmlns="http://www.w3.org/2000/svg"
+							>
+								<title>Ikona</title>
+								<path
+									d="M17.7804 0.240238C18.0152 0.0835951 18.2911 0 18.5733 0C18.8556 0 19.1315 0.0835951 19.3663 0.240238C23.5324 3.01766 29.0244 5.75366 35.8608 6.43658C36.2132 6.472 36.5399 6.63706 36.7775 6.89973C37.0151 7.16241 37.1466 7.50397 37.1466 7.85816V20.0023C37.1466 25.5457 34.112 30.2461 30.4302 33.6408C26.7556 37.0297 22.2337 39.3142 18.8362 39.9514L18.5733 40L18.3104 39.9514C14.9129 39.3142 10.3911 37.0297 6.7164 33.6408C3.0346 30.2461 1.1287e-10 25.5457 1.1287e-10 20.0023V7.85816C-4.4495e-06 7.50397 0.131552 7.16241 0.369146 6.89973C0.60674 6.63706 0.933434 6.472 1.28585 6.43658C8.12226 5.75366 13.6157 3.01766 17.7804 0.240238ZM28.1557 15.2989C28.4238 15.031 28.5745 14.6676 28.5746 14.2886C28.5748 13.9096 28.4243 13.5461 28.1564 13.278C27.8885 13.0099 27.5251 12.8592 27.1461 12.8591C26.7671 12.859 26.4036 13.0094 26.1355 13.2773L15.7159 23.6969L12.4398 20.4209C12.1704 20.1606 11.8095 20.0166 11.4349 20.0199C11.0603 20.0231 10.7019 20.1734 10.437 20.4383C10.1721 20.7032 10.0219 21.0615 10.0186 21.4361C10.0154 21.8107 10.1594 22.1716 10.4196 22.4411L14.7058 26.7272C14.9737 26.9951 15.337 27.1455 15.7159 27.1455C16.0947 27.1455 16.4581 26.9951 16.726 26.7272L28.1557 15.2989Z"
+									fill="currentColor"
+								/>
+							</svg>
+							<b>Tento formulář<br>můžete bezpečně zavřít.</b>
+						</div>
+
 						<div class="action-btns">
-							<button type="button" onclick="goToStep(2)">Zpátky</button>
 							<a href="/classes">Domů</a>
 						</div>
 					</div>

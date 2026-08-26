@@ -1,5 +1,4 @@
-Contact: mailto: akademie.tkd.cz@gmail.com
-Expires: 2027-12-31T23:59:59.000Z
+Contact: mailto:akademie.tkd.cz@gmail.com
+Expires: 2027-08-01T23:59:59.000Z
 Preferred-Languages: cs, en
-Canonical: https://taekol.com/public/.well-known/security.txt
-Policy: https://taekol.com/privacy
+Canonical: https://taekol.com/.well-known/security.txt

@@ -45,6 +45,12 @@ main {
 			@media (width >= 1024px) {
 				font-size: var(--huge-font-size);
 			}
+
+			span {
+				color: var(--gray-color);
+				opacity: 0.5;
+				margin-left: 0.25rem;
+			}
 		}
 
 		h2 {
@@ -68,7 +74,7 @@ main {
 			}
 		}
 
-		span,
+		& > span,
 		ul li {
 			align-self: flex-start;
 			text-align: left;
