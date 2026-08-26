@@ -264,20 +264,6 @@ async function verifyTurnstile(request, env, token) {
 	}
 }
 
-function escapeHtml(value) {
-	return value.replace(
-		/[&<>'"]/g,
-		(character) =>
-			({
-				"&": "&amp;",
-				"<": "&lt;",
-				">": "&gt;",
-				"'": "&#39;",
-				'"': "&quot;",
-			})[character],
-	);
-}
-
 async function sendRegistrationConfirmation(
 	env,
 	registration,
@@ -292,20 +278,20 @@ async function sendRegistrationConfirmation(
 		return;
 	}
 
-	const firstName = escapeHtml(registration.firstName);
 	const formattedAmount = membership.amountCzk.toLocaleString("cs-CZ");
 	const subject = "Potvrzení přijetí registrace – Akademie Taekwon-do";
 	const text = [
-		`Dobrý den, ${registration.firstName},`,
+		"Dobrý den,",
 		"",
-		"děkujeme za registraci do Akademie Taekwon-do SKUP Olomouc.",
-		"Registraci a potvrzení o platbě jsme v pořádku přijali.",
+		"děkujeme za registraci do Akademie Taekwon-do SKUP Olomouc!",
+		"Registraci i potvrzení o platbě jsme v pořádku přijali.",
 		"",
 		`Členství: ${membership.label} (${membership.validityLabel})`,
 		`Částka: ${formattedAmount} Kč`,
 		"Stav: čeká na kontrolu",
 		"",
-		"Po ověření platby vás budeme informovat.",
+		"Jakmile platbu ověříme, hned vám dáme vědět.",
+		"Těšíme se na vás!",
 		"",
 		"Akademie Taekwon-do SKUP Olomouc",
 	].join("\n");
@@ -315,15 +301,16 @@ async function sendRegistrationConfirmation(
 			<body style="margin:0;background:#f5f5f5;font-family:Arial,sans-serif;color:#171717;">
 				<div style="max-width:600px;margin:0 auto;padding:32px 16px;">
 					<div style="background:#ffffff;border-radius:12px;padding:32px;">
-						<h1 style="margin:0 0 24px;font-size:24px;">Registraci jsme přijali</h1>
-						<p>Dobrý den, ${firstName},</p>
-						<p>děkujeme za registraci do Akademie Taekwon-do SKUP Olomouc. Registraci a potvrzení o platbě jsme v pořádku přijali.</p>
+						<h1 style="margin:0 0 24px;font-size:24px;">Registrace přijata</h1>
+						<p>Dobrý den,</p>
+						<p>děkujeme za registraci do Akademie Taekwon-do SKUP Olomouc! Registraci i potvrzení o platbě jsme v pořádku přijali.</p>
 						<table role="presentation" style="width:100%;margin:24px 0;border-collapse:collapse;">
 							<tr><td style="padding:8px 0;"><strong>Členství</strong></td><td style="padding:8px 0;text-align:right;">${membership.label} (${membership.validityLabel})</td></tr>
 							<tr><td style="padding:8px 0;"><strong>Částka</strong></td><td style="padding:8px 0;text-align:right;">${formattedAmount} Kč</td></tr>
 							<tr><td style="padding:8px 0;"><strong>Stav</strong></td><td style="padding:8px 0;text-align:right;">Čeká na kontrolu</td></tr>
 						</table>
-						<p>Po ověření platby vás budeme informovat.</p>
+						<p>Jakmile platbu ověříme, hned vám dáme vědět.</p>
+						<p>Těšíme se na vás!</p>
 						<p style="margin:24px 0 0;">Akademie Taekwon-do SKUP Olomouc</p>
 					</div>
 				</div>
