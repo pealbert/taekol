@@ -2,6 +2,7 @@ import QRCode from "qrcode";
 
 let currentStep = 1;
 let isFormDirty = false;
+let isSubmitting = false;
 
 const plans = [
 	{
@@ -352,17 +353,31 @@ function goToStep(targetStep) {
 	history.replaceState({ step: targetStep }, "", `#step${targetStep}`);
 }
 
+function setSubmittingState(submitting) {
+	isSubmitting = submitting;
+
+	const submitButton = document.getElementById("submit-payment");
+	if (!submitButton) return;
+
+	submitButton.disabled = submitting;
+	submitButton.textContent = submitting ? "Odesíláme…" : "Zaplaceno";
+	submitButton.setAttribute("aria-busy", String(submitting));
+}
+
 async function submitForm() {
-	if (!(await validatePaymentProof())) return;
-	if (!isSecurityVerified()) return;
-
-	const form = document.getElementById("reg");
-	const honeypot = document.querySelector('input[name="website"]')?.value || "";
-	const token = typeof turnstile !== "undefined" ? turnstile.getResponse() : "";
-
-	if (!form) return;
+	if (isSubmitting) return;
+	setSubmittingState(true);
 
 	try {
+		if (!(await validatePaymentProof())) return;
+		if (!isSecurityVerified()) return;
+
+		const form = document.getElementById("reg");
+		if (!form) return;
+
+		const honeypot =
+			document.querySelector('input[name="website"]')?.value || "";
+		const token = turnstile.getResponse();
 		const formData = new FormData(form);
 		formData.set("website", honeypot);
 		formData.set("cf-turnstile-response", token);
@@ -388,6 +403,8 @@ async function submitForm() {
 		console.error("Registration submission failed:", error);
 		alert("Server není dostupný. Zkuste to prosím znovu.");
 		if (typeof turnstile !== "undefined") turnstile.reset();
+	} finally {
+		setSubmittingState(false);
 	}
 }
 
@@ -407,6 +424,7 @@ function resetRegistrationForm() {
 	const form = document.getElementById("reg");
 	form?.reset();
 	removePaymentProof();
+	setSubmittingState(false);
 	isFormDirty = false;
 	currentStep = 1;
 	renderStep(currentStep);

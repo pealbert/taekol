@@ -185,6 +185,13 @@ async function verifyTurnstile(request, env, token) {
 		token.length > 2048 ||
 		expectedHostnames.size === 0
 	) {
+		console.warn({
+			event: "turnstile_configuration_invalid",
+			hasSecret: Boolean(env.TURNSTILE_SECRET),
+			hasToken: Boolean(token),
+			tokenLengthIsValid: Boolean(token && token.length <= 2048),
+			expectedHostnameCount: expectedHostnames.size,
+		});
 		return false;
 	}
 
@@ -203,14 +210,37 @@ async function verifyTurnstile(request, env, token) {
 			},
 		);
 
-		if (!response.ok) return false;
+		if (!response.ok) {
+			console.warn({
+				event: "turnstile_siteverify_http_error",
+				status: response.status,
+			});
+			return false;
+		}
+
 		const result = await response.json();
-		return (
+		const isValid =
 			result.success === true &&
 			result.action === EXPECTED_TURNSTILE_ACTION &&
-			expectedHostnames.has(result.hostname)
-		);
-	} catch {
+			expectedHostnames.has(result.hostname);
+
+		if (!isValid) {
+			console.warn({
+				event: "turnstile_verification_failed",
+				errorCodes: Array.isArray(result["error-codes"])
+					? result["error-codes"]
+					: [],
+				action: typeof result.action === "string" ? result.action : null,
+				hostname: typeof result.hostname === "string" ? result.hostname : null,
+			});
+		}
+
+		return isValid;
+	} catch (error) {
+		console.warn({
+			event: "turnstile_siteverify_request_failed",
+			message: error instanceof Error ? error.message : "Unknown error",
+		});
 		return false;
 	}
 }
