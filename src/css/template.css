@@ -6,15 +6,19 @@
 main {
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
+	gap: 1rem;
 	align-items: center;
 	justify-content: center;
-	height: 100vh;
+	height: 90vh;
 }
 
 main svg {
 	width: clamp(75px, 12cqw, 100px);
 	color: var(--red-color);
+}
+
+main > h1 {
+	color: var(--black-color);
 }
 
 main > a {
@@ -31,7 +35,7 @@ main > a {
 	transition: all 0.2s ease;
 }
 
-main a::after {
+main > a::after {
 	content: "";
 	position: absolute;
 	left: 0;
@@ -44,10 +48,18 @@ main a::after {
 	transition: all 0.2s ease;
 }
 
-@media (width >= 1024px) {
-	main {
-		gap: 2rem;
+main > p {
+	color: var(--black-color);
+	font-size: var(--small-font-size);
+	padding: 0 1rem;
+	text-align: center;
+
+	a {
+		color: var(--red-color);
 	}
+}
+
+@media (width >= 1024px) {
 	main > a {
 		font-size: var(--medium-font-size);
 		padding: 0.75rem 2rem;

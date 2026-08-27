@@ -6,7 +6,7 @@ const EXPECTED_TURNSTILE_ACTION = "registration";
 const RESEND_EMAILS_URL = "https://api.resend.com/emails";
 const CONFIRMATION_EMAIL_FROM =
 	"Akademie Taekwon-do <registrace@mail.taekol.com>";
-const CONFIRMATION_EMAIL_REPLY_TO = "akademie.tkd.cz@gmail.com";
+const ACADEMY_EMAIL = "akademie.tkd.cz@gmail.com";
 
 const FILE_TYPES = {
 	jpg: "image/jpeg",
@@ -36,24 +36,106 @@ const MEMBERSHIPS = {
 	},
 };
 
-const CATEGORIES = new Set([
-	"mirne-pokrocili-4-6",
-	"mirne-pokrocili-7-9",
-	"zacatecnici-8-14",
-	"pokracujici-14-18",
-	"dospeli-18-plus",
-]);
+const CATEGORIES = {
+	"mirne-pokrocili-4-6": "Mírně pokročilí (4–6 let)",
+	"mirne-pokrocili-7-9": "Mírně pokročilí (7–9 let)",
+	"zacatecnici-8-14": "Začátečníci (8–14 let)",
+	"pokracujici-14-18": "Pokračující (14–18 let)",
+	"dospeli-18-plus": "Začátečníci a pokračující (18+ let)",
+};
 
 class ValidationError extends Error {}
+class PayloadTooLargeError extends Error {}
 
-function json(data, status = 200) {
+function json(data, status = 200, extraHeaders = {}) {
 	return Response.json(data, {
 		status,
 		headers: {
 			"Cache-Control": "no-store",
 			"X-Content-Type-Options": "nosniff",
+			...extraHeaders,
 		},
 	});
+}
+
+function escapeHtml(value) {
+	const characters = {
+		"&": "&amp;",
+		"<": "&lt;",
+		">": "&gt;",
+		'"': "&quot;",
+		"'": "&#039;",
+	};
+
+	return String(value).replace(
+		/[&<>"']/g,
+		(character) => characters[character],
+	);
+}
+
+function isSameOriginRequest(request) {
+	const origin = request.headers.get("Origin");
+	return origin === new URL(request.url).origin;
+}
+
+async function enforceRegistrationRateLimit(request, env) {
+	const clientIp = request.headers.get("CF-Connecting-IP") ?? "unknown";
+	try {
+		const { success } = await env.REGISTRATION_RATE_LIMITER.limit({
+			key: `registration:${clientIp}`,
+		});
+
+		if (!success) {
+			console.warn({ event: "registration_rate_limited" });
+		}
+
+		return success;
+	} catch {
+		console.error({ event: "registration_rate_limiter_failed" });
+		return null;
+	}
+}
+
+async function readMultipartFormData(request) {
+	const contentLengthHeader = request.headers.get("Content-Length");
+	if (contentLengthHeader) {
+		if (!/^\d+$/.test(contentLengthHeader)) {
+			throw new ValidationError("Neplatná délka požadavku.");
+		}
+
+		if (Number(contentLengthHeader) > MAX_REQUEST_SIZE) {
+			throw new PayloadTooLargeError();
+		}
+	}
+
+	if (!request.body) {
+		throw new ValidationError("Požadavek neobsahuje žádná data.");
+	}
+
+	const reader = request.body.getReader();
+	const chunks = [];
+	let totalSize = 0;
+
+	while (true) {
+		const { done, value } = await reader.read();
+		if (done) break;
+
+		totalSize += value.byteLength;
+		if (totalSize > MAX_REQUEST_SIZE) {
+			await reader.cancel().catch(() => {});
+			throw new PayloadTooLargeError();
+		}
+
+		chunks.push(value);
+	}
+
+	try {
+		return await new Response(new Blob(chunks), {
+			headers: { "Content-Type": request.headers.get("Content-Type") },
+		}).formData();
+	} catch {
+		throw new ValidationError("Neplatný formát požadavku.");
+	}
 }
 
 function getText(formData, name, { required = false, maxLength } = {}) {
@@ -130,7 +212,7 @@ function validateRegistration(formData) {
 	if (phone.replace(/\D/g, "").length !== 12) {
 		throw new ValidationError("Telefonní číslo není platné.");
 	}
-	if (!CATEGORIES.has(category)) {
+	if (!Object.hasOwn(CATEGORIES, category)) {
 		throw new ValidationError("Kategorie není platná.");
 	}
 	if (!Object.hasOwn(MEMBERSHIPS, membership)) {
@@ -270,16 +352,8 @@ async function sendRegistrationConfirmation(
 	membership,
 	membershipId,
 ) {
-	if (!env.RESEND_API_KEY) {
-		console.error({
-			event: "registration_confirmation_email_not_configured",
-			membershipId,
-		});
-		return;
-	}
-
 	const formattedAmount = membership.amountCzk.toLocaleString("cs-CZ");
-	const subject = "Potvrzení přijetí registrace – Akademie Taekwon-do";
+	const subject = "Potvrzení přijetí registrace - Akademie Taekwon-do";
 	const text = [
 		"Dobrý den,",
 		"",
@@ -293,7 +367,7 @@ async function sendRegistrationConfirmation(
 		"Jakmile platbu ověříme, hned vám dáme vědět.",
 		"Těšíme se na vás!",
 		"",
-		"Akademie Taekwon-do SKUP Olomouc",
+		"Tým Akademie Taekwon-do SKUP Olomouc",
 	].join("\n");
 	const html = `
 		<!doctype html>
@@ -311,7 +385,7 @@ async function sendRegistrationConfirmation(
 						</table>
 						<p>Jakmile platbu ověříme, hned vám dáme vědět.</p>
 						<p>Těšíme se na vás!</p>
-						<p style="margin:24px 0 0;">Akademie Taekwon-do SKUP Olomouc</p>
+						<p style="margin:24px 0 0;">Tým Akademie Taekwon-do SKUP Olomouc</p>
 					</div>
 				</div>
 			</body>
@@ -321,6 +395,7 @@ async function sendRegistrationConfirmation(
 	try {
 		const response = await fetch(RESEND_EMAILS_URL, {
 			method: "POST",
+			signal: AbortSignal.timeout(10_000),
 			headers: {
 				Authorization: `Bearer ${env.RESEND_API_KEY}`,
 				"Content-Type": "application/json",
@@ -329,7 +404,7 @@ async function sendRegistrationConfirmation(
 			body: JSON.stringify({
 				from: CONFIRMATION_EMAIL_FROM,
 				to: [registration.email],
-				reply_to: CONFIRMATION_EMAIL_REPLY_TO,
+				reply_to: ACADEMY_EMAIL,
 				subject,
 				text,
 				html,
@@ -361,20 +436,139 @@ async function sendRegistrationConfirmation(
 	}
 }
 
-async function submitRegistration(request, env, ctx) {
-	const contentType = request.headers.get("Content-Type") ?? "";
-	if (!contentType.startsWith("multipart/form-data")) {
-		return json({ error: "Neplatný formát požadavku." }, 415);
+async function sendRegistrationAdminNotification(
+	env,
+	registration,
+	membership,
+	membershipId,
+) {
+	const formattedAmount = membership.amountCzk.toLocaleString("cs-CZ");
+	const categoryLabel = CATEGORIES[registration.category];
+	const source = registration.source || "Neuvedeno";
+	const note = registration.note || "Neuvedeno";
+	const subject = "Nová registrace do Akademie Taekwon-do";
+	const text = [
+		"Byla přijata nová registrace.",
+		"",
+		`Jméno: ${registration.firstName} ${registration.lastName}`,
+		`E-mail: ${registration.email}`,
+		`Telefon: ${registration.phone}`,
+		`Kategorie: ${categoryLabel}`,
+		`Členství: ${membership.label} (${membership.validityLabel})`,
+		`Částka: ${formattedAmount} Kč`,
+		`Jak se o nás dozvěděl/a: ${source}`,
+		`Poznámka: ${note}`,
+		"",
+		"Potvrzení o platbě bylo bezpečně uloženo.",
+		`ID členství: ${membershipId}`,
+	].join("\n");
+	const html = `
+		<!doctype html>
+		<html lang="cs">
+			<body style="margin:0;background:#f5f5f5;font-family:Arial,sans-serif;color:#171717;">
+				<div style="max-width:600px;margin:0 auto;padding:32px 16px;">
+					<div style="background:#ffffff;border-radius:12px;padding:32px;">
+						<h1 style="margin:0 0 8px;font-size:24px;">Nová registrace</h1>
+						<p style="margin:0 0 24px;color:#555555;">Byla přijata nová registrace do Akademie Taekwon-do.</p>
+						<table role="presentation" style="width:100%;border-collapse:collapse;">
+							<tr><td style="padding:8px 0;"><strong>Jméno</strong></td><td style="padding:8px 0;text-align:right;">${escapeHtml(registration.firstName)} ${escapeHtml(registration.lastName)}</td></tr>
+							<tr><td style="padding:8px 0;"><strong>E-mail</strong></td><td style="padding:8px 0;text-align:right;">${escapeHtml(registration.email)}</td></tr>
+							<tr><td style="padding:8px 0;"><strong>Telefon</strong></td><td style="padding:8px 0;text-align:right;">${escapeHtml(registration.phone)}</td></tr>
+							<tr><td style="padding:8px 0;"><strong>Kategorie</strong></td><td style="padding:8px 0;text-align:right;">${escapeHtml(categoryLabel)}</td></tr>
+							<tr><td style="padding:8px 0;"><strong>Členství</strong></td><td style="padding:8px 0;text-align:right;">${escapeHtml(membership.label)} (${escapeHtml(membership.validityLabel)})</td></tr>
+							<tr><td style="padding:8px 0;"><strong>Částka</strong></td><td style="padding:8px 0;text-align:right;">${escapeHtml(formattedAmount)} Kč</td></tr>
+							<tr><td style="padding:8px 0;"><strong>Zdroj</strong></td><td style="padding:8px 0;text-align:right;">${escapeHtml(source)}</td></tr>
+							<tr><td style="padding:8px 0;"><strong>Poznámka</strong></td><td style="padding:8px 0;text-align:right;white-space:pre-wrap;">${escapeHtml(note)}</td></tr>
+						</table>
+						<p style="margin:24px 0 0;">Potvrzení o platbě bylo bezpečně uloženo.</p>
+						<p style="margin:8px 0 0;color:#777777;font-size:13px;">ID členství: ${membershipId}</p>
+					</div>
+				</div>
+			</body>
+		</html>
+	`;
+
+	try {
+		const response = await fetch(RESEND_EMAILS_URL, {
+			method: "POST",
+			signal: AbortSignal.timeout(10_000),
+			headers: {
+				Authorization: `Bearer ${env.RESEND_API_KEY}`,
+				"Content-Type": "application/json",
+				"Idempotency-Key": `registration-admin-notification-${membershipId}`,
+			},
+			body: JSON.stringify({
+				from: CONFIRMATION_EMAIL_FROM,
+				to: [ACADEMY_EMAIL],
+				reply_to: registration.email,
+				subject,
+				text,
+				html,
+				tags: [{ name: "type", value: "registration_admin_notification" }],
+			}),
+		});
+
+		if (!response.ok) {
+			console.error({
+				event: "registration_admin_notification_email_failed",
+				membershipId,
+				status: response.status,
+			});
+			return;
+		}
+
+		const result = await response.json();
+		console.info({
+			event: "registration_admin_notification_email_sent",
+			membershipId,
+			resendEmailId: result.id,
+		});
+	} catch (error) {
+		console.error({
+			event: "registration_admin_notification_email_request_failed",
+			membershipId,
+			message: error instanceof Error ? error.message : "Unknown error",
+		});
+	}
+}
+
+async function sendRegistrationEmails(
+	env,
+	registration,
+	membership,
+	membershipId,
+) {
+	if (!env.RESEND_API_KEY) {
+		console.error({
+			event: "registration_emails_not_configured",
+			membershipId,
+		});
+		return;
 	}
 
-	const contentLength = Number(request.headers.get("Content-Length"));
-	if (Number.isFinite(contentLength) && contentLength > MAX_REQUEST_SIZE) {
-		return json({ error: "Odesílaný soubor je příliš velký." }, 413);
+	await Promise.all([
+		sendRegistrationConfirmation(env, registration, membership, membershipId),
+		sendRegistrationAdminNotification(
+			env,
+			registration,
+			membership,
+			membershipId,
+		),
+	]);
+}
+
+async function submitRegistration(request, env, ctx) {
+	const contentType = request.headers.get("Content-Type") ?? "";
+	if (
+		!contentType.toLowerCase().startsWith("multipart/form-data;") ||
+		!contentType.toLowerCase().includes("boundary=")
+	) {
+		return json({ error: "Neplatný formát požadavku." }, 415);
 	}
 
 	let objectKey;
 	try {
-		const formData = await request.formData();
+		const formData = await readMultipartFormData(request);
 
 		if (getText(formData, "website")) {
 			return json({ error: "Požadavek byl odmítnut." }, 400);
@@ -454,7 +648,7 @@ async function submitRegistration(request, env, ctx) {
 		`;
 
 		ctx.waitUntil(
-			sendRegistrationConfirmation(
+			sendRegistrationEmails(
 				env,
 				registration,
 				membership,
@@ -462,7 +656,7 @@ async function submitRegistration(request, env, ctx) {
 			),
 		);
 
-		return json({ success: true, membershipId: createdMembership.id }, 201);
+		return json({ success: true }, 201);
 	} catch (error) {
 		if (objectKey) {
 			try {
@@ -480,6 +674,9 @@ async function submitRegistration(request, env, ctx) {
 
 		if (error instanceof ValidationError) {
 			return json({ error: error.message }, 400);
+		}
+		if (error instanceof PayloadTooLargeError) {
+			return json({ error: "Odesílaný soubor je příliš velký." }, 413);
 		}
 		if (error?.code === "23505" && error?.constraint === "members_email_key") {
 			return json({ error: "Tento e-mail je již zaregistrován." }, 409);
@@ -499,7 +696,25 @@ export default {
 
 		if (url.pathname === "/api/submit") {
 			if (request.method !== "POST") {
-				return json({ error: "Metoda není povolena." }, 405);
+				return json({ error: "Metoda není povolena." }, 405, { Allow: "POST" });
+			}
+			if (!isSameOriginRequest(request)) {
+				return json({ error: "Požadavek byl odmítnut." }, 403);
+			}
+			const rateLimitPassed = await enforceRegistrationRateLimit(request, env);
+			if (rateLimitPassed === null) {
+				return json(
+					{ error: "Služba je dočasně nedostupná. Zkuste to znovu." },
+					503,
+					{ "Retry-After": "60" },
+				);
+			}
+			if (!rateLimitPassed) {
+				return json(
+					{ error: "Příliš mnoho pokusů. Zkuste to znovu za minutu." },
+					429,
+					{ "Retry-After": "60" },
+				);
 			}
 			return submitRegistration(request, env, ctx);
 		}
