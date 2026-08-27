@@ -16,6 +16,16 @@
 			"bucket_name": "taekol-payment-proofs"
 		}
 	],
+	"ratelimits": [
+		{
+			"name": "REGISTRATION_RATE_LIMITER",
+			"namespace_id": "482716309",
+			"simple": {
+				"limit": 5,
+				"period": 60
+			}
+		}
+	],
 	"vars": {
 		"TURNSTILE_HOSTNAMES": "taekol.com"
 	},
