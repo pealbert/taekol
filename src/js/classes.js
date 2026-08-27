@@ -6,12 +6,9 @@ const searchButton = document.querySelector(
 const dropdownCheckbox = document.querySelector(
 	'#search .search__summary input[type="checkbox"]',
 );
-const defaultLabel = "Kategorie";
 let selectedCategoryId = null;
 
-function resetSearchSelection() {
-	selectedCategoryId = null;
-	if (labelSpan) labelSpan.textContent = defaultLabel;
+function closeSearchDropdown() {
 	if (dropdownCheckbox) dropdownCheckbox.checked = false;
 }
 
@@ -47,7 +44,7 @@ searchButton?.addEventListener("click", () => {
 });
 
 window.addEventListener("scroll", () => {
-	if (dropdownCheckbox?.checked || selectedCategoryId) {
-		resetSearchSelection();
+	if (dropdownCheckbox?.checked) {
+		closeSearchDropdown();
 	}
 });
