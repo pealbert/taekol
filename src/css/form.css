@@ -164,6 +164,7 @@ main {
 					margin-bottom: 1.5rem;
 
 					input {
+						width: 100%;
 						outline: none;
 						border: 2px solid var(--bright-gray-color);
 						background-color: var(--white-color);
