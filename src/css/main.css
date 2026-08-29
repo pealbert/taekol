@@ -3,6 +3,12 @@
 @import "./footer.css";
 @import "./animate.css";
 
+main {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
 #hero {
 	position: relative;
 	display: flex;
@@ -530,10 +536,6 @@
 		gap: 6rem;
 	}
 
-	.benefits__list {
-		flex-direction: row;
-	}
-
 	.testimonials {
 		flex-direction: row;
 		gap: 4rem;
@@ -629,7 +631,7 @@
 	}
 
 	.benefits__list {
-		gap: 7rem;
+		flex-direction: row;
 	}
 
 	.benefits__item p {

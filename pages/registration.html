@@ -144,7 +144,7 @@
 									type="text"
 									name="first_name"
 									id="first_name"
-									tabindex="1"
+									tabindex="0"
 									title="Jméno"
 									minlength="3"
 									maxlength="100"
@@ -172,7 +172,7 @@
 									type="text"
 									name="last_name"
 									id="last_name"
-									tabindex="2"
+									tabindex="0"
 									title="Příjmení"
 									minlength="3"
 									maxlength="100"
@@ -200,7 +200,7 @@
 									type="date"
 									name="birth_date"
 									id="birth_date"
-									tabindex="3"
+									tabindex="0"
 									title="Datum narození"
 									min="1900-01-01"
 									oninput="this.setCustomValidity('');"
@@ -222,7 +222,7 @@
 									type="email"
 									name="email"
 									id="email"
-									tabindex="4"
+									tabindex="0"
 									title="E-mail"
 									maxlength="255"
 									pattern="^[^@]+@[^@]+\.[^@]+$"
@@ -245,7 +245,7 @@
 									type="tel"
 									name="phone"
 									id="phone"
-									tabindex="5"
+									tabindex="0"
 									title="Telefonní číslo"
 									minlength="12"
 									maxlength="30"
@@ -300,7 +300,7 @@
 									required
 									name="category"
 									id="category"
-									tabindex="6"
+									tabindex="0"
 									title="Kategorie"
 									onchange="this.setCustomValidity('');"
 									oninvalid="
@@ -340,7 +340,7 @@
 									required
 									name="membership_validity"
 									id="membership_validity"
-									tabindex="7"
+									tabindex="0"
 									title="Platnost členství"
 									onchange="this.setCustomValidity('');"
 									oninvalid="
@@ -376,7 +376,7 @@
 									type="text"
 									name="source"
 									id="source"
-									tabindex="8"
+									tabindex="0"
 									title="Jak jste se o nás dozvěděli?"
 									maxlength="100"
 								>
@@ -388,7 +388,7 @@
 								<textarea
 									name="note"
 									id="note"
-									tabindex="9"
+									tabindex="0"
 									rows="4"
 									title="Doplňující informace"
 									maxlength="500"
@@ -403,7 +403,7 @@
 								type="checkbox"
 								name="terms"
 								id="terms"
-								tabindex="10"
+								tabindex="0"
 								onchange="this.setCustomValidity('');"
 								oninvalid="
 									if (this.validity.valueMissing) {
@@ -688,9 +688,9 @@
 									/>
 								</svg>
 								<span class="proof__status">Potvrzení o platbě</span>
-								<span class="proof__button" role="button" tabindex="0"
-									>Nahrát</span
-								>
+								<button class="proof__button" type="button" tabindex="0">
+									Nahrát
+								</button>
 							</label>
 							<input
 								type="file"
@@ -715,7 +715,7 @@
 						></div>
 
 						<!-- Honeypot -->
-						<label for="honeypot"></label>
+						<label for="honeypot">Website</label>
 						<input
 							id="honeypot"
 							title="text"

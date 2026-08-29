@@ -526,7 +526,8 @@ main {
 			}
 		}
 
-		#honeypot {
+		#honeypot,
+		label[for="honeypot"] {
 			display: none !important;
 		}
 	}
