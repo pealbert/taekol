@@ -4,8 +4,8 @@
 	}
 
 	header li a:hover:not(:active)::before {
-		background-color: var(--black-color);
 		left: 0;
+		background-color: var(--black-color);
 	}
 
 	header > a:nth-last-of-type(1):hover:not(:active),
@@ -20,9 +20,9 @@
 	}
 
 	#call-to-action a:hover:not(:active) {
+		color: var(--white-color);
 		border-color: var(--white-color);
 		box-shadow: none;
-		color: var(--white-color);
 	}
 
 	#call-to-action a:hover:not(:active)::after {
@@ -32,8 +32,8 @@
 	}
 
 	#call-to-action a:hover:not(:active)::before {
-		left: 0;
 		bottom: 0;
+		left: 0;
 		transform: scale(3.6);
 	}
 
@@ -86,9 +86,9 @@ main > a:active::after {
 }
 
 #call-to-action a:active {
-	transform: scale(0.95);
-	background-color: var(--black-color);
 	color: var(--white-color);
+	background-color: var(--black-color);
+	transform: scale(0.95);
 }
 
 @keyframes grow-progress {

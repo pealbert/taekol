@@ -42,8 +42,8 @@
 }
 
 ::selection {
-	background-color: var(--red-color);
 	color: var(--white-color);
+	background-color: var(--red-color);
 }
 
 :focus:not(:focus-visible) {

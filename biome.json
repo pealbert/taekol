@@ -18,6 +18,11 @@
 			"enabled": true
 		}
 	},
+	"css": {
+		"formatter": {
+			"enabled": true
+		}
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
@@ -34,10 +39,10 @@
 		"actions": {
 			"source": {
 				"organizeImports": "on",
+				"noDuplicateClasses": "on",
 				"useSortedProperties": "on",
-				"useSortedAttributes":"on",
-				"useSortedKeys":"on",
-				"useSortedPackageJson":"on",
+				"useSortedAttributes": "on",
+				"useSortedPackageJson": "on"
 			}
 		}
 	}

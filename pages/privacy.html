@@ -2,84 +2,84 @@
 <html lang="cs">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<title>Akademie Taekwon-do SKUP Olomouc</title>
 
 		<!-- Primary metadata -->
-		<link rel="canonical" href="https://taekol.com">
+		<link href="https://taekol.com" rel="canonical">
 		<meta
-			name="description"
 			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
+			name="description"
 		>
 		<meta
-			name="keywords"
 			content="Taekwon-do, Olomouc, tréninky, semináře, soutěže, bojové umění, děti, dospělí, sport, fitness, zdraví, sebeobrana, techniky, cvičení, klub, akademie, SKUP"
+			name="keywords"
 		>
-		<meta name="author" content="Albert Petrovskyi">
-		<meta name="robots" content="index, follow">
-		<meta name="theme-color" content="#f9f9f9">
+		<meta content="Albert Petrovskyi" name="author">
+		<meta content="index, follow" name="robots">
+		<meta content="#f9f9f9" name="theme-color">
 
 		<!-- Icons and manifest -->
 		<link
+			href="/icons/apple-touch-icon.png"
 			rel="apple-touch-icon"
 			sizes="180x180"
-			href="/icons/apple-touch-icon.png"
 		>
 		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
 			href="/icons/favicon-32x32.png"
+			rel="icon"
+			sizes="32x32"
+			type="image/png"
 		>
 		<link
-			rel="icon"
-			type="image/png"
-			sizes="16x16"
 			href="/icons/favicon-16x16.png"
+			rel="icon"
+			sizes="16x16"
+			type="image/png"
 		>
-		<link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
-		<link rel="manifest" href="/site.webmanifest">
+		<link href="/icons/favicon.ico" rel="icon" type="image/x-icon">
+		<link href="/site.webmanifest" rel="manifest">
 
 		<!-- Styles and preloads -->
-		<link rel="stylesheet" href="../src/css/docs.css">
+		<link href="../src/css/docs.css" rel="stylesheet">
 		<link
-			rel="preload"
 			as="font"
-			type="font/woff2"
-			href="../src/assets/fonts/CalSans.woff2"
 			crossorigin
+			href="../src/assets/fonts/CalSans.woff2"
+			rel="preload"
+			type="font/woff2"
 		>
 		<link
-			rel="preload"
 			as="font"
-			type="font/woff2"
-			href="../src/assets/fonts/FunnelDisplay.woff2"
 			crossorigin
+			href="../src/assets/fonts/FunnelDisplay.woff2"
+			rel="preload"
+			type="font/woff2"
 		>
 
 		<!-- Open Graph / Twitter -->
-		<meta property="og:title" content="Akademie Taekwon-do SKUP Olomouc">
+		<meta content="Akademie Taekwon-do SKUP Olomouc" property="og:title">
 		<meta
+			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
 			property="og:description"
-			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
 		>
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://taekol.com">
-		<meta property="og:image" content="https://taekol.com/banner.jpg">
-		<meta property="og:locale" content="cs_CZ">
+		<meta content="website" property="og:type">
+		<meta content="https://taekol.com" property="og:url">
+		<meta content="https://taekol.com/banner.jpg" property="og:image">
+		<meta content="cs_CZ" property="og:locale">
 
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="Akademie Taekwon-do SKUP Olomouc">
+		<meta content="summary_large_image" name="twitter:card">
+		<meta content="Akademie Taekwon-do SKUP Olomouc" name="twitter:title">
 		<meta
-			name="twitter:description"
 			content="Tréninky, semináře a soutěže v Taekwon-do pro děti i dospělé. Přidejte se k nám a zlepšete své dovednosti v bojovém umění."
+			name="twitter:description"
 		>
-		<meta name="twitter:image" content="https://taekol.com/banner.jpg">
+		<meta content="https://taekol.com/banner.jpg" name="twitter:image">
 
 		<!-- Scripts -->
-		<script type="module" src="../src/js/lenis.js"></script>
-		<script type="module" src="../src/js/burger.js"></script>
-		<script type="module" src="../src/js/footer.js"></script>
+		<script src="../src/js/lenis.js" type="module"></script>
+		<script src="../src/js/burger.js" type="module"></script>
+		<script src="../src/js/footer.js" type="module"></script>
 		<script>
 		fetch("/schemas/schema-org.json")
 			.then((res) => res.text())
@@ -95,10 +95,10 @@
 		<div class="progress-bar"></div>
 		<div id="wrapper">
 			<header>
-				<a href="/" class="logo">
+				<a class="logo" href="/">
 					<svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
 						<title>Logo</title>
-						<circle cx="75" cy="75" r="75" fill="#EF4444" />
+						<circle cx="75" cy="75" fill="#EF4444" r="75" />
 						<path
 							d="M99.0586 36.9867C102.721 36.8075 107.962 42.5225 102.907 45.7621L97.083 50.4487C97.083 50.4487 91.8626 61.2119 87.122 63.5893C82.6868 65.8134 74.8983 65.2823 69.1601 64.4535C70.1974 68.0409 75.0858 78.7528 75.3515 83.2768C87.3434 68.8973 113.83 61.9586 130.591 51.7133L143.897 46.0453C144.004 46.0499 144.109 46.0571 144.213 46.0629C145.559 49.2777 146.687 52.606 147.579 56.0297L134.582 59.0366C118.685 74.0103 100.907 81.5037 84.5547 100.522C79.7 113.245 73.938 129.408 75.9267 149.994C75.6183 149.997 75.3093 150 75 150C71.5236 150 68.1026 149.762 64.7519 149.304C60.2173 134.664 56.5766 118.708 61.4902 99.5571C55.8598 94.8949 46.1164 91.2662 38.2763 79.2387C31.0728 84.7963 22.7333 89.4615 21.917 86.3764C19.4876 77.1938 22.1842 71.0897 26.5009 61.7914C26.937 61.0753 28.6903 55.6339 29.1123 54.9965C33.5588 46.8293 38.2809 55.368 36.0654 60.1049C35.6528 60.7011 32.6538 63.4558 32.248 64.101C29.7769 68.0313 27.5255 72.8026 26.6123 77.5903C31.267 74.3135 33.5518 71.0643 39.083 66.3422C40.1995 64.8129 41.4499 63.5022 42.8017 62.3715C45.7894 64.5876 49.3916 65.5857 52.8017 64.3608C56.4695 63.0434 58.8973 59.5213 59.9677 55.4448C61.0832 55.2416 62.201 55.0517 63.3203 54.8754C68.6998 54.0194 84.5761 57.0708 84.6572 57.0864L92.5761 46.6791L96.6142 38.7084C97.1311 37.5505 98.0334 37.0373 99.0586 36.9867ZM44.5781 33.0014C45.9426 32.9642 47.4643 33.5605 49.0517 34.8862C51.1686 36.6538 53.1915 39.6879 54.3535 43.4809C55.5157 47.2736 55.5688 51.016 54.8476 53.8032C54.1267 56.5907 52.7826 58.2623 51.1162 58.8608C49.4499 59.459 47.4497 58.9887 45.333 57.2211C43.2164 55.4534 41.1932 52.4181 40.0312 48.6254C38.8694 44.8328 38.8159 41.0912 39.5371 38.3041C40.2583 35.5169 41.6034 33.845 43.2695 33.2465C43.6922 33.0956 44.1333 33.0127 44.5781 33.0014Z"
 							fill="white"
@@ -117,20 +117,20 @@
 				</nav>
 				<a href="/registration">Přihlásit se</a>
 				<button
+					aria-expanded="false"
+					aria-label="Otevřít menu"
 					class="burger"
 					type="button"
-					aria-label="Otevřít menu"
-					aria-expanded="false"
 				>
 					<svg
-						viewBox="0 0 12 10"
 						fill="none"
+						viewBox="0 0 12 10"
 						xmlns="http://www.w3.org/2000/svg"
 					>
 						<title>Menu</title>
-						<rect width="12" height="2" rx="1" fill="currentColor" />
-						<rect y="4" width="12" height="2" rx="1" fill="currentColor" />
-						<rect y="8" width="12" height="2" rx="1" fill="currentColor" />
+						<rect fill="currentColor" height="2" rx="1" width="12" />
+						<rect fill="currentColor" height="2" rx="1" width="12" y="4" />
+						<rect fill="currentColor" height="2" rx="1" width="12" y="8" />
 					</svg>
 				</button>
 			</header>
@@ -194,14 +194,14 @@
 							<b>Pojištění sportovců</b>
 							a plnění povinností vůči sportovním svazům (<a
 								href="http://taekwondocz.com"
-								target="_blank"
 								rel="noopener noreferrer"
+								target="_blank"
 								>České národní unie Taekwon-do ČNUT</a
 							>,
 							<a
 								href="https://www.cuscz.cz/"
-								target="_blank"
 								rel="noopener noreferrer"
+								target="_blank"
 								>ČUS</a
 							>) na základě zákona č. 115/2001 Sb., o podpoře sportu.
 						</li>
@@ -268,14 +268,14 @@
 							příslušný sportovní svaz (např.
 							<a
 								href="https://taekwondocz.com/"
-								target="_blank"
 								rel="noopener noreferrer"
+								target="_blank"
 								>Česká národní unie Taekwon-do ČNUT</a
 							>),
 							<a
 								href="https://cuscz.cz/"
-								target="_blank"
 								rel="noopener noreferrer"
+								target="_blank"
 								>Česká unie sportu (ČUS)</a
 							>.
 						</li>
@@ -292,24 +292,24 @@
 						<li>
 							Poskytovatel webového hostingu a zabezpečení (<a
 								href="https://cloudflare.com/"
-								target="_blank"
 								rel="noopener noreferrer"
+								target="_blank"
 								>Cloudflare, Inc.</a
 							>).
 						</li>
 						<li>
 							Poskytovatel databázových služeb (<a
 								href="https://neon.com/"
-								target="_blank"
 								rel="noopener noreferrer"
+								target="_blank"
 								>Neon Inc.</a
 							>).
 						</li>
 						<li>
 							Poskytovatel transakčních e-mailů (<a
 								href="https://resend.com/"
-								target="_blank"
 								rel="noopener noreferrer"
+								target="_blank"
 								>Resend Inc.</a
 							>).
 						</li>
@@ -331,8 +331,8 @@
 							Podat stížnost u
 							<a
 								href="https://www.uoou.cz"
-								target="_blank"
 								rel="noopener noreferrer"
+								target="_blank"
 								><b>Úřadu pro ochranu osobních údajů</b></a
 							>.
 						</li>
@@ -344,8 +344,8 @@
 						webu využíváme službu Cloudflare Web Analytics (poskytovatel:
 						<a
 							href="http://cloudflare.com"
-							target="_blank"
 							rel="noopener noreferrer"
+							target="_blank"
 							>Cloudflare, Inc.</a
 						>).</span
 					>
@@ -416,9 +416,9 @@
 						<span>Komunita</span>
 						<a
 							class="community__media"
-							target="_blank"
-							rel="noopener noreferrer"
 							href="https://www.instagram.com/akademietaekwondo"
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							<svg viewBox="0 0 20 17" xmlns="http://www.w3.org/2000/svg">
 								<title>Instagram</title>
@@ -431,9 +431,9 @@
 						</a>
 						<a
 							class="community__media"
-							target="_blank"
-							rel="noopener noreferrer"
 							href="https://www.facebook.com/groups/akademie.taekwondo.olomouc"
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
 								<title>Facebook</title>
@@ -446,9 +446,9 @@
 						</a>
 						<a
 							class="community__media"
-							target="_blank"
-							rel="noopener noreferrer"
 							href="https://www.youtube.com/@Taekwon-doOlomouc"
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							<svg viewBox="0 0 20 14" xmlns="http://www.w3.org/2000/svg">
 								<title>Youtube</title>
@@ -461,15 +461,15 @@
 						</a>
 						<a
 							class="community__media"
-							target="_blank"
-							rel="noopener noreferrer"
 							href="https://www.tiktok.com/@akademietkd"
+							rel="noopener noreferrer"
+							target="_blank"
 						>
 							<svg
-								width="16"
+								fill="none"
 								height="18"
 								viewBox="0 0 16 18"
-								fill="none"
+								width="16"
 								xmlns="http://www.w3.org/2000/svg"
 							>
 								<title>Tiktok</title>

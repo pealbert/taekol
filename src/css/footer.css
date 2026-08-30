@@ -1,22 +1,22 @@
 footer {
 	z-index: 2;
-	width: 100%;
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	background-color: var(--black-color);
-	padding: 2rem 0;
 	gap: 1rem;
+	align-items: flex-start;
+	width: 100%;
+	padding: 2rem 0;
+	background-color: var(--black-color);
 }
 
 footer .info {
-	display: grid;
-	gap: 2rem;
-	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-	width: min(1200px, 100%);
-	margin: 0 auto;
-	padding: 0 2rem;
 	box-sizing: border-box;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 2rem;
+	width: min(1200px, 100%);
+	padding: 0 2rem;
+	margin: 0 auto;
 }
 
 footer .impressum,
@@ -47,65 +47,65 @@ footer .community > *:first-child {
 
 .community__media {
 	display: flex;
-	align-items: center;
 	gap: 0.5rem;
+	align-items: center;
 }
 
 .community__media svg {
-	color: var(--bright-gray-color);
 	width: 17px;
 	min-width: 17px;
 	overflow: visible;
+	color: var(--bright-gray-color);
 }
 
 footer > span {
-	cursor: pointer;
 	position: relative;
-	text-transform: uppercase;
-	font-family: "Cal Sans", sans-serif;
-	color: var(--black-color);
-	text-align: center;
-	font-size: 13cqw;
-	-webkit-user-select: none;
-	user-select: none;
 	margin: 0 auto;
 	overflow: hidden;
+	font-family: "Cal Sans", sans-serif;
+	font-size: 13cqw;
+	color: var(--black-color);
+	text-align: center;
+	text-transform: uppercase;
+	cursor: pointer;
+	-webkit-user-select: none;
+	user-select: none;
 }
 
 footer > span::before {
-	content: "Taekwon-do";
 	position: absolute;
 	top: 0;
 	left: 50%;
-	transform: translateX(-50%);
-	white-space: nowrap;
 	color: var(--white-color);
+	white-space: nowrap;
+	content: "Taekwon-do";
+	transform: translateX(-50%);
 	transition: all 0.3s ease;
 }
 
 footer > span::after {
-	content: "Zpět nahoru";
 	position: absolute;
 	bottom: calc(-100% - 1px);
 	left: 50%;
-	transform: translateX(-50%);
-	white-space: nowrap;
 	color: var(--white-color);
+	white-space: nowrap;
+	content: "Zpět nahoru";
+	transform: translateX(-50%);
 	transition: all 0.3s ease;
 }
 
 footer > p {
-	font-weight: 300;
-	text-align: center;
-	margin: 0 auto;
 	max-width: calc(100% - 4rem);
+	margin: 0 auto;
+	font-weight: 300;
 	color: var(--bright-gray-color);
+	text-align: center;
 }
 
 @media (width >= 428px) {
 	footer .contact {
-		grid-column: 1 2;
 		grid-row: 2;
+		grid-column: 1 2;
 	}
 }
 

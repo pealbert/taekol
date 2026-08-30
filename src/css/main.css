@@ -4,9 +4,9 @@
 @import "./animate.css";
 
 main {
-	width: 100%;
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 }
 
 #hero {
@@ -16,20 +16,20 @@ main {
 	justify-content: space-around;
 
 	&::before {
-		z-index: 0;
-		opacity: 0;
 		position: absolute;
-		content: "";
 		top: 2rem;
 		left: 0;
-		animation: pop-up 0.5s ease forwards;
+		z-index: 0;
 		width: 100%;
 		height: 100%;
+		content: "";
 		background: linear-gradient(
-			0,
+			to top,
 			var(--light-red-color) -25%,
 			var(--white-color) 25%
 		);
+		opacity: 0;
+		animation: pop-up 0.5s ease forwards;
 	}
 
 	svg {
@@ -100,17 +100,17 @@ main {
 		}
 
 		h1 {
+			color: var(--black-color);
 			opacity: 0;
 			animation: fade-in 0.5s ease forwards 0.1s;
-			color: var(--black-color);
 		}
 
 		p {
-			opacity: 0;
-			animation: fade-in 0.5s ease forwards 0.2s;
 			font-family: "Funnel Display", sans-serif;
 			font-size: var(--tiny-font-size);
 			color: var(--gray-color);
+			opacity: 0;
+			animation: fade-in 0.5s ease forwards 0.2s;
 
 			@media (width >= 1024px) {
 				font-size: var(--small-font-size);
@@ -120,39 +120,39 @@ main {
 		.hero__links {
 			display: flex;
 			flex-direction: column;
-			align-items: flex-start;
 			gap: 1rem;
+			align-items: flex-start;
 
 			@media (width >= 480px) {
 				flex-direction: row;
 			}
 
 			a {
-				opacity: 0;
-				color: var(--white-color);
-				font-family: "Funnel Display", sans-serif;
-				font-weight: 600;
-				font-size: var(--tiny-font-size);
-				border-radius: var(--round-border-radius);
 				padding: 0.75rem 1.5rem;
+				font-family: "Funnel Display", sans-serif;
+				font-size: var(--tiny-font-size);
+				font-weight: 600;
+				color: var(--white-color);
+				border-radius: var(--round-border-radius);
+				opacity: 0;
 				transition: all 0.2s ease;
 				animation: fade-in 0.5s ease forwards 0.3s;
 
 				&:first-of-type {
 					position: relative;
+					overflow: hidden;
 					background-color: var(--red-color);
 					box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.15);
-					overflow: hidden;
 
 					&:after {
-						content: "";
 						position: absolute;
-						left: 0;
 						bottom: -50%;
-						border-radius: 100%;
+						left: 0;
 						width: 100%;
 						height: 50%;
+						content: "";
 						background-color: var(--light-red-color);
+						border-radius: 100%;
 						filter: blur(7px);
 						transition: all 0.2s ease;
 					}
@@ -170,10 +170,10 @@ main {
 	z-index: 1;
 	display: flex;
 	flex-direction: column;
+	gap: 2rem;
 	align-items: center;
 	justify-content: center;
 	background-color: var(--red-color);
-	gap: 2rem;
 
 	@media (width >= 1024px) {
 		gap: 4rem;
@@ -183,18 +183,18 @@ main {
 		color: var(--white-color);
 
 		&::selection {
-			background-color: var(--white-color);
 			color: var(--red-color);
+			background-color: var(--white-color);
 		}
 	}
 
 	.about__info {
 		display: flex;
 		flex-direction: column;
+		gap: 1rem;
 		align-items: center;
 		justify-content: center;
 		padding: 0 var(--tiny-font-size);
-		gap: 1rem;
 
 		@media (width >= 480px) {
 			flex-direction: row;
@@ -210,10 +210,10 @@ main {
 		}
 
 		svg {
+			order: 2;
 			width: 40px;
 			min-width: 40px;
 			color: var(--white-color);
-			order: 2;
 
 			@media (width >= 768px) {
 				width: 50px;
@@ -222,13 +222,13 @@ main {
 		}
 
 		p {
-			color: var(--white-color);
 			font-size: var(--tiny-font-size);
+			color: var(--white-color);
 			text-align: center;
 
 			&::selection {
-				background-color: var(--white-color);
 				color: var(--red-color);
+				background-color: var(--white-color);
 			}
 
 			@media (width >= 480px) {
@@ -237,8 +237,8 @@ main {
 			}
 
 			@media (width >= 1024px) {
-				font-size: var(--small-font-size);
 				max-width: 450px;
+				font-size: var(--small-font-size);
 			}
 		}
 	}
@@ -247,17 +247,17 @@ main {
 #why-us {
 	display: flex;
 	flex-direction: column;
+	gap: 2rem;
 	align-items: center;
 	justify-content: center;
-	gap: 2rem;
 
 	@media (width >= 768px) {
 		gap: 3rem;
 	}
 
 	h1 {
-		color: var(--black-color);
 		margin-top: 1rem;
+		color: var(--black-color);
 	}
 
 	.why-us__list {
@@ -271,8 +271,8 @@ main {
 
 		.why-us__item {
 			display: flex;
-			align-items: center;
 			gap: 1rem;
+			align-items: center;
 
 			@media (width >= 768px) {
 				margin: 0 1rem;
@@ -294,8 +294,8 @@ main {
 			}
 
 			p {
-				color: var(--black-color);
 				font-size: var(--tiny-font-size);
+				color: var(--black-color);
 
 				@media (width >= 1024px) {
 					font-size: var(--small-font-size);
@@ -308,10 +308,10 @@ main {
 #benefits {
 	display: flex;
 	flex-direction: column;
+	gap: 4rem;
 	align-items: center;
 	justify-content: center;
 	background-color: var(--black-color);
-	gap: 4rem;
 
 	@media (width >= 768px) {
 		gap: 6rem;
@@ -334,23 +334,23 @@ main {
 		.benefits__item {
 			display: flex;
 			flex-direction: column;
+			gap: 1rem;
 			align-items: center;
 			justify-content: center;
-			gap: 1rem;
 
 			svg {
-				min-width: 60px;
 				width: 60px;
+				min-width: 60px;
 				color: var(--white-color);
 			}
 
-			 p {
-				text-align: center;
-				color: var(--white-color);
-				text-transform: uppercase;
-				font-weight: 100;
-				letter-spacing: 0.07rem;
+			p {
 				font-size: var(--tiny-font-size);
+				font-weight: 100;
+				color: var(--white-color);
+				text-align: center;
+				text-transform: uppercase;
+				letter-spacing: 0.07rem;
 
 				@media (width >= 1024px) {
 					font-size: var(--small-font-size);
@@ -363,10 +363,10 @@ main {
 #testimonials {
 	display: flex;
 	flex-direction: column;
+	gap: 8rem;
 	align-items: center;
 	justify-content: center;
 	background-color: var(--black-color);
-	gap: 8rem;
 
 	h1 {
 		color: var(--white-color);
@@ -390,21 +390,20 @@ main {
 			gap: 12rem;
 		}
 
-
 		.testimonial {
 			display: flex;
-			width: 290px;
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
+			width: 290px;
 			background-color: var(--white-color);
 			border-radius: 25px;
 
 			& > svg {
 				align-self: flex-end;
 				width: 70px;
-				color: var(--bright-gray-color);
 				margin: 1rem 2rem 2rem 0;
+				color: var(--bright-gray-color);
 			}
 
 			@media (width >= 480px) {
@@ -427,12 +426,12 @@ main {
 
 			p {
 				margin-top: -2rem;
-				text-align: center;
-				color: var(--black-color);
-				text-transform: uppercase;
-				font-weight: 400;
-				letter-spacing: 0.07rem;
 				font-size: var(--tiny-font-size);
+				font-weight: 400;
+				color: var(--black-color);
+				text-align: center;
+				text-transform: uppercase;
+				letter-spacing: 0.07rem;
 			}
 
 			.rating {
@@ -441,21 +440,21 @@ main {
 				margin-bottom: 0.5rem;
 
 				svg {
-					min-width: 25px;
 					width: 25px;
+					min-width: 25px;
 					color: var(--yellow-color);
 				}
 			}
 
 			blockquote {
+				width: calc(100% - 5rem);
 				font-size: var(--tiny-font-size);
 				color: var(--black-color);
 				text-align: center;
-				width: calc(100% - 5rem);
 
 				@media (width >= 1024px) {
-					font-size: var(--small-font-size);
 					width: calc(100% - 5rem);
+					font-size: var(--small-font-size);
 				}
 			}
 		}
@@ -465,9 +464,9 @@ main {
 #faq {
 	display: flex;
 	flex-direction: column;
+	gap: 3rem;
 	align-items: center;
 	justify-content: center;
-	gap: 3rem;
 }
 
 #faq h1 {
@@ -475,40 +474,40 @@ main {
 }
 
 .disclosures {
-	width: min(100%, 290px);
-	max-width: 100%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: flex-start;
 	gap: 1rem;
+	align-items: flex-start;
+	justify-content: center;
+	width: min(100%, 290px);
+	max-width: 100%;
 }
 
 .disclosures hr {
-	border: none;
 	flex-shrink: 0;
-	background-color: var(--bright-gray-color);
-	min-height: 2px;
-	height: 2px;
-	width: calc(100% - 1rem);
 	align-self: center;
+	width: calc(100% - 1rem);
+	height: 2px;
+	min-height: 2px;
+	background-color: var(--bright-gray-color);
+	border: none;
 }
 
 .disclosure {
 	position: relative;
 	display: flex;
+	gap: 1rem;
 	align-items: flex-start;
 	height: 20px;
-	transition: all 0.2s ease;
-	gap: 1rem;
 	overflow: hidden;
+	transition: all 0.2s ease;
 }
 
 .disclosure::after {
 	position: absolute;
-	color: var(--gray-color);
 	top: 40px;
 	left: 0;
+	color: var(--gray-color);
 }
 
 .disclosure-1::after {
@@ -546,9 +545,9 @@ main {
 }
 
 .disclosure svg {
-	color: var(--red-color);
 	width: 20px;
 	min-width: 20px;
+	color: var(--red-color);
 	transition: transform 0.2s ease;
 }
 
@@ -557,43 +556,43 @@ main {
 }
 
 .disclosure label {
-	cursor: pointer;
 	position: relative;
-	font-size: var(--tiny-font-size);
 	font-family: "Funnel Display", sans-serif;
+	font-size: var(--tiny-font-size);
 	font-weight: 500;
 	color: var(--black-color);
+	cursor: pointer;
 }
 
 #call-to-action {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap: 0.5rem;
+	align-items: center;
 	padding: 0 0 10rem 0;
 }
 
 #call-to-action h2 {
-	color: var(--black-color);
-	font-size: var(--medium-font-size);
 	font-family: "Cal Sans", sans-serif;
+	font-size: var(--medium-font-size);
+	color: var(--black-color);
 }
 
 #call-to-action h1 {
-	color: var(--red-color);
 	font-size: var(--huge-font-size);
+	color: var(--red-color);
 }
 
 #call-to-action a {
 	position: relative;
-	color: var(--black-color);
-	font-family: "Cal Sans", sans-serif;
 	padding: 0.5rem 1.5rem;
+	margin-top: 1rem;
+	overflow: hidden;
+	font-family: "Cal Sans", sans-serif;
+	color: var(--black-color);
 	border: var(--black-color) solid 3px;
 	border-radius: var(--round-border-radius);
-	margin-top: 1rem;
 	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.15);
-	overflow: hidden;
 	transition: all 0.2s ease;
 }
 
@@ -606,22 +605,22 @@ main {
 	position: absolute;
 	bottom: -40px;
 	left: -40px;
-	content: "";
-	background-color: var(--black-color);
 	width: 40px;
 	height: 40px;
+	content: "";
+	background-color: var(--black-color);
 	border-radius: 20px;
 	transition: all 0.4s ease;
 }
 
 #call-to-action a::after {
 	position: absolute;
-	bottom: -40px;
 	right: -40px;
-	content: "";
-	background-color: var(--black-color);
+	bottom: -40px;
 	width: 40px;
 	height: 40px;
+	content: "";
+	background-color: var(--black-color);
 	border-radius: 20px;
 	transition: all 0.4s ease;
 }
@@ -642,8 +641,8 @@ main {
 	}
 
 	.disclosures {
-		width: 345px;
 		gap: 1.5rem;
+		width: 345px;
 	}
 
 	.disclosure {
@@ -691,8 +690,8 @@ main {
 	}
 
 	#call-to-action a {
-		font-size: var(--medium-font-size);
 		padding: 0.75rem 2rem;
+		font-size: var(--medium-font-size);
 		border: var(--black-color) solid 3.5px;
 	}
 }

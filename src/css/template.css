@@ -23,35 +23,35 @@ main > h1 {
 
 main > a {
 	position: relative;
-	color: var(--white-color);
-	font-family: "Cal Sans", sans-serif;
-	font-size: var(--small-font-size);
-	background-color: var(--red-color);
-	border-radius: var(--round-border-radius);
 	padding: 0.5rem 1.5rem;
 	margin-top: 0.5rem;
-	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.15);
 	overflow: hidden;
+	font-family: "Cal Sans", sans-serif;
+	font-size: var(--small-font-size);
+	color: var(--white-color);
+	background-color: var(--red-color);
+	border-radius: var(--round-border-radius);
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.15);
 	transition: all 0.2s ease;
 }
 
 main > a::after {
-	content: "";
 	position: absolute;
-	left: 0;
 	bottom: -50%;
-	border-radius: 100%;
+	left: 0;
 	width: 100%;
 	height: 50%;
+	content: "";
 	background-color: var(--light-red-color);
+	border-radius: 100%;
 	filter: blur(7px);
 	transition: all 0.2s ease;
 }
 
 main > p {
-	color: var(--black-color);
-	font-size: var(--small-font-size);
 	padding: 0 1rem;
+	font-size: var(--small-font-size);
+	color: var(--black-color);
 	text-align: center;
 
 	a {
@@ -61,7 +61,7 @@ main > p {
 
 @media (width >= 1024px) {
 	main > a {
-		font-size: var(--medium-font-size);
 		padding: 0.75rem 2rem;
+		font-size: var(--medium-font-size);
 	}
 }
