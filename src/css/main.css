@@ -250,34 +250,59 @@ main {
 	align-items: center;
 	justify-content: center;
 	gap: 2rem;
-}
 
-#why-us h1 {
-	color: var(--black-color);
-	margin-top: 1rem;
-}
+	@media (width >= 768px) {
+		gap: 3rem;
+	}
 
-.why-us__list {
-	display: grid;
-	grid-template-columns: 1fr;
-	list-style: none;
-}
+	h1 {
+		color: var(--black-color);
+		margin-top: 1rem;
+	}
 
-.why-us__item {
-	display: flex;
-	align-items: center;
-	gap: 1rem;
-}
+	.why-us__list {
+		display: grid;
+		grid-template-columns: 1fr;
+		list-style: none;
 
-.why-us__item p {
-	color: var(--black-color);
-	font-size: var(--tiny-font-size);
-}
+		@media (width >= 768px) {
+			grid-template-columns: 1fr 1fr;
+		}
 
-.why-us__item svg {
-	width: 20px;
-	min-width: 20px;
-	color: var(--red-color);
+		.why-us__item {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+
+			@media (width >= 768px) {
+				margin: 0 1rem;
+			}
+
+			@media (width >= 1024px) {
+				margin: 0 5rem;
+			}
+
+			svg {
+				width: 20px;
+				min-width: 20px;
+				color: var(--red-color);
+
+				@media (width >= 1024px) {
+					width: 25px;
+					min-width: 25px;
+				}
+			}
+
+			p {
+				color: var(--black-color);
+				font-size: var(--tiny-font-size);
+
+				@media (width >= 1024px) {
+					font-size: var(--small-font-size);
+				}
+			}
+		}
+	}
 }
 
 #benefits {
@@ -287,38 +312,52 @@ main {
 	justify-content: center;
 	background-color: var(--black-color);
 	gap: 4rem;
-}
 
-#benefits h1 {
-	color: var(--white-color);
-}
+	@media (width >= 768px) {
+		gap: 6rem;
+	}
 
-.benefits__list {
-	display: flex;
-	flex-direction: column;
-	gap: 4rem;
-}
+	h1 {
+		color: var(--white-color);
+	}
 
-.benefits__item {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	gap: 1rem;
-}
+	.benefits__list {
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
 
-.benefits__item svg {
-	width: 60px;
-	color: var(--white-color);
-}
+		@media (width >= 1024px) {
+			flex-direction: row;
+			gap: 6rem;
+		}
 
-.benefits__item p {
-	text-align: center;
-	color: var(--white-color);
-	text-transform: uppercase;
-	font-weight: 100;
-	letter-spacing: 0.07rem;
-	font-size: var(--tiny-font-size);
+		.benefits__item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			gap: 1rem;
+
+			svg {
+				min-width: 60px;
+				width: 60px;
+				color: var(--white-color);
+			}
+
+			 p {
+				text-align: center;
+				color: var(--white-color);
+				text-transform: uppercase;
+				font-weight: 100;
+				letter-spacing: 0.07rem;
+				font-size: var(--tiny-font-size);
+
+				@media (width >= 1024px) {
+					font-size: var(--small-font-size);
+				}
+			}
+		}
+	}
 }
 
 #testimonials {
@@ -560,25 +599,36 @@ main {
 }
 
 @media (width >= 768px) {
-	#why-us {
-		gap: 3rem;
-	}
-
-	.why-us__list {
-		grid-template-columns: 1fr 1fr;
-	}
-
-	.why-us__item {
-		margin: 0 1rem;
-	}
-
-	#benefits {
-		gap: 6rem;
-	}
-
 	.testimonials {
 		flex-direction: row;
 		gap: 4rem;
+	}
+
+	#call-to-action h2 {
+		font-size: var(--large-font-size);
+	}
+
+	#call-to-action h1 {
+		font-size: var(--extra-huge-font-size);
+	}
+}
+
+@media (width >= 1024px) {
+	.testimonials {
+		gap: 8rem;
+	}
+
+	.testimonial {
+		width: 380px;
+	}
+
+	.testimonial blockquote {
+		font-size: var(--small-font-size);
+		width: calc(100% - 5rem);
+	}
+
+	#faq {
+		gap: 5rem;
 	}
 
 	.disclosures {
@@ -616,54 +666,6 @@ main {
 
 	.disclosure label {
 		font-size: var(--small-font-size);
-	}
-
-	#call-to-action h2 {
-		font-size: var(--large-font-size);
-	}
-
-	#call-to-action h1 {
-		font-size: var(--extra-huge-font-size);
-	}
-}
-
-@media (width >= 1024px) {
-	.why-us__item {
-		margin: 0 5rem;
-	}
-
-	.why-us__item p {
-		font-size: var(--small-font-size);
-	}
-
-	.why-us__item svg {
-		width: 25px;
-		min-width: 25px;
-	}
-
-	.benefits__list {
-		flex-direction: row;
-	}
-
-	.benefits__item p {
-		font-size: var(--small-font-size);
-	}
-
-	.testimonials {
-		gap: 8rem;
-	}
-
-	.testimonial {
-		width: 380px;
-	}
-
-	.testimonial blockquote {
-		font-size: var(--small-font-size);
-		width: calc(100% - 5rem);
-	}
-
-	#faq {
-		gap: 5rem;
 	}
 
 	#call-to-action {
