@@ -33,7 +33,11 @@
 		"enabled": true,
 		"actions": {
 			"source": {
-				"organizeImports": "on"
+				"organizeImports": "on",
+				"useSortedProperties": "on",
+				"useSortedAttributes":"on",
+				"useSortedKeys":"on",
+				"useSortedPackageJson":"on",
 			}
 		}
 	}

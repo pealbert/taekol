@@ -367,71 +367,99 @@ main {
 	justify-content: center;
 	background-color: var(--black-color);
 	gap: 8rem;
-}
 
-#testimonials h1 {
-	color: var(--white-color);
-}
+	h1 {
+		color: var(--white-color);
+	}
 
-.testimonials {
-	display: flex;
-	flex-direction: column;
-	gap: 8rem;
-}
+	.testimonials {
+		display: flex;
+		flex-direction: column;
+		gap: 8rem;
 
-.testimonial {
-	display: flex;
-	width: 290px;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--white-color);
-	border-radius: 25px;
-}
+		@media (width >= 768px) {
+			flex-direction: row;
+			gap: 4rem;
+		}
 
-.testimonial picture {
-	position: relative;
-	top: -50px;
-}
+		@media (width >= 1024px) {
+			gap: 8rem;
+		}
 
-.testimonial picture img {
-	width: 100px;
-	border-radius: var(--round-border-radius);
-}
+		@media (width >= 1280px) {
+			gap: 12rem;
+		}
 
-.testimonial p {
-	margin-top: -2rem;
-	text-align: center;
-	color: var(--black-color);
-	text-transform: uppercase;
-	font-weight: 400;
-	letter-spacing: 0.07rem;
-	font-size: var(--tiny-font-size);
-}
 
-.testimonial .rating {
-	display: flex;
-	gap: 0.5rem;
-	margin-bottom: 0.5rem;
-}
+		.testimonial {
+			display: flex;
+			width: 290px;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			background-color: var(--white-color);
+			border-radius: 25px;
 
-.testimonial .rating svg {
-	width: 25px;
-	color: var(--yellow-color);
-}
+			& > svg {
+				align-self: flex-end;
+				width: 70px;
+				color: var(--bright-gray-color);
+				margin: 1rem 2rem 2rem 0;
+			}
 
-.testimonial blockquote {
-	font-size: var(--tiny-font-size);
-	color: var(--black-color);
-	text-align: center;
-	width: calc(100% - 5rem);
-}
+			@media (width >= 480px) {
+				width: 340px;
+			}
 
-.testimonial > svg {
-	align-self: flex-end;
-	width: 70px;
-	color: var(--bright-gray-color);
-	margin: 1rem 2rem 2rem 0;
+			@media (width >= 1024px) {
+				width: 380px;
+			}
+
+			picture {
+				position: relative;
+				top: -50px;
+
+				img {
+					width: 100px;
+					border-radius: var(--round-border-radius);
+				}
+			}
+
+			p {
+				margin-top: -2rem;
+				text-align: center;
+				color: var(--black-color);
+				text-transform: uppercase;
+				font-weight: 400;
+				letter-spacing: 0.07rem;
+				font-size: var(--tiny-font-size);
+			}
+
+			.rating {
+				display: flex;
+				gap: 0.5rem;
+				margin-bottom: 0.5rem;
+
+				svg {
+					min-width: 25px;
+					width: 25px;
+					color: var(--yellow-color);
+				}
+			}
+
+			blockquote {
+				font-size: var(--tiny-font-size);
+				color: var(--black-color);
+				text-align: center;
+				width: calc(100% - 5rem);
+
+				@media (width >= 1024px) {
+					font-size: var(--small-font-size);
+					width: calc(100% - 5rem);
+				}
+			}
+		}
+	}
 }
 
 #faq {
@@ -599,11 +627,6 @@ main {
 }
 
 @media (width >= 768px) {
-	.testimonials {
-		flex-direction: row;
-		gap: 4rem;
-	}
-
 	#call-to-action h2 {
 		font-size: var(--large-font-size);
 	}
@@ -614,19 +637,6 @@ main {
 }
 
 @media (width >= 1024px) {
-	.testimonials {
-		gap: 8rem;
-	}
-
-	.testimonial {
-		width: 380px;
-	}
-
-	.testimonial blockquote {
-		font-size: var(--small-font-size);
-		width: calc(100% - 5rem);
-	}
-
 	#faq {
 		gap: 5rem;
 	}
@@ -684,12 +694,5 @@ main {
 		font-size: var(--medium-font-size);
 		padding: 0.75rem 2rem;
 		border: var(--black-color) solid 3.5px;
-	}
-}
-
-@media (width >= 1280px) {
-	.testimonials {
-		flex-direction: row;
-		gap: 12rem;
 	}
 }
