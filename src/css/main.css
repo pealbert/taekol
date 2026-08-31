@@ -467,101 +467,165 @@ main {
 	gap: 3rem;
 	align-items: center;
 	justify-content: center;
-}
 
-#faq h1 {
-	color: var(--black-color);
-}
+	@media (width >= 1024px) {
+		gap: 5rem;
+	}
 
-.disclosures {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	align-items: flex-start;
-	justify-content: center;
-	width: min(100%, 290px);
-	max-width: 100%;
-}
+	h1 {
+		color: var(--black-color);
+	}
 
-.disclosures hr {
-	flex-shrink: 0;
-	align-self: center;
-	width: calc(100% - 1rem);
-	height: 2px;
-	min-height: 2px;
-	background-color: var(--bright-gray-color);
-	border: none;
-}
+	.disclosures {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		align-items: flex-start;
+		justify-content: center;
+		width: min(100%, 290px);
+		max-width: 100%;
 
-.disclosure {
-	position: relative;
-	display: flex;
-	gap: 1rem;
-	align-items: flex-start;
-	height: 20px;
-	overflow: hidden;
-	transition: all 0.2s ease;
-}
+		@media (width >= 1024px) {
+			gap: 1.5rem;
+			width: 345px;
+		}
 
-.disclosure::after {
-	position: absolute;
-	top: 40px;
-	left: 0;
-	color: var(--gray-color);
-}
+		hr {
+			flex-shrink: 0;
+			align-self: center;
+			width: calc(100% - 1rem);
+			height: 2px;
+			min-height: 2px;
+			background-color: var(--bright-gray-color);
+			border: none;
+		}
 
-.disclosure-1::after {
-	content: "Stačí vám obyčejné tričko, pohodlné tepláky nebo kraťasy a láhev s vodou.";
-}
+		.disclosure {
+			position: relative;
+			display: flex;
+			gap: 1rem;
+			align-items: flex-start;
+			height: 20px;
+			overflow: hidden;
+			transition: all 0.2s ease;
 
-.disclosure-2::after {
-	content: "Do naší dětské přípravky přijímáme děti od 4 let.";
-}
+			&::after {
+				position: absolute;
+				top: 40px;
+				left: 0;
+				color: var(--gray-color);
 
-.disclosure-3::after {
-	content: "Určitě. Každý začíná od absolutních základů a tempo přizpůsobujeme aktuálním fyzickým možnostem.";
-}
+				@media (width >= 1024px) {
+					top: 50px;
+					font-size: var(--small-font-size);
+				}
+			}
 
-.disclosure-4::after {
-	content: "Červenec a srpen patří letním táborům a seminářům.";
-}
+			&:has(input[type="radio"]:checked) {
+				height: 80px;
 
-.disclosure-5::after {
-	content: "Po přijetí platby vše zkontrolujeme a e-mailem vám zašleme informace.";
-}
+				@media (width >= 1024px) {
+					height: 100px;
+				}
+			}
 
-.disclosure:has(input[type="radio"]:checked) {
-	height: 80px;
-}
+			@media (width >= 1024px) {
+				height: 25px;
+			}
 
-.disclosure-3:has(input[type="radio"]:checked),
-.disclosure-4:has(input[type="radio"]:checked),
-.disclosure-5:has(input[type="radio"]:checked) {
-	height: 95px;
-}
+			input[type="radio"] {
+				display: none;
 
-.disclosure input[type="radio"]:checked ~ svg {
-	transform: rotate(45deg);
-}
+				&:checked ~ svg {
+					transform: rotate(45deg);
+				}
+				
+			}
 
-.disclosure svg {
-	width: 20px;
-	min-width: 20px;
-	color: var(--red-color);
-	transition: transform 0.2s ease;
-}
+			svg {
+				width: 20px;
+				min-width: 20px;
+				color: var(--red-color);
+				transition: transform 0.2s ease;
 
-.disclosure input {
-	display: none;
-}
+				@media (width >= 1024px) {
+					width: 25px;
+					min-width: 25px;
+				}
+			}
 
-.disclosure label {
-	position: relative;
-	font-family: "Funnel Display", sans-serif;
-	font-size: var(--tiny-font-size);
-	font-weight: 500;
-	color: var(--black-color);
-	cursor: pointer;
+			label {
+				position: relative;
+				font-family: "Funnel Display", sans-serif;
+				font-size: var(--tiny-font-size);
+				font-weight: 500;
+				color: var(--black-color);
+				cursor: pointer;
+
+				@media (width >= 1024px) {
+					font-size: var(--small-font-size);
+				}
+			}
+		}
+
+		.disclosure-1 {
+			&::after {
+				content: "Stačí vám obyčejné tričko, pohodlné tepláky nebo kraťasy a láhev s vodou.";
+			}
+
+			@media (width >= 1024px) {
+				&:has(input[type="radio"]:checked) {
+					height: 115px;
+				}
+			}
+		}
+
+		.disclosure-2::after {
+			content: "Do naší dětské přípravky přijímáme děti od 4 let.";
+		}
+
+		.disclosure-3 {
+			&::after {
+				content: "Určitě. Každý začíná od absolutních základů a tempo přizpůsobujeme aktuálním fyzickým možnostem.";
+			}
+
+			&:has(input[type="radio"]:checked) {
+				height: 95px;
+
+				@media (width >= 1024px) {
+					height: 120px;
+				}
+			}
+		}
+
+		.disclosure-4 {
+			&::after {
+				content: "Červenec a srpen patří letním táborům a seminářům.";
+			}
+
+			&:has(input[type="radio"]:checked) {
+				height: 95px;
+
+				@media (width >= 1024px) {
+					height: 120px;
+				}
+			}
+		}
+
+		.disclosure-5 {
+			&::after {
+				content: "Po přijetí platby vše zkontrolujeme a e-mailem vám zašleme informace.";
+			}
+
+			&:has(input[type="radio"]:checked) {
+				height: 95px;
+
+				@media (width >= 1024px) {
+					height: 120px;
+				}
+			}
+		}
+	}
 }
 
 #call-to-action {
@@ -570,128 +634,83 @@ main {
 	gap: 0.5rem;
 	align-items: center;
 	padding: 0 0 10rem 0;
-}
 
-#call-to-action h2 {
-	font-family: "Cal Sans", sans-serif;
-	font-size: var(--medium-font-size);
-	color: var(--black-color);
-}
-
-#call-to-action h1 {
-	font-size: var(--huge-font-size);
-	color: var(--red-color);
-}
-
-#call-to-action a {
-	position: relative;
-	padding: 0.5rem 1.5rem;
-	margin-top: 1rem;
-	overflow: hidden;
-	font-family: "Cal Sans", sans-serif;
-	color: var(--black-color);
-	border: var(--black-color) solid 3px;
-	border-radius: var(--round-border-radius);
-	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.15);
-	transition: all 0.2s ease;
-}
-
-#call-to-action a span {
-	position: relative;
-	z-index: 1;
-}
-
-#call-to-action a::before {
-	position: absolute;
-	bottom: -40px;
-	left: -40px;
-	width: 40px;
-	height: 40px;
-	content: "";
-	background-color: var(--black-color);
-	border-radius: 20px;
-	transition: all 0.4s ease;
-}
-
-#call-to-action a::after {
-	position: absolute;
-	right: -40px;
-	bottom: -40px;
-	width: 40px;
-	height: 40px;
-	content: "";
-	background-color: var(--black-color);
-	border-radius: 20px;
-	transition: all 0.4s ease;
-}
-
-@media (width >= 768px) {
-	#call-to-action h2 {
-		font-size: var(--large-font-size);
-	}
-
-	#call-to-action h1 {
-		font-size: var(--extra-huge-font-size);
-	}
-}
-
-@media (width >= 1024px) {
-	#faq {
-		gap: 5rem;
-	}
-
-	.disclosures {
-		gap: 1.5rem;
-		width: 345px;
-	}
-
-	.disclosure {
-		height: 25px;
-	}
-
-	.disclosure::after {
-		top: 50px;
-		font-size: var(--small-font-size);
-	}
-
-	.disclosure:has(input[type="radio"]:checked) {
-		height: 100px;
-	}
-
-	.disclosure-1:has(input[type="radio"]:checked) {
-		height: 115px;
-	}
-
-	.disclosure-3:has(input[type="radio"]:checked),
-	.disclosure-4:has(input[type="radio"]:checked),
-	.disclosure-5:has(input[type="radio"]:checked) {
-		height: 120px;
-	}
-
-	.disclosure svg {
-		width: 25px;
-		min-width: 25px;
-	}
-
-	.disclosure label {
-		font-size: var(--small-font-size);
-	}
-
-	#call-to-action {
+	@media (width >= 1024px) {
 		gap: 1rem;
 	}
 
-	#call-to-action h2 {
-		font-size: var(--huge-font-size);
-	}
-
-	#call-to-action h1 {
-		font-size: var(--enormous-font-size);
-	}
-
-	#call-to-action a {
-		padding: 0.75rem 2rem;
+	h2 {
+		font-family: "Cal Sans", sans-serif;
 		font-size: var(--medium-font-size);
-		border: var(--black-color) solid 3.5px;
+		color: var(--black-color);
+
+		@media (width >= 768px) {
+			font-size: var(--large-font-size);
+		}
+
+		@media (width >= 1024px) {
+			font-size: var(--huge-font-size);
+		}
+	}
+
+	h1 {
+		font-size: var(--huge-font-size);
+		color: var(--red-color);
+
+		@media (width >= 768px) {
+			font-size: var(--extra-huge-font-size);
+		}
+
+		@media (width >= 1024px) {
+			font-size: var(--enormous-font-size);
+		}
+	}
+
+	a {
+		position: relative;
+		padding: 0.5rem 1.5rem;
+		margin-top: 1rem;
+		overflow: hidden;
+		font-family: "Cal Sans", sans-serif;
+		color: var(--black-color);
+		border: var(--black-color) solid 3px;
+		border-radius: var(--round-border-radius);
+		box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.15);
+		transition: all 0.2s ease;
+
+		&::before {
+			position: absolute;
+			bottom: -40px;
+			left: -40px;
+			width: 40px;
+			height: 40px;
+			content: "";
+			background-color: var(--black-color);
+			border-radius: 20px;
+			transition: all 0.4s ease;
+		}
+
+		&::after {
+			position: absolute;
+			right: -40px;
+			bottom: -40px;
+			width: 40px;
+			height: 40px;
+			content: "";
+			background-color: var(--black-color);
+			border-radius: 20px;
+			transition: all 0.4s ease;
+		}
+
+		@media (width >= 1024px) {
+			padding: 0.75rem 2rem;
+			font-size: var(--medium-font-size);
+			border: var(--black-color) solid 3.5px;
+		}
+
+		span {
+			position: relative;
+			z-index: 1;
+		}
 	}
 }
