@@ -1,22 +1,4 @@
 @media (hover: hover) and (pointer: fine) {
-	header li a:hover:not(:active) {
-		color: var(--black-color);
-	}
-
-	header li a:hover:not(:active)::before {
-		left: 0;
-		background-color: var(--black-color);
-	}
-
-	header > a:nth-last-of-type(1):hover:not(:active) {
-		box-shadow: none;
-		transform: scale(0.98) translateY(1px);
-	}
-
-	header > a:nth-last-of-type(1):hover:not(:active)::after {
-		bottom: -15px;
-	}
-
 	footer .web a:hover:not(:active),
 	footer .documents a:hover:not(:active),
 	footer .community a:hover:not(:active) {
@@ -43,15 +25,6 @@
 	main > a:hover:not(:active)::after {
 		bottom: -15px;
 	}
-}
-
-header > a:nth-last-of-type(1):active {
-	box-shadow: none;
-	transform: scale(0.98) translateY(1px);
-}
-
-header > a:nth-last-of-type(1):active::after {
-	bottom: -15px;
 }
 
 main > a:active {
@@ -92,15 +65,4 @@ main > a:active::after {
 		opacity: 1;
 		transform: translateY(0);
 	}
-}
-
-.about__info,
-.why-us__item,
-.benefits__item,
-.testimonial,
-.disclosure,
-.disclosure hr {
-	animation: fade-in linear both;
-	animation-timeline: view();
-	animation-range: entry 0% cover 20%;
 }
