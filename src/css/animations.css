@@ -1,22 +1,4 @@
 @media (hover: hover) and (pointer: fine) {
-	footer .web a:hover:not(:active),
-	footer .documents a:hover:not(:active),
-	footer .community a:hover:not(:active) {
-		color: var(--white-color);
-	}
-
-	footer .community a:hover:not(:active) svg {
-		color: var(--white-color);
-	}
-
-	footer > span:hover:not(:active)::before {
-		top: -100%;
-	}
-
-	footer > span:hover:not(:active)::after {
-		bottom: 0;
-	}
-
 	main > a:hover:not(:active) {
 		box-shadow: none;
 		transform: scale(0.98) translateY(1px);

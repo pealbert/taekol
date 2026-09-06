@@ -16,8 +16,8 @@ main {
 
 	svg {
 		width: clamp(75px, 12cqw, 100px);
-		color: var(--red-color);
 		margin-bottom: 1rem;
+		color: var(--red-color);
 	}
 
 	h1 {
@@ -57,11 +57,11 @@ main {
 	}
 
 	p {
+		max-width: 350px;
 		padding: 0 1rem;
 		font-size: var(--small-font-size);
 		color: var(--black-color);
 		text-align: center;
-		max-width: 350px;
 
 		a {
 			color: var(--red-color);
