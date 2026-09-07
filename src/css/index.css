@@ -42,8 +42,8 @@
 }
 
 ::selection {
-	background-color: var(--red-color);
 	color: var(--white-color);
+	background-color: var(--red-color);
 }
 
 :focus:not(:focus-visible) {
@@ -69,6 +69,9 @@ section {
 h1 {
 	font-family: "Cal Sans", sans-serif;
 	font-size: var(--medium-font-size);
+	animation: fade-in linear both;
+	animation-timeline: view();
+	animation-range: entry 0% cover 20%;
 }
 
 #wrapper {

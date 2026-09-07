@@ -306,8 +306,6 @@ function renderStep(stepNumber) {
 		targetEl.style.display = "block";
 		targetEl.classList.add("active");
 	}
-
-	window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function updatePaymentPreview() {
@@ -351,6 +349,11 @@ function goToStep(targetStep) {
 	currentStep = targetStep;
 	renderStep(targetStep);
 	history.replaceState({ step: targetStep }, "", `#step${targetStep}`);
+
+	document.getElementById("wrapper")?.scrollIntoView({
+		behavior: "smooth",
+		block: "start",
+	});
 }
 
 function setSubmittingState(submitting) {
