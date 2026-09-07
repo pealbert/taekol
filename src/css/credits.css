@@ -1,71 +1,76 @@
 @import "./index.css";
-@import "./animations.css";
 @import "./header.css";
 @import "./footer.css";
 
 main {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
-	align-items: center;
-	justify-content: center;
-	padding: 7rem 1rem;
-	text-align: center;
+	width: 100%;
 
-	p {
-		max-width: 350px;
-		font-size: var(--tiny-font-size);
-		color: var(--gray-color);
-
-		@media (width >= 768px) {
-			max-width: 390px;
-			font-size: var(--small-font-size);
-		}
-	}
-}
-
-#credits {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--red-color);
-
-	p {
-		max-width: 230px;
-		font-size: var(--tiny-font-size);
-		color: var(--white-color);
-		text-align: center;
-
-		@media (width >= 768px) {
-			max-width: 280px;
-			font-size: var(--small-font-size);
-		}
-	}
-
-	a:hover {
-		text-decoration: underline;
-	}
-
-	ul {
+	#hero {
 		display: flex;
 		flex-direction: column;
-		gap: 4rem;
-		list-style: none;
+		gap: 0.5rem;
+		align-items: center;
+		justify-content: center;
+		padding: 7rem 1rem;
+		text-align: center;
 
-		li {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
+		p {
+			max-width: 350px;
+			font-size: var(--tiny-font-size);
+			color: var(--gray-color);
 
 			@media (width >= 768px) {
-				gap: 3rem;
+				max-width: 390px;
+				font-size: var(--small-font-size);
+			}
+		}
+	}
+
+	#credits {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--red-color);
+
+		p {
+			max-width: 230px;
+			font-size: var(--tiny-font-size);
+			color: var(--white-color);
+			text-align: center;
+
+			@media (width >= 768px) {
+				max-width: 280px;
+				font-size: var(--small-font-size);
 			}
 		}
 
-		svg {
-			width: clamp(75px, 12cqw, 100px);
-			color: var(--white-color);
+		a:hover {
+			text-decoration: underline;
+		}
+
+		ul {
+			display: flex;
+			flex-direction: column;
+			gap: 4rem;
+			list-style: none;
+
+			li {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+
+				@media (width >= 768px) {
+					gap: 3rem;
+				}
+			}
+
+			svg {
+				width: clamp(75px, 12cqw, 100px);
+				color: var(--white-color);
+			}
 		}
 	}
 }

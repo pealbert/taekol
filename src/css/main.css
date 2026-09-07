@@ -166,9 +166,8 @@ main {
 
 					@media (hover: hover) and (pointer: fine) {
 						&:hover:not(:active) {
-							bottom: 2px;
+							bottom: -1px;
 							box-shadow: none;
-							transform: scale(0.98);
 
 							&:first-of-type::after {
 								bottom: -15px;

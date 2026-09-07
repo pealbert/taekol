@@ -1,156 +1,155 @@
 @import "./index.css";
-@import "./animations.css";
 @import "./header.css";
 @import "./footer.css";
 
 html {
 	scroll-padding-top: 120px;
-}
 
-main {
-	display: flex;
-	justify-content: center;
-	padding: 5rem 1rem;
-
-	article {
+	main {
 		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		align-items: center;
-		width: clamp(280px, 80%, 360px);
-		padding: 1rem 2rem;
-		color: var(--black-color);
-		background-color: var(--poor-white-color);
-		border-radius: 25px;
+		justify-content: center;
+		padding: 5rem 1rem;
 
-		@media (width >= 768px) {
-			width: 440px;
-			padding: 2rem 4rem;
-		}
-
-		@media (width >= 1024px) {
-			width: 550px;
-		}
-
-		& > h2:first-of-type,
-		& > h2:last-of-type {
-			align-self: center;
-			font-size: var(--medium-font-size);
-			text-align: center;
+		article {
+			display: flex;
+			flex-direction: column;
+			gap: 1rem;
+			align-items: center;
+			width: clamp(280px, 80%, 360px);
+			padding: 1rem 2rem;
+			color: var(--black-color);
+			background-color: var(--poor-white-color);
+			border-radius: 25px;
 
 			@media (width >= 768px) {
-				font-size: var(--large-font-size);
+				width: 440px;
+				padding: 2rem 4rem;
 			}
 
 			@media (width >= 1024px) {
-				font-size: var(--huge-font-size);
+				width: 550px;
 			}
 
-			span {
-				margin-left: 0.25rem;
-				color: var(--gray-color);
-				opacity: 0.5;
+			& > h2:first-of-type,
+			& > h2:last-of-type {
+				align-self: center;
+				font-size: var(--medium-font-size);
+				text-align: center;
+
+				@media (width >= 768px) {
+					font-size: var(--large-font-size);
+				}
+
+				@media (width >= 1024px) {
+					font-size: var(--huge-font-size);
+				}
+
+				span {
+					margin-left: 0.25rem;
+					color: var(--gray-color);
+					opacity: 0.5;
+				}
 			}
+
+			h2 {
+				font-family: "Cal Sans", sans-serif;
+				font-size: var(--small-font-size);
+				align-self: flex-start;
+				text-align: left;
+				margin: 1rem 0;
+				animation: fade-in linear both;
+				animation-timeline: view();
+				animation-range: entry 0% cover 10%;
+
+				@media (width >= 768px) {
+					font-size: var(--medium-font-size);
+					margin: 2rem 0;
+					animation-range: entry 0% cover 20%;
+				}
+
+				@media (width >= 1024px) {
+					font-size: var(--large-font-size);
+				}
+			}
+
+			& > span,
+			ul li {
+				align-self: flex-start;
+				text-align: left;
+				font-size: var(--tiny-font-size);
+				color: var(--gray-color);
+				animation: fade-in linear both;
+				animation-timeline: view();
+				animation-range: entry 0% cover 10%;
+
+				@media (width >= 768px) {
+					font-size: var(--small-font-size);
+					animation-range: entry 0% cover 20%;
+				}
+			}
+
+			ul {
+				display: flex;
+				flex-direction: column;
+				gap: 1rem;
+				padding-left: 20px;
+			}
+
+			a {
+				transition: all 0.2s ease;
+
+				@media (hover: hover) {
+					&:hover:not(:active) {
+						color: var(--red-color);
+					}
+				}
+
+				&:active {
+					color: var(--red-color);
+				}
+			}
+		}
+	}
+
+	aside {
+		z-index: 1;
+		display: none;
+
+		@media (width >= 1250px) {
+			position: fixed;
+			top: 10.75rem;
+			right: 3rem;
+			display: block;
+			padding: 1rem;
+			font-size: var(--tiny-font-size);
+			color: var(--gray-color);
+			background-color: var(--white-color);
+			border: 1px solid var(--bright-gray-color);
+			border-radius: 25px;
 		}
 
 		h2 {
-			font-family: "Cal Sans", sans-serif;
-			font-size: var(--small-font-size);
-			align-self: flex-start;
-			text-align: left;
-			margin: 1rem 0;
-			animation: fade-in linear both;
-			animation-timeline: view();
-			animation-range: entry 0% cover 10%;
-
-			@media (width >= 768px) {
-				font-size: var(--medium-font-size);
-				margin: 2rem 0;
-				animation-range: entry 0% cover 20%;
-			}
-
-			@media (width >= 1024px) {
-				font-size: var(--large-font-size);
-			}
-		}
-
-		& > span,
-		ul li {
-			align-self: flex-start;
-			text-align: left;
-			font-size: var(--tiny-font-size);
-			color: var(--gray-color);
-			animation: fade-in linear both;
-			animation-timeline: view();
-			animation-range: entry 0% cover 10%;
-
-			@media (width >= 768px) {
-				font-size: var(--small-font-size);
-				animation-range: entry 0% cover 20%;
-			}
+			font-weight: 400;
+			color: var(--black-color);
+			text-transform: uppercase;
+			letter-spacing: 0.02rem;
 		}
 
 		ul {
 			display: flex;
 			flex-direction: column;
 			gap: 1rem;
-			padding-left: 20px;
-		}
+			list-style: none;
 
-		a {
-			transition: all 0.2s ease;
+			li {
+				max-width: 250px;
+				cursor: pointer;
+				opacity: 0.75;
+				transition: all 0.3s ease;
 
-			@media (hover: hover) {
-				&:hover:not(:active) {
-					color: var(--red-color);
+				&:hover {
+					opacity: 1;
 				}
-			}
-
-			&:active {
-				color: var(--red-color);
-			}
-		}
-	}
-}
-
-aside {
-	z-index: 1;
-	display: none;
-
-	@media (width >= 1250px) {
-		position: fixed;
-		top: 10.75rem;
-		right: 3rem;
-		display: block;
-		padding: 1rem;
-		font-size: var(--tiny-font-size);
-		color: var(--gray-color);
-		background-color: var(--white-color);
-		border: 1px solid var(--bright-gray-color);
-		border-radius: 25px;
-	}
-
-	h2 {
-		font-weight: 400;
-		color: var(--black-color);
-		text-transform: uppercase;
-		letter-spacing: 0.02rem;
-	}
-
-	ul {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		list-style: none;
-
-		li {
-			max-width: 250px;
-			cursor: pointer;
-			opacity: 0.75;
-			transition: all 0.3s ease;
-
-			&:hover {
-				opacity: 1;
 			}
 		}
 	}

@@ -54,6 +54,26 @@ main {
 			padding: 0.75rem 2rem;
 			font-size: var(--medium-font-size);
 		}
+
+		@media (hover: hover) and (pointer: fine) {
+			&:hover:not(:active) {
+				box-shadow: none;
+				transform: scale(0.98) translateY(1px);
+
+				&::after {
+					bottom: -20px;
+				}
+			}
+		}
+
+		&:active {
+			box-shadow: none;
+			transform: scale(0.98) translateY(1px);
+
+			&::after {
+				bottom: -20px;
+			}
+		}
 	}
 
 	p {
